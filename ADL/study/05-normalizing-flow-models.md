@@ -2,15 +2,15 @@
 
 ## Topics
 
-- Difference with AR Models
-- Foundations of 1-D Flow
-- 2-D Flow
-- N-dimensional flows
-  - AR and inverse AR flows
-  - NICE / RealNVP
-  - Glow, Flow++
-- Dequantization
-- Applications in super-resolution, text/audio synthesis, point cloud generation
+- [Difference with AR Models](#51-difference-with-ar-models)
+- [Foundations of 1-D Flow](#52-foundations-of-1-d-flow)
+- [2-D Flow](#53-2-d-flow)
+- [N-dimensional flows](#54-n-dimensional-flows)
+  - [AR and inverse AR flows](#541-ar-and-inverse-ar-flows)
+  - [NICE / RealNVP](#542-nice--realnvp)
+  - [Glow, Flow++](#543-glow-flow)
+- [Dequantization](#55-dequantization)
+- [Applications](#56-applications)
 
 ---
 

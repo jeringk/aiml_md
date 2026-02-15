@@ -2,12 +2,12 @@
 
 ## Topics
 
-- [Parametrizing probability distributions](#91-parametrizing-probability-distributions)
-- [Energy-based generative modeling](#92-energy-based-generative-modeling)
-- [Ising Model, Product of Experts, Restricted Boltzmann machine](#93-classical-energy-based-models)
-- [Deep Boltzmann Machines](#94-deep-boltzmann-machines-dbm)
-- [Training and sampling from EBMs](#95-training-and-sampling-from-ebms)
-- [Score-based Models](#96-score-based-models)
+- [Parametrizing probability distributions](#9.1-parametrizing-probability-distributions)
+- [Energy-based generative modeling](#9.2-energy-based-generative-modeling)
+- [Ising Model, Product of Experts, Restricted Boltzmann machine](#9.3-classical-energy-based-models)
+- [Deep Boltzmann Machines](#9.4-deep-boltzmann-machines-(dbm))
+- [Training and sampling from EBMs](#9.5-training-and-sampling-from-ebms)
+- [Score-based Models](#9.6-score-based-models)
 
 ---
 

@@ -63,22 +63,22 @@ Log-variance vector ($\log(\sigma^2)$): $[0.0, \log(0.25), \log(1.0), \log(4.0)]
 
 To answer this question, study the following:
 
-- **CNN Architecture & Parameter Counting**
+- **CNN Architecture & Parameter Counting** — 📖 [3.1 Autoencoder Architecture](../study/03-autoencoders.md#31-autoencoder-architecture) · [3.2 Activation & Loss Functions](../study/03-autoencoders.md#32-activation-and-loss-functions)
   - Conv2D parameters: $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ (weights + biases)
   - Dense layer parameters: $(D_{in} + 1) \times D_{out}$
   - How `padding: same` and `stride` affect spatial dimensions
   - Output size formula: $\lfloor \frac{n + 2p - k}{s} \rfloor + 1$
 
-- **Transposed Convolution (ConvTranspose2D)**
+- **Transposed Convolution (ConvTranspose2D)** — 📖 [3.1 Autoencoder Architecture](../study/03-autoencoders.md#31-autoencoder-architecture)
   - Output size: $(H_{in} - 1) \times s - 2p + k + p_{out}$
   - Parameter count same formula as Conv2D: $(K_h \times K_w \times C_{in} + 1) \times C_{out}$
 
-- **Variational Autoencoder (VAE) Architecture**
+- **Variational Autoencoder (VAE) Architecture** — 📖 [6.1 Latent Variable Models](../study/06-variational-inferencing.md#61-latent-variable-models) · [6.3 ELBO](../study/06-variational-inferencing.md#63-variational--evidence-lower-bound-elbo)
   - Encoder: maps input → latent distribution parameters ($\mu$, $\log \sigma^2$)
   - Decoder: maps latent vector $z$ → reconstructed output
   - Latent space: defined by mean and log-variance vectors
 
-- **Reparameterization Trick**
+- **Reparameterization Trick** — 📖 [6.4 Optimizing VLB / ELBO](../study/06-variational-inferencing.md#64-optimizing-vlb--elbo)
   - Formula: $z = \mu + \sigma \odot \varepsilon$, where $\varepsilon \sim \mathcal{N}(0, I)$
   - Converting $\log(\sigma^2)$ to $\sigma$: $\sigma = e^{\frac{1}{2}\log(\sigma^2)}$
   - **Why it's needed:** Enables backpropagation through the stochastic sampling step by making the randomness external to the computation graph
@@ -257,13 +257,13 @@ $$W = \begin{bmatrix} 2 & -1 & 0 \\ 1 & 3 & 1 \\ 0 & 1 & -2 \end{bmatrix}$$
 
 To answer this question, study the following:
 
-- **Wasserstein GAN (WGAN)**
+- **Wasserstein GAN (WGAN)** — 📖 [7.4.1 Wasserstein GAN](../study/07-generative-adversarial-network.md#741-wasserstein-gan-wgan)
   - Critic loss: $L_C = \frac{1}{m}\sum D(x^{(fake)}) - \frac{1}{m}\sum D(x^{(real)})$ (critic minimizes this)
   - Generator loss: $L_G = -\frac{1}{m}\sum D(G(z))$
   - Weight clipping to enforce Lipschitz constraint
   - Why the critic is trained more frequently (better Wasserstein distance estimate)
 
-- **Spectral Normalization**
+- **Spectral Normalization** — 📖 [7.4.1 Wasserstein GAN](../study/07-generative-adversarial-network.md#741-wasserstein-gan-wgan)
   - Spectral norm = largest singular value $\sigma_1(W)$
   - Power iteration method: alternate $v \leftarrow \frac{W^\top u}{\|W^\top u\|}$, $u \leftarrow \frac{Wv}{\|Wv\|}$, then $\sigma \approx u^\top W v$
   - Normalized weight: $W' = W / \sigma_1(W)$
@@ -427,19 +427,19 @@ Compute $x_1$ using the DDIM update formula (with $\sigma_2 = 0$). **(2 marks)**
 
 To answer this question, study the following:
 
-- **Energy-Based Models (EBMs)**
+- **Energy-Based Models (EBMs)** — 📖 [9.1 Parametrizing Probability Distributions](../study/09-energy-score-based-models.md#91-parametrizing-probability-distributions) · [9.2 Energy-Based Generative Modeling](../study/09-energy-score-based-models.md#92-energy-based-generative-modeling)
   - Energy function: $E_\theta(x)$
   - Boltzmann distribution: $p_\theta(x) = \frac{e^{-E_\theta(x)}}{Z(\theta)}$
   - Partition function: $Z(\theta) = \int_{-\infty}^{\infty} e^{-E_\theta(x)}\, dx$
   - Gaussian integral: $\int_{-\infty}^{\infty} e^{-ax^2 + bx}\, dx = \sqrt{\frac{\pi}{a}}\, e^{b^2/(4a)}$
   - Completing the square for quadratic energy functions
 
-- **Diffusion Models — Forward Process**
+- **Diffusion Models — Forward Process** — 📖 [8.1 Diffusion Probabilistic Models](../study/08-denoising-diffusion-models.md#81-diffusion-probabilistic-models)
   - Forward noising: $x_t = \sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1 - \bar{\alpha}_t}\, \epsilon$
   - Noise schedule: $\bar{\alpha}_t = \prod_{s=1}^{t} \alpha_s$
   - Relationship between single-step and cumulative noise schedules
 
-- **DDIM (Denoising Diffusion Implicit Models)**
+- **DDIM (Denoising Diffusion Implicit Models)** — 📖 [8.3 Denoising Diffusion Implicit Model](../study/08-denoising-diffusion-models.md#83-denoising-diffusion-implicit-model-ddim)
   - Deterministic sampling ($\sigma_t = 0$): $x_{t-1} = \sqrt{\bar{\alpha}_{t-1}}\, \hat{x}_0 + \sqrt{1 - \bar{\alpha}_{t-1}}\, \frac{x_t - \sqrt{\bar{\alpha}_t}\, \hat{x}_0}{\sqrt{1 - \bar{\alpha}_t}}$
   - Stochastic version adds $\sigma_t \epsilon_t$ noise term
   - $\hat{x}_0$ is the predicted clean sample from the denoising network
@@ -592,7 +592,7 @@ Compute the CoVe (context vector) using summation. **(3 marks)**
 
 To answer this question, study the following:
 
-- **Normalizing Flows — Planar Flow**
+- **Normalizing Flows — Planar Flow** — 📖 [5.2 Foundations of 1-D Flow](../study/05-normalizing-flow-models.md#52-foundations-of-1-d-flow) · [5.4 N-Dimensional Flows](../study/05-normalizing-flow-models.md#54-n-dimensional-flows)
   - Transformation: $\mathbf{x} = \mathbf{z} + \mathbf{u} \cdot h(\mathbf{w}^\top \mathbf{z} + b)$
   - Jacobian determinant: $\det\left(\frac{\partial \mathbf{x}}{\partial \mathbf{z}}\right) = 1 + h'(\mathbf{w}^\top \mathbf{z} + b) \cdot \mathbf{u}^\top \mathbf{w}$
   - For tanh: $h'(a) = 1 - \tanh^2(a)$
@@ -601,7 +601,7 @@ To answer this question, study the following:
 - **Log probability of standard Gaussian**
   - $\log p_z(\mathbf{z}) = -\frac{d}{2}\log(2\pi) - \frac{1}{2}\|\mathbf{z}\|^2$
 
-- **CoVe (Contextualized Word Vectors)**
+- **CoVe (Contextualized Word Vectors)** — 📖 [10.3.2 CoVe](../study/10-language-modeling.md#1032-cove-contextualized-word-vectors)
   - BiLSTM: forward and backward hidden states
   - $h_f = \tanh(W_f \mathbf{x} + b_f)$, $\quad h_b = \tanh(W_b \mathbf{x} + b_b)$
   - CoVe via summation: $\text{CoVe}(\mathbf{x}) = h_f + h_b$

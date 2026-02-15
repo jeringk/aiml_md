@@ -82,3 +82,22 @@ MarkDown/
 - **Use conventional commit messages:** `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`, etc.
 - **Commit message format:** Brief summary (≤50 chars), then detailed description if needed
 - **Never leave uncommitted changes** — The working tree should always be clean after each task
+
+## Study Material Linking Rules
+
+When adding or updating "Topics to Know" sections in question files:
+
+1. **Link to specific sub-headings** using markdown heading anchors, NOT the top-level file
+   - ✅ `📖 [5.4.2 NICE / RealNVP](../study/05-normalizing-flow-models.md#542-nice--realnvp)`
+   - ❌ `📖 [Normalizing Flow Models](../study/05-normalizing-flow-models.md)`
+
+2. **Link multiple sub-topics** if a question topic spans several sections, separated by ` · `
+   - Example: `📖 [6.3 ELBO](…#63-variational--evidence-lower-bound-elbo) · [6.4 KL Divergence](…#kl-divergence-gaussian-case-closed-form)`
+
+3. **Create missing study content** if a question references a topic not yet covered in the study materials — add sub-sections with formulas, explanations, and comparison tables
+
+4. **Use the 📖 emoji** before the first link for visual consistency
+
+5. **Use relative paths** from questions to study: `../study/{filename}.md#anchor`
+
+6. **Anchor format**: lowercase, hyphens replace spaces, strip special chars (e.g., `### 5.4.2 NICE / RealNVP` → `#542-nice--realnvp`)

@@ -56,13 +56,13 @@ The 4 images are:
 
 To answer this question, study the following:
 
-- **RealNVP (Real-valued Non-Volume Preserving) Flow**
+- **RealNVP (Real-valued Non-Volume Preserving) Flow** — 📖 [5.4.2 NICE / RealNVP](../study/05-normalizing-flow-models.md#542-nice--realnvp)
   - Affine coupling layer: $y_1 = x_1$, $y_2 = x_2 \cdot \exp(s(x_1)) + t(x_1)$
   - Jacobian is lower-triangular → determinant = product of diagonal entries
   - $\frac{\partial y_1}{\partial x_1} = 1$, $\frac{\partial y_2}{\partial x_2} = \exp(s(x_1))$
   - Log determinant: $\log|\det J| = s(x_1)$
 
-- **Maximum Likelihood Estimation (MLE) for Bernoulli**
+- **Maximum Likelihood Estimation (MLE) for Bernoulli** — 📖 [9.5 Training and Sampling from EBMs](../study/09-energy-score-based-models.md#95-training-and-sampling-from-ebms)
   - Likelihood: $L(p) = p^k (1 - p)^{n - k}$ where $k$ = number of 1s, $n$ = total pixels
   - Log-likelihood: $\ell(p) = k \log p + (n-k) \log(1-p)$
   - MLE: set $\frac{d\ell}{dp} = 0$ → $\hat{p} = \frac{k}{n}$
@@ -179,27 +179,27 @@ $$\boxed{\hat{p} = \frac{9}{16} = 0.5625}$$
 
 To answer this question, study the following:
 
-- **Word2Vec — CBOW (Continuous Bag of Words)**
+- **Word2Vec — CBOW (Continuous Bag of Words)** — 📖 [10.3 word2Vec: CBOW](../study/10-language-modeling.md#cbow-continuous-bag-of-words) · [Architecture & Parameters](../study/10-language-modeling.md#architecture--parameters)
   - Input: context words → Output: center word
   - Parameters: input embedding matrix $W_{in} \in \mathbb{R}^{V \times d}$ + output matrix $W_{out} \in \mathbb{R}^{d \times V}$
   - Total params = $2 \times V \times d$
 
-- **Word2Vec — Skip-gram**
+- **Word2Vec — Skip-gram** — 📖 [10.3 word2Vec: Skip-gram](../study/10-language-modeling.md#skip-gram) · [Architecture & Parameters](../study/10-language-modeling.md#architecture--parameters)
   - Input: center word → Output: context words
   - Same parameter matrices as CBOW: $W_{in} \in \mathbb{R}^{V \times d}$ + $W_{out} \in \mathbb{R}^{d \times V}$
   - Total params = $2 \times V \times d$
 
-- **Training Set Construction**
+- **Training Set Construction** — 📖 [10.3 Training Set Construction](../study/10-language-modeling.md#training-set-construction)
   - Window size $k$: consider $\lfloor k/2 \rfloor$ words on each side
   - CBOW: (context words) → center word (one sample per center word)
   - Skip-gram: center word → each context word (one sample per context-center pair)
   - Boundary effects: edge words have fewer context neighbors
 
-- **GloVe vs Word2Vec**
+- **GloVe vs Word2Vec** — 📖 [10.3.1 GloVe](../study/10-language-modeling.md#1031-glove)
   - GloVe uses global co-occurrence statistics; word2vec uses local context windows
   - GloVe captures both local and global patterns
 
-- **CoVe vs GloVe/Word2Vec**
+- **CoVe vs GloVe/Word2Vec** — 📖 [10.3.2 CoVe](../study/10-language-modeling.md#1032-cove-contextualized-word-vectors) · [CoVe vs Static Embeddings](../study/10-language-modeling.md#cove-vs-static-embeddings)
   - CoVe produces contextualized embeddings (word meaning varies by sentence)
   - GloVe/Word2Vec produce static embeddings (same vector regardless of context)
 
@@ -324,20 +324,20 @@ Note 1-Wasserstein distance is also known as earth mover's distance! **(3 marks)
 
 To answer this question, study the following:
 
-- **Lipschitz Continuity**
+- **Lipschitz Continuity** — 📖 [7.4.1 Wasserstein GAN](../study/07-generative-adversarial-network.md#741-wasserstein-gan-wgan)
   - A function $f$ is $K$-Lipschitz if $|f(x) - f(y)| \leq K|x - y|$ for all $x, y$
   - Lipschitz constant = $\sup |f'(x)|$ (supremum of the absolute derivative)
   - WGAN requires 1-Lipschitz functions (K ≤ 1)
   - Unbounded derivatives → not Lipschitz
 
-- **Wasserstein Distance (for Gaussians)**
+- **Wasserstein Distance (for Gaussians)** — 📖 [7.4.1 Wasserstein GAN](../study/07-generative-adversarial-network.md#741-wasserstein-gan-wgan)
   - For 1D Gaussians: $W_2(\mathcal{N}(\mu_1, \sigma_1^2), \mathcal{N}(\mu_2, \sigma_2^2)) = \sqrt{(\mu_1 - \mu_2)^2 + (\sigma_1 - \sigma_2)^2}$
 
-- **KL Divergence (for Gaussians)**
+- **KL Divergence (for Gaussians)** — 📖 [6.3 ELBO](../study/06-variational-inferencing.md#63-variational--evidence-lower-bound-elbo) · [6.4 KL Divergence](../study/06-variational-inferencing.md#kl-divergence-gaussian-case-closed-form)
   - $\text{KLD}(\mathcal{N}(\mu_1, \sigma_1^2) \| \mathcal{N}(\mu_2, \sigma_2^2)) = \log\frac{\sigma_2}{\sigma_1} + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}$
   - KLD is **asymmetric**: $\text{KLD}(P\|Q) \neq \text{KLD}(Q\|P)$ in general
 
-- **Jensen-Shannon Divergence**
+- **Jensen-Shannon Divergence** — 📖 [7.2 Minimax Optimization](../study/07-generative-adversarial-network.md#72-minimax-optimization)
   - $\text{JSD}(P\|Q) = \frac{1}{2}\text{KLD}(P\|M) + \frac{1}{2}\text{KLD}(Q\|M)$ where $M = \frac{1}{2}(P + Q)$
   - JSD is **symmetric**: $\text{JSD}(P\|Q) = \text{JSD}(Q\|P)$ by definition
 
@@ -444,5 +444,148 @@ $$\text{JSD}(Q \| P) = \frac{1}{2}\text{KLD}(Q \| M) + \frac{1}{2}\text{KLD}(P \
 $$\boxed{\text{JSD}(\mu_1 \| \mu_2) = \text{JSD}(\mu_2 \| \mu_1) \text{ — JSD is symmetric by definition.}}$$
 
 This is because addition is commutative ($P + Q = Q + P$), so the mixture $M$ is identical regardless of argument order, and the two KLD terms simply swap order in the sum.
+
+<div style="page-break-after: always;"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- QUESTION 4 — PAGE 1: QUESTION                          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+## Q4. EBM Normalization, GAN Discriminator & VAE Loss
+
+**Marks:** [3+2+2+3=10] | **Source:** Makeup EC-3 Regular 2024-25
+
+**A.** What normalization is needed for a function $f(x) = \exp\left[-\frac{(x - 2.5)^2}{9}\right]$ to be used as the partition function in an energy-based generative model? **(3 marks)**
+
+**B.** Let $\mu_{\text{data}} = \mathcal{N}(3, 2)$ and $\mu_g = \mathcal{N}(4, 1)$ be the training data distribution and generated data distribution, respectively. What is the optimal discriminator function for a GAN? **(2 marks)**
+
+**C.** How is clipping related disadvantages of WGAN eliminated? Which architecture incorporates this strategy? **(2 marks)**
+
+**D.** You are training a simple VAE on 1-dimensional data using a latent space of size 1.
+
+For a single training example, the encoder outputs the following parameters for the latent variable $z$:
+
+- Mean $\mu = 1.0$
+- Log-variance $\log(\sigma^2) = -0.5$
+
+The decoder reconstructs the input with:
+
+- Reconstructed output $\hat{x} = 0.8$
+- Original input $x = 1.0$
+
+Calculate the reconstruction loss and total loss (sum of reconstruction loss and KL divergence loss). **(3 marks)**
+
+<div style="page-break-after: always;"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- QUESTION 4 — PAGE 2: TOPICS TO KNOW                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+## Q4. Topics to Know
+
+To answer this question, study the following:
+
+- **Energy-Based Models — Partition Function** — 📖 [9.1 Parametrizing Probability Distributions](../study/09-energy-score-based-models.md#91-parametrizing-probability-distributions)
+  - Unnormalized density: $\tilde{p}(x) = e^{-E(x)}$
+  - Partition function: $Z = \int e^{-E(x)}\, dx$
+  - Normalized probability: $p(x) = \tilde{p}(x) / Z$
+  - Recognizing Gaussian form: $e^{-(x-\mu)^2/(2\sigma^2)}$ has $Z = \sigma\sqrt{2\pi}$
+
+- **Optimal GAN Discriminator** — 📖 [7.2 Minimax: Optimal Discriminator](../study/07-generative-adversarial-network.md#optimal-discriminator)
+  - $D^*(x) = \frac{p_{\text{data}}(x)}{p_{\text{data}}(x) + p_g(x)}$
+
+- **WGAN-GP (Gradient Penalty)** — 📖 [7.4.1 Wasserstein GAN](../study/07-generative-adversarial-network.md#741-wasserstein-gan-wgan)
+  - Weight clipping issues: capacity underuse, exploding/vanishing gradients
+  - Gradient penalty: $\lambda \mathbb{E}_{\hat{x}}[(\|\nabla_{\hat{x}} D(\hat{x})\|_2 - 1)^2]$
+  - Enforces Lipschitz constraint without clipping
+
+- **VAE Loss Function** — 📖 [6.3 ELBO](../study/06-variational-inferencing.md#63-variational--evidence-lower-bound-elbo) · [6.4 KL Divergence](../study/06-variational-inferencing.md#kl-divergence-gaussian-case-closed-form)
+  - Reconstruction loss (MSE): $L_{\text{recon}} = \frac{1}{2}(x - \hat{x})^2$
+  - KL divergence (1D): $L_{\text{KL}} = -\frac{1}{2}(1 + \log(\sigma^2) - \mu^2 - \sigma^2)$
+  - Total: $L = L_{\text{recon}} + L_{\text{KL}}$
+
+<div style="page-break-after: always;"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- QUESTION 4 — PAGE 3: SOLUTION                          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+## Q4. Solution
+
+### Part A: EBM Partition Function Normalization (3 marks)
+
+The given function:
+
+$$f(x) = \exp\left[-\frac{(x - 2.5)^2}{9}\right] = \exp\left[-\frac{(x - 2.5)^2}{2 \times 4.5}\right]$$
+
+This is an **unnormalized Gaussian** with $\mu = 2.5$ and $\sigma^2 = 4.5$ (i.e., $\sigma = \sqrt{4.5} = \frac{3}{\sqrt{2}}$).
+
+The partition function (normalization constant):
+
+$$Z = \int_{-\infty}^{\infty} \exp\left[-\frac{(x - 2.5)^2}{9}\right] dx$$
+
+Using the Gaussian integral $\int e^{-\frac{(x-\mu)^2}{2\sigma^2}} dx = \sigma\sqrt{2\pi}$:
+
+$$Z = \sqrt{4.5} \cdot \sqrt{2\pi} = \frac{3}{\sqrt{2}} \cdot \sqrt{2\pi} = 3\sqrt{\pi}$$
+
+$$\boxed{Z = 3\sqrt{\pi} \approx 5.317}$$
+
+The normalized density: $p(x) = \frac{1}{3\sqrt{\pi}} \exp\left[-\frac{(x - 2.5)^2}{9}\right]$
+
+---
+
+### Part B: Optimal Discriminator (2 marks)
+
+The optimal discriminator for a GAN is:
+
+$$D^*(x) = \frac{p_{\text{data}}(x)}{p_{\text{data}}(x) + p_g(x)}$$
+
+With $p_{\text{data}}(x) = \mathcal{N}(3, 2)$ and $p_g(x) = \mathcal{N}(4, 1)$:
+
+$$\boxed{D^*(x) = \frac{\frac{1}{\sqrt{4\pi}} e^{-\frac{(x-3)^2}{4}}}{\frac{1}{\sqrt{4\pi}} e^{-\frac{(x-3)^2}{4}} + \frac{1}{\sqrt{2\pi}} e^{-\frac{(x-4)^2}{2}}}}$$
+
+This is a **sigmoid-like function** of $x$ that outputs values closer to 1 where the real data density dominates, and closer to 0 where the generated data density dominates.
+
+---
+
+### Part C: Eliminating Weight Clipping Disadvantages (2 marks)
+
+Weight clipping in WGAN causes:
+- **Capacity underuse** — pushes weights toward the clipping boundaries
+- **Exploding/vanishing gradients** — sensitive to clipping threshold
+
+These are eliminated by replacing weight clipping with a **gradient penalty** term:
+
+$$\lambda \mathbb{E}_{\hat{x} \sim p_{\hat{x}}}\left[(\|\nabla_{\hat{x}} D(\hat{x})\|_2 - 1)^2\right]$$
+
+where $\hat{x}$ is sampled along straight lines between real and generated data points.
+
+This architecture is called **WGAN-GP (Wasserstein GAN with Gradient Penalty)**.
+
+---
+
+### Part D: VAE Reconstruction Loss and Total Loss (3 marks)
+
+**Reconstruction loss (MSE):**
+
+$$L_{\text{recon}} = \frac{1}{2}(x - \hat{x})^2 = \frac{1}{2}(1.0 - 0.8)^2 = \frac{1}{2}(0.04) = 0.02$$
+
+**KL divergence loss (1D):**
+
+$$L_{\text{KL}} = -\frac{1}{2}\left(1 + \log(\sigma^2) - \mu^2 - \sigma^2\right)$$
+
+Given $\mu = 1.0$, $\log(\sigma^2) = -0.5$, so $\sigma^2 = e^{-0.5} = 0.6065$:
+
+$$L_{\text{KL}} = -\frac{1}{2}(1 + (-0.5) - 1.0^2 - 0.6065)$$
+
+$$= -\frac{1}{2}(1 - 0.5 - 1.0 - 0.6065)$$
+
+$$= -\frac{1}{2}(-1.1065) = 0.5533$$
+
+**Total loss:**
+
+$$L = L_{\text{recon}} + L_{\text{KL}} = 0.02 + 0.5533$$
+
+$$\boxed{L = 0.5733}$$
 
 <div style="page-break-after: always;"></div>

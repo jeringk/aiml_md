@@ -2,15 +2,15 @@
 
 ## Topics
 
-- [Principles](#71-principles)
-- [Minimax optimization](#72-minimax-optimization)
-- [DCGAN](#73-dcgan-deep-convolutional-gan)
-- [Variants](#74-variants)
-  - [Wasserstein GAN](#741-wasserstein-gan-wgan)
-  - [Conditional GAN](#742-conditional-gan-cgan)
-  - [Cycle GAN](#743-cycle-gan)
-  - [Style GAN](#744-style-gan)
-- [Applications of GAN](#75-applications-of-gan)
+- [Principles](#7.1-principles)
+- [Minimax optimization](#7.2-minimax-optimization)
+- [DCGAN](#7.3-dcgan-(deep-convolutional-gan))
+- [Variants](#7.4-variants)
+  - [Wasserstein GAN](#7.4.1-wasserstein-gan-(wgan))
+  - [Conditional GAN](#7.4.2-conditional-gan-(cgan))
+  - [Cycle GAN](#7.4.3-cycle-gan)
+  - [Style GAN](#7.4.4-style-gan)
+- [Applications of GAN](#7.5-applications-of-gan)
 
 ---
 

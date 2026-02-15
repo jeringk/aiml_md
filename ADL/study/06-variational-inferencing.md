@@ -2,15 +2,15 @@
 
 ## Topics
 
-- [Latent Variable Models](#6.1-latent-variable-models)
-- [Training Latent Variable Models](#6.2-training-latent-variable-models)
-  - [6.2.1 Exact Likelihood](#6.2.1-exact-likelihood)
-  - [6.2.2 Sampling; Prior, Importance](#6.2.2-sampling-prior-and-importance-sampling)
-  - [6.2.3 Importance Weighted AE](#6.2.3-importance-weighted-autoencoder-(iwae))
-- [Variational / Evidence Lower Bound](#6.3-variational-/-evidence-lower-bound-(elbo))
-- [Optimizing VLB / ELBO](#6.4-optimizing-vlb-/-elbo)
-- [VAE Variants: VQ-VAE, AR_VAE, Beta VAE](#6.5-vae-variants)
-- [Variational Dequantization](#6.6-variational-dequantization)
+- [[#6.1 Latent Variable Models|Latent Variable Models]]
+- [[#6.2 Training Latent Variable Models|Training Latent Variable Models]]
+  - [[#6.2.1 Exact Likelihood|6.2.1 Exact Likelihood]]
+  - [[#6.2.2 Sampling; Prior and Importance Sampling|6.2.2 Sampling; Prior, Importance]]
+  - [[#6.2.3 Importance Weighted Autoencoder (IWAE)|6.2.3 Importance Weighted AE]]
+- [[#6.3 Variational / Evidence Lower Bound (ELBO)|Variational / Evidence Lower Bound]]
+- [[#6.4 Optimizing VLB / ELBO|Optimizing VLB / ELBO]]
+- [[#6.5 VAE Variants|VAE Variants: VQ-VAE, AR_VAE, Beta VAE]]
+- [[#6.6 Variational Dequantization|Variational Dequantization]]
 
 ---
 

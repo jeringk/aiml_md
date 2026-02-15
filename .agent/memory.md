@@ -16,24 +16,28 @@ MarkDown/
 ├── QUESTION_TEMPLATE.md      # Reference template for question formatting
 ├── ADL/                      # Advanced Deep Learning
 │   ├── README.md
+│   ├── pre-req.md            # Pre-requisite topics
 │   ├── study/
 │   │   └── README.md
 │   └── questions/
 │       └── README.md
 ├── NLPA/                     # NLP Applications
 │   ├── README.md
+│   ├── pre-req.md            # Pre-requisite topics
 │   ├── study/
 │   │   └── README.md
 │   └── questions/
 │       └── README.md
 ├── CAI/                      # Conversational AI
 │   ├── README.md
+│   ├── pre-req.md            # Pre-requisite topics
 │   ├── study/
 │   │   └── README.md
 │   └── questions/
 │       └── README.md
 └── SMA/                      # Social Media Analytics
     ├── README.md
+    ├── pre-req.md            # Pre-requisite topics
     ├── study/
     │   └── README.md
     └── questions/
@@ -50,6 +54,13 @@ MarkDown/
 | SMA  | Social Media Analytics     |
 
 ## Content Conventions
+
+### Pre-requisites (`pre-req.md`)
+- Every course folder **must** contain a `pre-req.md` file
+- Lists topics assumed to be learnt before starting the course
+- Organized by category (e.g., Mathematics, Machine Learning, Deep Learning, NLP, Programming)
+- Each category uses a `##` heading; individual topics are bullet points
+- Update when new prerequisite knowledge is identified
 
 ### Study Materials (`study/`)
 - Topic-wise markdown files

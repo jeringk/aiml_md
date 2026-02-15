@@ -2,15 +2,15 @@
 
 ## Topics
 
-- [Difference with AR Models](#5.1-difference-with-ar-models)
-- [Foundations of 1-D Flow](#5.2-foundations-of-1-d-flow)
-- [2-D Flow](#5.3-2-d-flow)
-- [N-dimensional flows](#5.4-n-dimensional-flows)
-  - [AR and inverse AR flows](#5.4.1-ar-and-inverse-ar-flows)
-  - [NICE / RealNVP](#5.4.2-nice-/-realnvp)
-  - [Glow, Flow++](#5.4.3-glow-flow++)
-- [Dequantization](#5.5-dequantization)
-- [Applications](#5.6-applications)
+- [[#5.1 Difference with AR Models|Difference with AR Models]]
+- [[#5.2 Foundations of 1-D Flow|Foundations of 1-D Flow]]
+- [[#5.3 2-D Flow|2-D Flow]]
+- [[#5.4 N-Dimensional Flows|N-dimensional flows]]
+  - [[#5.4.1 AR and Inverse AR Flows|AR and inverse AR flows]]
+  - [[#5.4.2 NICE / RealNVP|NICE / RealNVP]]
+  - [[#5.4.3 Glow, Flow++|Glow, Flow++]]
+- [[#5.5 Dequantization|Dequantization]]
+- [[#5.6 Applications|Applications]]
 
 ---
 

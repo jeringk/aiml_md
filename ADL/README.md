@@ -8,6 +8,7 @@
 
 ## Contents
 
+- [`pre-req.md`](pre-req.md) — Pre-requisite topics assumed before this course
 - [`study/`](study/) — Topic-wise study notes and summaries
 - [`questions/`](questions/) — Past papers and practice questions
 

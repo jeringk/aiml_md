@@ -2,15 +2,15 @@
 
 ## Topics
 
-- [Type of activation and loss functions](#3.2-activation-and-loss-functions)
-- [Undercomplete vs. Overcomplete autoencoders](#3.3-undercomplete-vs.-overcomplete-autoencoders)
-- [Relationship with PCA](#3.4-relationship-with-pca)
-- [Regularization](#3.5-regularization)
-  - [Denoising autoencoder](#3.5.1-denoising-autoencoder-(dae))
-  - [Sparse autoencoder](#3.5.2-sparse-autoencoder)
-  - [Contractive Autoencoders](#3.5.3-contractive-autoencoder-(cae))
-- [Effect of Depth](#3.6-effect-of-depth)
-- [Application of Autoencoders](#3.7-applications-of-autoencoders)
+- [[#3.2 Activation and Loss Functions|Type of activation and loss functions]]
+- [[#3.3 Undercomplete vs. Overcomplete Autoencoders|Undercomplete vs. Overcomplete autoencoders]]
+- [[#3.4 Relationship with PCA|Relationship with PCA]]
+- [[#3.5 Regularization|Regularization]]
+  - [[#3.5.1 Denoising Autoencoder (DAE)|Denoising autoencoder]]
+  - [[#3.5.2 Sparse Autoencoder|Sparse autoencoder]]
+  - [[#3.5.3 Contractive Autoencoder (CAE)|Contractive Autoencoders]]
+- [[#3.6 Effect of Depth|Effect of Depth]]
+- [[#3.7 Applications of Autoencoders|Application of Autoencoders]]
 
 ---
 

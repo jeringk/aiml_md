@@ -2,17 +2,17 @@
 
 ## Topics
 
-- [Motivation](#4.1-motivation)
-- [Simple generative models: histograms](#4.2-simple-generative-models-histograms)
-- [Parameterized distributions and maximum likelihood](#4.3-parameterized-distributions-and-maximum-likelihood)
-- [Recurrent Neural Nets](#4.4-recurrent-neural-nets-for-ar-models)
-- [Masking-based Models](#4.5-masking-based-models)
-  - [Masked AEs for Distribution Estimation (MADE)](#4.5.1-made-(masked-autoencoder-for-distribution-estimation))
-  - [Masked Convolutions](#4.5.2-masked-convolutions)
-    - [WaveNet](#wavenet)
-    - [PixelCNN and Variants](#pixelcnn-and-variants)
-- [Applications in super-resolution, colorization](#4.6-applications)
-- [Speed Up Strategies](#4.7-speed-up-strategies)
+- [[#4.1 Motivation|Motivation]]
+- [[#4.2 Simple Generative Models: Histograms|Simple generative models: histograms]]
+- [[#4.3 Parameterized Distributions and Maximum Likelihood|Parameterized distributions and maximum likelihood]]
+- [[#4.4 Recurrent Neural Nets for AR Models|Recurrent Neural Nets]]
+- [[#4.5 Masking-Based Models|Masking-based Models]]
+  - [[#4.5.1 MADE (Masked Autoencoder for Distribution Estimation)|Masked AEs for Distribution Estimation (MADE)]]
+  - [[#4.5.2 Masked Convolutions|Masked Convolutions]]
+    - [[#WaveNet|WaveNet]]
+    - [[#PixelCNN and Variants|PixelCNN and Variants]]
+- [[#4.6 Applications|Applications in super-resolution, colorization]]
+- [[#4.7 Speed Up Strategies|Speed Up Strategies]]
 
 ---
 

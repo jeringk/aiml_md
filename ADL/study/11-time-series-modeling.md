@@ -2,8 +2,8 @@
 
 ## Topics
 
-- [Advanced VAE techniques for time-series data](#11.1-advanced-vae-techniques-for-time-series) | [Advanced GAN techniques for time-series data](#11.2-advanced-gan-techniques-for-time-series)
-- [Generation of time-series data (ARIMA, S-ARIMA etc.)](#11.3-classical-time-series-models)
+- [[#11.1 Advanced VAE Techniques for Time Series|Advanced VAE techniques]] | [[#11.2 Advanced GAN Techniques for Time Series|Advanced GAN techniques]]
+- [[#11.3 Classical Time Series Models|Generation of time-series data (ARIMA, S-ARIMA etc.)]]
 
 ---
 

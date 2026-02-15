@@ -2,9 +2,9 @@
 
 ## Topics
 
-- [Unsupervised, semi-supervised, self-supervised learning](#1.1-unsupervised-semi-supervised-self-supervised-learning)
-- [Representation learning](#1.2-representation-learning)
-- [Generative Modeling](#1.3-generative-modeling)
+- [[#1.1 Unsupervised, Semi-supervised, Self-supervised Learning|Unsupervised, semi-supervised, self-supervised learning]]
+- [[#1.2 Representation Learning|Representation learning]]
+- [[#1.3 Generative Modeling|Generative Modeling]]
 
 ---
 

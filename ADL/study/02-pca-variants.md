@@ -2,16 +2,16 @@
 
 ## Topics
 
-- [Randomized PCA](#2.2-randomized-pca)
-- [Incremental PCA](#2.3-incremental-pca)
-- [Kernel PCA](#2.4-kernel-pca)
-- [Probabilistic PCA](#2.5-probabilistic-pca)
-- [Sparse PCA](#2.6-sparse-pca)
-- [Canonical Correlation Analysis (CCA)](#2.7-canonical-correlation-analysis-(cca))
-- [Locally Linear Embedding (LLE)](#2.8-locally-linear-embedding-(lle))
-- [Independent Component Analysis](#2.9-independent-component-analysis-(ica))
-- [Factor Analysis](#2.10-factor-analysis)
-- [Manifold learning](#2.11-manifold-learning)
+- [[#2.2 Randomized PCA|Randomized PCA]]
+- [[#2.3 Incremental PCA|Incremental PCA]]
+- [[#2.4 Kernel PCA|Kernel PCA]]
+- [[#2.5 Probabilistic PCA|Probabilistic PCA]]
+- [[#2.6 Sparse PCA|Sparse PCA]]
+- [[#2.7 Canonical Correlation Analysis (CCA)|Canonical Correlation Analysis (CCA)]]
+- [[#2.8 Locally Linear Embedding (LLE)|Locally Linear Embedding (LLE)]]
+- [[#2.9 Independent Component Analysis (ICA)|Independent Component Analysis]]
+- [[#2.10 Factor Analysis|Factor Analysis]]
+- [[#2.11 Manifold Learning|Manifold learning]]
 
 ---
 

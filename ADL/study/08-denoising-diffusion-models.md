@@ -2,10 +2,10 @@
 
 ## Topics
 
-- [Diffusion Probabilistic Models](#8.1-diffusion-probabilistic-models)
-- [Denoising Diffusion Probabilistic Models (DDPM)](#8.2-denoising-diffusion-probabilistic-models-(ddpm))
-- [Denoising Diffusion Implicit Model (DDIM)](#8.3-denoising-diffusion-implicit-model-(ddim))
-- [Applications](#8.4-applications)
+- [[#8.1 Diffusion Probabilistic Models|Diffusion Probabilistic Models]]
+- [[#8.2 Denoising Diffusion Probabilistic Models (DDPM)|Denoising Diffusion Probabilistic Models]]
+- [[#8.3 Denoising Diffusion Implicit Model (DDIM)|Denoising Diffusion Implicit Model]]
+- [[#8.4 Applications|Applications]]
 
 ---
 

@@ -2,9 +2,9 @@
 
 ## Topics
 
-- [Motivation and Introduction](#10.1-motivation)
-- [Introduction to Language Models](#10.2-language-models-overview)
-- A digression into [Transformer](#10.4-transformer-architecture), [word2Vec](#10.3-word-embeddings), [BERT](#10.5-bert-(bidirectional-encoder-representations-from-transformers)), [GPT](#10.6-gpt-(generative-pre-trained-transformer))
+- [[#10.1 Motivation|Motivation and Introduction]]
+- [[#10.2 Language Models Overview|Introduction to Language Models]]
+- A digression into [[#10.4 Transformer Architecture|Transformer]], [[#10.3 Word Embeddings|word2Vec]], [[#10.5 BERT (Bidirectional Encoder Representations from Transformers)|BERT]], [[#10.6 GPT (Generative Pre-trained Transformer)|GPT]]
 
 ---
 

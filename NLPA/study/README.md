@@ -13,6 +13,8 @@ _Add study material files here. Example structure:_
 - [`03-knowledge-graph-applications.md`](03-knowledge-graph-applications.md) — Knowledge Graphs & RAG
 - [`04-qa-and-conversational-ai.md`](04-qa-and-conversational-ai.md) — QA, Chatbots & Generative AI
 - [`05-machine-translation.md`](05-machine-translation.md) — Statistical & Neural MT
+- [`06-information-extraction.md`](06-information-extraction.md) — NER, Relation & Event Extraction
+- [`07-sentiment-analysis.md`](07-sentiment-analysis.md) — Sentiment Analysis Methods
 
 ---
 

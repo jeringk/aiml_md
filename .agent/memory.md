@@ -87,28 +87,36 @@ MarkDown/
 - Page breaks via HTML `<div>` for cross-renderer compatibility
 - LaTeX math syntax for all formulas
 - Sequential question numbering per file
+- **Obsidian is the primary viewer** — all internal links must use Obsidian-compatible formats
 
 ## Git Workflow
+- **Use git worktree for each conversation** — Create a new worktree for each conversation/task to isolate changes.
 - **Commit after every change** — Every file addition, edit, or deletion must be followed by a `git commit`
 - **Use conventional commit messages:** `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`, etc.
 - **Commit message format:** Brief summary (≤50 chars), then detailed description if needed
 - **Never leave uncommitted changes** — The working tree should always be clean after each task
 
+## Obsidian Compatibility
+
+- **Internal heading links** must use Obsidian wikilink format: `[[#Exact Heading Text|Display Text]]`
+  - ✅ `[[#3.5.1 Denoising Autoencoder (DAE)|Denoising autoencoder]]`
+  - ❌ `[Denoising autoencoder](#351-denoising-autoencoder-dae)` — standard markdown anchors don't work reliably
+- **Cross-file links** use: `[[filename#Heading|Display Text]]`
+- The heading text inside `[[#...]]` must **exactly match** the heading as written in the file (case-sensitive)
+- Standard markdown links `[text](path)` still work for file-level links and external URLs
+
 ## Study Material Linking Rules
 
 When adding or updating "Topics to Know" sections in question files:
 
-1. **Link to specific sub-headings** using markdown heading anchors, NOT the top-level file
-   - ✅ `📖 [5.4.2 NICE / RealNVP](../study/05-normalizing-flow-models.md#542-nice--realnvp)`
-   - ❌ `📖 [Normalizing Flow Models](../study/05-normalizing-flow-models.md)`
+1. **Link to specific sub-headings** using Obsidian wikilinks, NOT the top-level file
+   - ✅ `📖 [[../study/05-normalizing-flow-models#5.4.2 NICE / RealNVP|5.4.2 NICE / RealNVP]]`
+   - ❌ `📖 [[../study/05-normalizing-flow-models|Normalizing Flow Models]]`
 
 2. **Link multiple sub-topics** if a question topic spans several sections, separated by ` · `
-   - Example: `📖 [6.3 ELBO](…#63-variational--evidence-lower-bound-elbo) · [6.4 KL Divergence](…#kl-divergence-gaussian-case-closed-form)`
 
 3. **Create missing study content** if a question references a topic not yet covered in the study materials — add sub-sections with formulas, explanations, and comparison tables
 
 4. **Use the 📖 emoji** before the first link for visual consistency
 
-5. **Use relative paths** from questions to study: `../study/{filename}.md#anchor`
-
-6. **Anchor format**: lowercase, hyphens replace spaces, strip special chars (e.g., `### 5.4.2 NICE / RealNVP` → `#542-nice--realnvp`)
+5. **Use relative paths** from questions to study files (without `.md` extension for Obsidian wikilinks)

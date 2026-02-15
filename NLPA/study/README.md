@@ -8,9 +8,8 @@ Study notes and summaries for **NLP Applications**.
 
 _Add study material files here. Example structure:_
 
-- `01-topic-name.md`
-- `02-topic-name.md`
-- `03-topic-name.md`
+- [`01-introduction.md`](01-introduction.md) — Overview of NLP Applications
+- [`02-grammar-and-spellcheckers.md`](02-grammar-and-spellcheckers.md) — Spelling Correction & Grammar Checking
 
 ---
 

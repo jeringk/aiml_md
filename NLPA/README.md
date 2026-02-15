@@ -8,6 +8,7 @@
 ## Contents
 
 - [`pre-req.md`](pre-req.md) — Pre-requisite topics assumed before this course
+- [`handout.md`](handout.md) — Course Handout (Syllabus & Plan)
 - [`study/`](study/) — Topic-wise study notes and summaries
 - [`questions/`](questions/) — Past papers and practice questions
 

@@ -6,34 +6,45 @@ Topics assumed to be learnt before starting this course.
 
 ## Mathematics
 
-- Linear Algebra (vectors, matrices, dot products)
-- Probability & Statistics (conditional probability, Bayes' theorem, distributions)
-- Calculus (partial derivatives, chain rule)
+- **Linear Algebra**: Vectors, matrices, dot products, vector spaces.
+- **Probability & Statistics**:
+    - Conditional probability, Bayes' theorem.
+    - Probability distributions (Gaussian, Bernoulli, Multinomial).
+    - Maximum Likelihood Estimation (MLE).
+- **Calculus**: Partial derivatives, chain rule (for backpropagation).
 
-## Machine Learning
+## Machine Learning Basics
 
-- Supervised Learning (classification, regression)
-- Feature engineering and text vectorization basics
-- Model evaluation metrics (accuracy, precision, recall, F1)
-- Regularization and overfitting concepts
+- **Supervised Learning**: Classification (Naive Bayes, Logistic Regression, SVM), Regression.
+- **Evaluation Metrics**: Accuracy, Precision, Recall, F1-Score, Confusion Matrix.
+- **Regularization**: L1/L2 regularization, dropout, overfitting/underfitting.
 
-## Deep Learning
+## Deep Learning Fundamentals
 
-- Neural Network fundamentals (MLP, activation functions, backpropagation)
-- Recurrent Neural Networks (RNN, LSTM, GRU)
-- Word embeddings (Word2Vec, GloVe)
-- Sequence-to-sequence models basics
-- Attention mechanism fundamentals
+- **Neural Networks**: Perceptrons, Multi-Layer Perceptrons (MLP), Activation functions (Sigmoid, Tanh, ReLU).
+- **Optimization**: Gradient Descent, Stochastic Gradient Descent (SGD), Adam.
+- **Sequence Models**: Recurrent Neural Networks (RNN), LSTMs, GRUs.
+- **Architectures**: Encoder-Decoder evaluation, Attention mechanisms.
 
-## Natural Language Processing Basics
+## NLP Fundamentals
 
-- Tokenization, stemming, lemmatization
-- Bag-of-Words, TF-IDF
-- Language model concepts (n-grams)
-- Part-of-Speech tagging basics
+- **Text Processing**: Tokenization, Stemming, Lemmatization, Stop-word removal.
+- **Feature Extraction**: Bag-of-Words (BoW), TF-IDF, N-grams.
+- **Word Embeddings**: Word2Vec (Skip-gram, CBOW), GloVe.
+- **Language Modeling**:
+    - N-gram language models.
+    - Smoothing techniques (Laplace, Good-Turing).
+    - Perplexity.
+- **Sequence Labeling**: Hidden Markov Models (HMM), Viterbi Algorithm.
+- **Parsing**:
+    - Context-Free Grammars (CFG).
+    - Constituency vs. Dependency parsing.
+    - CKY Algorithm.
 
-## Programming
+## Programming Skills
 
-- Python proficiency
-- NumPy, Pandas basics
-- Familiarity with NLP libraries (NLTK or spaCy)
+- **Python**: Proficient in Python programming.
+- **Libraries**:
+    - **NumPy, Pandas**: Data manipulation.
+    - **NLTK / spaCy**: Basic NLP tasks.
+    - **PyTorch / TensorFlow**: Deep learning framework basics.

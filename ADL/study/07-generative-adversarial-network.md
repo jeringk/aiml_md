@@ -46,6 +46,16 @@ When $p_G = p_{\text{data}}$, $D^* = \frac{1}{2}$ everywhere, and:
 
 $$V(D^*, G^*) = -\log 4$$
 
+### Jensen-Shannon Divergence (JSD)
+
+The GAN objective at optimal discriminator is equivalent to minimizing the JSD:
+
+$$\text{JSD}(P \| Q) = \frac{1}{2}\text{KL}(P \| M) + \frac{1}{2}\text{KL}(Q \| M) \quad \text{where } M = \frac{1}{2}(P + Q)$$
+
+- JSD is **symmetric**: $\text{JSD}(P \| Q) = \text{JSD}(Q \| P)$ (because $M = \frac{1}{2}(P+Q) = \frac{1}{2}(Q+P)$ and the two KL terms simply swap)
+- $0 \leq \text{JSD} \leq \log 2$
+- Unlike KL divergence, JSD is always **finite** and **well-defined**
+
 ### Training Algorithm
 1. **Update $D$**: maximize $V$ w.r.t. $\phi$ for $k$ steps
 2. **Update $G$**: minimize $V$ w.r.t. $\theta$ for 1 step
@@ -89,6 +99,21 @@ Architecture guidelines that stabilized GAN training:
 
 $$W(p_{\text{data}}, p_G) = \sup_{\|f\|_L \leq 1} \mathbb{E}_{x \sim p_{\text{data}}}[f(x)] - \mathbb{E}_{x \sim p_G}[f(x)]$$
 
+#### Wasserstein Distance (Closed Form for Gaussians)
+
+For two 1D Gaussians:
+
+$$W_2(\mathcal{N}(\mu_1, \sigma_1^2), \mathcal{N}(\mu_2, \sigma_2^2)) = \sqrt{(\mu_1 - \mu_2)^2 + (\sigma_1 - \sigma_2)^2}$$
+
+#### Lipschitz Continuity
+
+A function $f$ is **$K$-Lipschitz** if: $|f(x) - f(y)| \leq K|x - y|$ for all $x, y$
+
+- **Lipschitz constant** = $\sup_x |f'(x)|$ (supremum of the absolute derivative)
+- WGAN requires critic to be **1-Lipschitz** ($K \leq 1$)
+- If $\sup |f'(x)| = \infty$ → function is **not Lipschitz** (e.g., $f(x) = e^{x^2}$, since $f'(x) = 2xe^{x^2} \to \infty$)
+- On bounded domain: $f(x) = x^2$ on $[-1,1]$ has $K = \sup|2x| = 2$ → 2-Lipschitz
+
 - Objective (using Kantorovich-Rubinstein duality):
 
 $$\min_G \max_{D \in \mathcal{F}_L} \mathbb{E}_{x \sim p_{\text{data}}}[D(x)] - \mathbb{E}_{z \sim p_z}[D(G(z))]$$
@@ -97,9 +122,27 @@ where $\mathcal{F}_L$ = set of 1-Lipschitz functions
 
 - **No sigmoid** on discriminator output (now called "critic")
 - **Weight clipping** to enforce Lipschitz constraint (WGAN)
+  - Issues: capacity underuse, exploding/vanishing gradients
 - **Gradient penalty** (WGAN-GP): $\lambda \mathbb{E}_{\hat{x}}[(\|\nabla_{\hat{x}} D(\hat{x})\|_2 - 1)^2]$
   - $\hat{x}$ is interpolation between real and fake samples
-- **Spectral normalization** (SNGAN): normalize weight matrices by spectral norm
+  - Replaces weight clipping — enforces Lipschitz without limiting capacity
+
+#### Spectral Normalization (SNGAN)
+
+- Normalize weight matrices by their **spectral norm** (largest singular value $\sigma_1(W)$):
+
+$$W' = \frac{W}{\sigma_1(W)}$$
+
+- **Power iteration method** to compute $\sigma_1(W)$:
+  1. Initialize $u_0$ (random unit vector)
+  2. For each iteration $k$:
+     - $v_{k} = \frac{W^\top u_{k-1}}{\|W^\top u_{k-1}\|}$
+     - $u_{k} = \frac{W v_{k}}{\|W v_{k}\|}$
+  3. $\sigma_1 \approx u_k^\top W v_k = \|W v_k\|$ (after convergence)
+
+- Applied to **discriminator only** — constrains Lipschitz constant for stable training
+- **Not applied to generator** — would limit expressiveness and sample quality
+- Each weight after normalization: $w' = w / \sigma_1(W)$
 
 ### 7.4.2 Conditional GAN (cGAN)
 

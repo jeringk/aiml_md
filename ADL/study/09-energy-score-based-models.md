@@ -30,6 +30,22 @@ $$p_\theta(x) = \frac{1}{Z(\theta)} \exp(-E_\theta(x))$$
 - Any positive function can be an unnormalized density
 - Exponential ensures positivity: $\tilde{p}_\theta(x) = \exp(-E_\theta(x)) > 0$
 
+### Computing Partition Functions (Gaussian Integrals)
+
+For quadratic energy functions, the partition function reduces to a Gaussian integral:
+
+$$\int_{-\infty}^{\infty} e^{-ax^2 + bx}\, dx = \sqrt{\frac{\pi}{a}}\, e^{b^2/(4a)} \quad (a > 0)$$
+
+**Technique — Completing the Square:**
+
+$$-ax^2 + bx = -a\left(x - \frac{b}{2a}\right)^2 + \frac{b^2}{4a}$$
+
+Then factor out the constant and use the standard Gaussian integral $\int e^{-u^2}\, du = \sqrt{\pi}$:
+
+$$Z = e^{b^2/(4a)} \int_{-\infty}^{\infty} e^{-a(x - b/2a)^2}\, dx = e^{b^2/(4a)} \cdot \sqrt{\frac{\pi}{a}}$$
+
+For unnormalized Gaussian form $e^{-(x-\mu)^2/(2\sigma^2)}$: $Z = \sigma\sqrt{2\pi}$
+
 ---
 
 ## 9.2 Energy-Based Generative Modeling

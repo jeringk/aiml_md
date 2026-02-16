@@ -27,6 +27,20 @@ $$\min_{\theta, \phi} \mathcal{L}(x, g_\phi(f_\theta(x)))$$
 - **Bottleneck**: the latent representation $z$ (lower dimensional)
 - **Decoder** $g_\phi$: reconstructs $\hat{x}$ from $z$
 
+### Layer Parameter Counting
+
+| Layer Type | Parameters | Output Size |
+|------------|-----------|-------------|
+| **Conv2D** | $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ | $\lfloor \frac{H + 2p - K}{s} \rfloor + 1$ per spatial dim |
+| **ConvTranspose2D** | $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ | $(H_{in} - 1) \times s - 2p + K + p_{out}$ |
+| **Dense (Fully Connected)** | $(D_{in} + 1) \times D_{out}$ | $D_{out}$ |
+| **Flatten** | 0 (no parameters) | $C \times H \times W$ |
+| **Reshape** | 0 (no parameters) | Specified shape |
+
+- **+1** accounts for the **bias** term per output unit/filter
+- **`padding: same`** with stride 1 preserves spatial dimensions; with stride $s$, output = $\lceil H/s \rceil$
+- Conv2D and ConvTranspose2D have the **same parameter count formula** (only output spatial size differs)
+
 ---
 
 ## 3.2 Activation and Loss Functions

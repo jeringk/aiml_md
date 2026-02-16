@@ -78,6 +78,26 @@ $$\log p_X(x) = \log p_Z(z) + \sum_{k=1}^{K} \log \left| \det \frac{\partial f_k
 ### Key Challenge
 Computing $\det(J)$ for general Jacobian is $O(D^3)$ — need architectures with **tractable Jacobians**.
 
+### Planar Flow
+
+A simple flow that warps a distribution with hyperplanes:
+
+$$\mathbf{x} = \mathbf{z} + \mathbf{u} \cdot h(\mathbf{w}^\top \mathbf{z} + b)$$
+
+where $\mathbf{u}, \mathbf{w} \in \mathbb{R}^D$, $b \in \mathbb{R}$, $h(\cdot)$ is an activation (e.g., tanh).
+
+**Jacobian determinant** (closed form):
+
+$$\det\left(\frac{\partial \mathbf{x}}{\partial \mathbf{z}}\right) = 1 + h'(\mathbf{w}^\top \mathbf{z} + b) \cdot \mathbf{u}^\top \mathbf{w}$$
+
+**Log probability** (change of variables):
+
+$$\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left| 1 + h'(\mathbf{w}^\top \mathbf{z} + b) \cdot \mathbf{u}^\top \mathbf{w} \right|$$
+
+For $\mathbf{z} \sim \mathcal{N}(0, I)$: $\log p_z(\mathbf{z}) = -\frac{D}{2}\log(2\pi) - \frac{1}{2}\|\mathbf{z}\|^2$
+
+For tanh activation: $h'(a) = 1 - \tanh^2(a)$
+
 ---
 
 ### 5.4.1 AR and Inverse AR Flows

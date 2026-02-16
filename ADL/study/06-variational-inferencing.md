@@ -104,6 +104,15 @@ $$\max_{\theta, \phi} \mathcal{L}(\theta, \phi) = \mathbb{E}_{x \sim p_{\text{da
 
 $$KL(q_\phi(z|x) \| p(z)) = -\frac{1}{2} \sum_{j=1}^{J} \left(1 + \log \sigma_j^2 - \mu_j^2 - \sigma_j^2 \right)$$
 
+### KL Divergence (General Gaussians)
+
+For two arbitrary univariate Gaussians:
+
+$$\text{KL}(\mathcal{N}(\mu_1, \sigma_1^2) \| \mathcal{N}(\mu_2, \sigma_2^2)) = \log\frac{\sigma_2}{\sigma_1} + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}$$
+
+- KL divergence is **asymmetric**: $\text{KL}(P \| Q) \neq \text{KL}(Q \| P)$ in general
+- The VAE formula above is a special case where $\mu_2 = 0$, $\sigma_2 = 1$
+
 ### Posterior Collapse
 - Problem: decoder ignores $z$ and models $p(x)$ directly
 - KL term goes to zero — latent space is unused

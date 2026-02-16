@@ -54,6 +54,18 @@ $$\min_\theta KL(p_{\text{data}} \| p_\theta)$$
 
 - AR models parameterize each conditional $p_\theta(x_d | x_{<d})$ with a neural network
 
+### MLE for Bernoulli Distribution
+
+For binary data $x_i \in \{0, 1\}$ with success probability $p$:
+
+- **Likelihood:** $L(p) = p^k (1 - p)^{n - k}$ where $k$ = number of 1s, $n$ = total observations
+- **Log-likelihood:** $\ell(p) = k \log p + (n - k) \log(1 - p)$
+- **MLE:** Set $\frac{d\ell}{dp} = \frac{k}{p} - \frac{n-k}{1-p} = 0$, solve:
+
+$$\hat{p} = \frac{k}{n}$$
+
+The MLE estimate is simply the **sample proportion** of successes.
+
 ---
 
 ## 4.4 Recurrent Neural Nets for AR Models

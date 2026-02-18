@@ -42,7 +42,7 @@ Using Bayes' Theorem:
 $$ \hat{w} = \operatorname*{argmax}_{w \in V} \frac{P(x\|w) P(w)}{P(x)} $$
 $$ \hat{w} = \operatorname*{argmax}_{w \in V} P(x\|w) P(w) $$
 
--   $P(x|w)$: **Error Model** (Likelihood) - Probability of typing $x$ when intending $w$ (based on edit distance or confusion matrices).
+-   $P(x\|w)$: **Error Model** (Likelihood) - Probability of typing $x$ when intending $w$ (based on edit distance or confusion matrices).
 -   $P(w)$: **Language Model** (Prior) - Probability of word $w$ appearing (frequency or n-gram probability).
 
 ---

@@ -355,7 +355,7 @@ To answer this question, study the following:
 
 $$f'(x) = 2x \cdot e^{x^2}$$
 
-As $x \to \infty$, $|f'(x)| = 2|x| \cdot e^{x^2} \to \infty$
+As $x \to \infty$, $\|f'(x)\| = 2\|x\| \cdot e^{x^2} \to \infty$
 
 The derivative is **unbounded**, so $f(x) = e^{x^2}$ is **not Lipschitz continuous**. ❌ **Cannot be used in WGAN.**
 

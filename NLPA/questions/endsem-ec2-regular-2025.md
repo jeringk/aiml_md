@@ -11,7 +11,7 @@
 
 ## Q1. IBM Model 1 and HMM Word Alignment (English-Hindi)
 
-**Marks:** [3+3=6] | **Source:** End-Sem EC-2 Regular 2024-25
+**Marks:** [3+3=6] \| **Source:** End-Sem EC-2 Regular 2024-25
 
 A Statistical Machine Translation system is being developed for English-Hindi translation using IBM Model 1. You are given the following parallel corpus and need to perform word alignment analysis.
 
@@ -25,7 +25,7 @@ Parallel Corpus:
 
 Initial uniform translation probabilities:
 
-- P(बिल्ली|cat)=P(बिल्ली|the)=P(बिल्ली|sits)=P(बिल्ली|dog)=P(बिल्ली|runs)=P(बिल्ली|fast)=1/6
+- P(बिल्ली\|cat)=P(बिल्ली\|the)=P(बिल्ली\|sits)=P(बिल्ली\|dog)=P(बिल्ली\|runs)=P(बिल्ली\|fast)=1/6
 
 - Similarly for all other Hindi words: बैठती, है, कुत्ता, दौड़ता, तेज, दौड़ती
 
@@ -33,9 +33,9 @@ Initial uniform translation probabilities:
 
 Tasks:
 
-**a)** Calculate the alignment probabilities for sentence 1 after the first E-step of EM algorithm and compute the updated translation probabilities P(बिल्ली|cat) and P(बिल्ली|the) after the first M-step. **[3 marks]**
+**a)** Calculate the alignment probabilities for sentence 1 after the first E-step of EM algorithm and compute the updated translation probabilities P(बिल्ली\|cat) and P(बिल्ली\|the) after the first M-step. **[3 marks]**
 
-**b)** A competing system uses HMM (Hidden Markov Model)-based alignment. Explain how the translation probabilities would differ from IBM Model 1 and calculate the locality penalty for jumping from position 1 to position 3 in a 4-word sentence, given that adjacent transitions have probability 0.6 and the jump distance penalty follows $s(d)=0.6^{|d|}$ where $d$ is the distance. Compare which model would be better for English-Hindi translation considering the SOV (Subject-Object-Verb) structure of Hindi. **[3 marks]**
+**b)** A competing system uses HMM (Hidden Markov Model)-based alignment. Explain how the translation probabilities would differ from IBM Model 1 and calculate the locality penalty for jumping from position 1 to position 3 in a 4-word sentence, given that adjacent transitions have probability 0.6 and the jump distance penalty follows $s(d)=0.6^{\|d\|}$ where $d$ is the distance. Compare which model would be better for English-Hindi translation considering the SOV (Subject-Object-Verb) structure of Hindi. **[3 marks]**
 
 <div style="page-break-after: always;"></div>
 

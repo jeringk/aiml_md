@@ -16,6 +16,14 @@ A **Knowledge Graph** represents a collection of interlinked descriptions of ent
 3.  **Disambiguation**: Helps in resolving entity ambiguity by using context from the graph.
 4.  **Explainability**: Paths in the graph provide a trace for reasoning.
 
+### Core KG Construction Pipeline
+
+1. Information extraction from text (entities, relations, events).
+2. Entity resolution/linking to canonical identifiers.
+3. Ontology/schema alignment (type and relation constraints).
+4. Triple storage and indexing in graph database.
+5. Reasoning/query layer for downstream applications.
+
 ### Entity Linking Accuracy
 
 Entity linking maps mentions in text to canonical KG entities.
@@ -25,12 +33,42 @@ $$
 \mathbb{E}[\text{correct links}] = n\times a
 $$
 
+where:
+- $n$: detected mentions in input
+- $a$: entity-linking accuracy
+
 ### Knowledge Graphs in Chatbots
 
 Knowledge Graphs support knowledge-grounded responses by enabling:
 - entity disambiguation in user queries
 - multi-hop retrieval over connected facts
 - factual answer generation with traceable relations
+
+### KG Querying with Triple Patterns
+
+SPARQL-style idea:
+- Match graph patterns `(subject, predicate, object)` with variables.
+- Return bindings satisfying all constraints.
+
+Example pattern:
+- `( ?city, capital_of, India )`
+- `( ?city, located_in, ?state )`
+
+This supports compositional question answering instead of flat keyword search.
+
+### Path-Based Reasoning Score
+
+A simple multi-hop reasoning score can be modeled as:
+
+$$
+\operatorname{score}(u\leadsto v)=\sum_{\pi\in\Pi(u,v)} \prod_{e\in\pi} w(e)
+$$
+
+where:
+- $u$: query entity node
+- $v$: candidate answer node
+- $\Pi(u,v)$: set of paths from $u$ to $v$
+- $w(e)$: edge confidence/importance for edge $e$
 
 ## Retrieval-Augmented Generation (RAG)
 
@@ -46,6 +84,18 @@ Combines the power of Large Language Models (LLMs) with external knowledge sourc
 -   Vector similarity might miss semantically relevant but lexically different information.
 -   Struggles with multi-hop reasoning (connecting facts across different documents).
 
+### Dense Retrieval Similarity
+
+$$
+\operatorname{sim}(q,d)=\frac{\phi(q)\cdot\phi(d)}{\|\phi(q)\|\,\|\phi(d)\|}
+$$
+
+where:
+- $q$: user query text
+- $d$: candidate document/chunk
+- $\phi(\cdot)$: embedding function
+- $\operatorname{sim}(q,d)$: cosine similarity used for top-$k$ retrieval
+
 ### Graph RAG (GraphRAG)
 
 Enhances RAG by using a Knowledge Graph as the retrieval source or to augment vector retrieval.
@@ -54,6 +104,26 @@ Enhances RAG by using a Knowledge Graph as the retrieval source or to augment ve
 -   **Multi-hop Reasoning**: Traverse the graph to find connected information that vector search might miss.
 -   **Context Enrichment**: Use entity relationships to provide richer context to the LLM.
 
+### GraphRAG Retrieval Steps
+
+1. Detect entities in query and map to KG nodes.
+2. Expand neighborhood (1-hop/2-hop) or relation-constrained subgraph.
+3. Rank paths/subgraph snippets by relevance.
+4. Serialize selected facts as grounded context for generation.
+
+Subgraph ranking with hybrid score:
+
+$$
+\operatorname{rank}(g\mid q)=\lambda\,\operatorname{sim}_{\text{text}}(q,g)+(1-\lambda)\,\operatorname{sim}_{\text{graph}}(q,g)
+$$
+
+where:
+- $g$: candidate subgraph/context item
+- $q$: query
+- $\operatorname{sim}_{\text{text}}$: text embedding similarity
+- $\operatorname{sim}_{\text{graph}}$: graph-structure/entity overlap score
+- $\lambda\in[0,1]$: interpolation weight
+
 ## Agentic RAG
 
 integrates RAG with **AI Agents** that can perform actions and reasoning.
@@ -61,3 +131,19 @@ integrates RAG with **AI Agents** that can perform actions and reasoning.
 -   **Iterative Retrieval**: The agent can refine its search queries based on initial findings.
 -   **Tool Use**: Agents can use tools (including RAG, calculators, APIs) to answer complex queries.
 -   **Planning**: The agent breaks down a complex question into sub-tasks and executes them using RAG and other tools.
+
+### Agentic KG Workflow Example
+
+Question: "Which Indian city has the highest population among capitals of southern states?"
+
+1. Agent queries KG for southern states.
+2. Retrieves each state capital node.
+3. Joins with population attributes (KG or table API).
+4. Compares values and returns top city with evidence path.
+
+### Common KG Applications in NLPA
+
+- **Question answering**: multi-hop factual QA.
+- **Entity disambiguation**: resolve ambiguous mentions.
+- **Recommendation/Personalization**: graph-based neighborhood inference.
+- **Semantic search**: relation-aware retrieval beyond keyword overlap.

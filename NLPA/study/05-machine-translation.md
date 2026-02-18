@@ -6,11 +6,11 @@ Using statistical models to translate text from a Source Language ($S$) to a Tar
 
 ### Noisy Channel Model for MT
 
-We want to find the best target sentence $\hat{T}$ that maximizes $P(T|S)$.
+We want to find the best target sentence $\hat{T}$ that maximizes $P(T\|S)$.
 
-$$ \hat{T} = \operatorname*{argmax}_T P(T|S) = \operatorname*{argmax}_T P(S|T) P(T) $$
+$$ \hat{T} = \operatorname*{argmax}_T P(T\|S) = \operatorname*{argmax}_T P(S\|T) P(T) $$
 
--   $P(S|T)$: **Translation Model** - "Faithfulness" (How well does $T$ capture the meaning of $S$?). Learned from parallel corpora.
+-   $P(S\|T)$: **Translation Model** - "Faithfulness" (How well does $T$ capture the meaning of $S$?). Learned from parallel corpora.
 -   $P(T)$: **Language Model** - "Fluency" (Is $T$ valid grammatical target language?). Learned from monolingual corpora.
 
 ### Alignment
@@ -23,7 +23,7 @@ The process of identifying which words in the source sentence correspond to whic
 IBM Model 1 estimates lexical translation probabilities with EM.
 
 $$
-t(f|e)=\frac{c(f,e)}{c(e)}
+t(f\|e)=\frac{c(f,e)}{c(e)}
 $$
 
 where:
@@ -35,12 +35,12 @@ where:
 E-step posterior alignment for target word position $j$:
 
 $$
-P(a_j=i\mid f_j,\mathbf{e})=\frac{t(f_j|e_i)}{\sum_{i'} t(f_j|e_{i'})}
+P(a_j=i\mid f_j,\mathbf{e})=\frac{t(f_j\|e_i)}{\sum_{i'} t(f_j\|e_{i'})}
 $$
 
 #### Uniform Initialization Effect
 
-When all initial $t(f|e)$ values are equal, first-iteration posteriors become uniform over candidate source positions.
+When all initial $t(f\|e)$ values are equal, first-iteration posteriors become uniform over candidate source positions.
 This is why the first E-step often gives equal alignment probability to each source token.
 
 #### HMM Alignment and Locality Penalty
@@ -50,7 +50,7 @@ HMM alignment adds transition probability across alignment positions, unlike IBM
 A common locality penalty form is:
 
 $$
-s(d)=\alpha^{|d|}
+s(d)=\alpha^{\|d\|}
 $$
 
 where:

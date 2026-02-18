@@ -153,6 +153,59 @@ Common feature groups:
 - semantic: contextual embeddings, sentiment lexicon categories
 - discourse/pragmatic: negation scope, intensifiers, contrastive markers (`but`, `however`)
 
+### 1) Lexical Features (Surface Word Signals)
+
+Lexical features capture direct polarity words and short phrases.
+
+Example sentence: `The movie is not good at all.`
+
+- Unigrams: `movie`, `not`, `good`
+- Bigrams: `not good`, `at all`
+- Character n-grams (for robustness): `goo`, `ood` from `good`
+
+If negation transformation is used:
+- `not good` -> `NOT_good`
+- Model learns `NOT_good` as strong negative signal.
+
+### 2) Syntactic Features (Structure-Aware Signals)
+
+Syntactic features use grammar and dependencies to reduce ambiguity.
+
+Example sentence: `The camera is light but feels cheap.`
+
+- POS patterns:
+  - `light` as adjective (`JJ`) linked to `camera`
+  - `cheap` as adjective (`JJ`) linked to omitted subject (`camera`)
+- Dependency relations:
+  - `amod(camera, light)` (positive aspect clue)
+  - `xcomp(feels, cheap)` (negative quality clue)
+
+These features help aspect-level sentiment when multiple opinions appear in one sentence.
+
+### 3) Semantic Features (Meaning-Level Signals)
+
+Semantic features generalize beyond exact words.
+
+Example:
+- Words `excellent`, `great`, `fantastic` often map to similar embedding regions (positive sentiment cluster).
+- Words `awful`, `terrible`, `worst` map to negative regions.
+
+A contextual model can disambiguate:
+- `The battery is light.` -> likely positive (weight)
+- `The plot is light.` -> may be neutral/negative depending on domain context
+
+### 4) Discourse and Pragmatic Features
+
+Discourse markers often flip overall interpretation.
+
+Example sentence: `The screen is sharp, but the battery drains quickly.`
+
+- Clause-1 sentiment: positive
+- Clause-2 sentiment: negative
+- Marker `but` usually gives higher decision weight to the clause after it.
+
+So document-level prediction is often negative despite initial positive words.
+
 ### Feature Vector Form
 
 $$
@@ -163,6 +216,36 @@ where:
 - $\mathbf{x}$: final feature vector for classifier
 - $x_i$: feature value for dimension $i$
 - $d$: total number of engineered/learned features
+
+### Example: Building a Combined Feature Vector
+
+Sentence: `I thought the phone looked premium, but performance is poor.`
+
+Possible selected features:
+- lexical: `premium` = 1, `poor` = 1, `but` = 1
+- bigram: `performance poor` = 1
+- syntactic: `amod(phone, premium)` = 1
+- discourse: `has_contrast_marker` = 1
+- semantic: embedding vector for full sentence
+
+A hybrid feature representation:
+
+$$
+\mathbf{x}=[\mathbf{x}_{\text{tfidf}};\mathbf{x}_{\text{syntax}};\mathbf{x}_{\text{discourse}};\mathbf{x}_{\text{embed}}]
+$$
+
+where:
+- $\mathbf{x}_{\text{tfidf}}$: sparse lexical vector
+- $\mathbf{x}_{\text{syntax}}$: dependency/POS indicators
+- $\mathbf{x}_{\text{discourse}}$: negation/contrast/intensity indicators
+- $\mathbf{x}_{\text{embed}}$: dense semantic embedding
+
+### Feature Design Tips for Exams and Practice
+
+1. Start with lexical baseline (unigram + bigram TF-IDF).
+2. Add negation and contrast-marker features first (high impact, low complexity).
+3. Add aspect-aware syntactic features for multi-aspect sentences.
+4. Use contextual embeddings when domain vocabulary is varied.
 
 ### Short Aspect-Level Example
 

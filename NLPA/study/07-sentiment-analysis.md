@@ -10,6 +10,20 @@ The computational study of people's opinions, sentiments, emotions, and attitude
 2.  **Sentence Level**: Classify individual sentences.
 3.  **Aspect Level**: Identify sentiments towards specific aspects of an entity (e.g., "The [camera]_pos is great but the [battery]_neg sucks").
 
+### Numerical Illustration Across Levels
+
+Review: `The camera is excellent, but battery life is poor.`
+
+- Document-level output: overall score = $-0.1$ -> Negative/Neutral boundary case
+- Sentence-level outputs:
+  - Sentence 1 score = $+0.8$
+  - Sentence 2 score = $-0.9$
+- Aspect-level outputs:
+  - `camera` = $+0.9$
+  - `battery life` = $-0.95$
+
+Aspect-level analysis is most informative when opposing sentiments occur in one review.
+
 ## Sentiment Analysis Methods
 
 ### Lexicon-based Approaches
@@ -31,6 +45,28 @@ where:
 - $m_i$: modifier factor (negation/intensifier/diminisher)
 - $n$: number of tokens considered
 
+### Numerical Example: Lexicon-Based Score
+
+Sentence: `The phone is very good but not durable.`
+
+Assume:
+- $s(\text{good})=+2.0$
+- $s(\text{durable})=+1.5$
+- intensifier `very` gives factor $1.5$
+- negation on `durable` gives factor $-1$
+
+Then:
+- contribution of `very good` = $2.0\times1.5=3.0$
+- contribution of `not durable` = $1.5\times(-1)=-1.5$
+
+Total:
+
+$$
+\operatorname{Polarity}(D)=3.0+(-1.5)=+1.5
+$$
+
+So final polarity is positive.
+
 ### Machine Learning Approaches
 
 -   Treat sentiment analysis as a standard text classification problem.
@@ -49,6 +85,26 @@ where:
 - $\operatorname{tf}(t,d)$: term frequency in $d$
 - $N$: number of documents in corpus
 - $\operatorname{df}(t)$: document frequency of term $t$
+
+### Numerical Example: TF-IDF
+
+Assume:
+- corpus size $N=1000$
+- token `excellent` appears in $\operatorname{df}=50$ documents
+- in review $d$, `excellent` appears $3$ times
+
+Then:
+
+$$
+\operatorname{tfidf}(\text{excellent},d)=3\cdot\log\frac{1000}{50}
+=3\cdot\log(20)
+$$
+
+Using natural log, $\log(20)\approx2.996$:
+
+$$
+\operatorname{tfidf}\approx 8.99
+$$
 
 ### Naive Bayes for Sentiment Classification
 
@@ -73,6 +129,27 @@ where:
 - $V$: vocabulary set
 - $\|V\|$: vocabulary size
 
+### Numerical Example: Naive Bayes Sentiment
+
+Document tokens: `NOT_good`, `movie`
+
+Given:
+- $P(+)=0.4,\;P(-)=0.6$
+- $P(\text{NOT\_good}\mid +)=0.01,\;P(\text{movie}\mid +)=0.05$
+- $P(\text{NOT\_good}\mid -)=0.07,\;P(\text{movie}\mid -)=0.04$
+
+Scores:
+
+$$
+\operatorname{Score}(+\mid D)=0.4\times0.01\times0.05=0.0002
+$$
+
+$$
+\operatorname{Score}(-\mid D)=0.6\times0.07\times0.04=0.00168
+$$
+
+Since $0.00168>0.0002$, predicted sentiment is Negative.
+
 ### Negation Handling with NOT Tokens
 
 A common heuristic is to convert tokens following negation into negated features (for example, `not good` -> `NOT_good`) until punctuation.
@@ -82,6 +159,17 @@ This helps model polarity reversal.
 
 Compute class scores and predict the class with the larger score.
 Normalization is optional for argmax-based classification.
+
+In practice, log-scores are used for numerical stability:
+
+$$
+\log \operatorname{Score}(c\mid D)=\log P(c)+\sum_k \log P(w_k\mid c)
+$$
+
+where:
+- $\log \operatorname{Score}(c\mid D)$: log posterior score for class $c$
+
+Argmax is unchanged by log transformation.
 
 ## Neural Networks for Sentiment Analysis
 
@@ -116,6 +204,28 @@ where:
 - $y_c$: one-hot ground-truth for class $c$
 - $W,b$: classifier parameters
 
+### Numerical Example: Softmax and Cross-Entropy
+
+Suppose logits for classes `[Positive, Negative, Neutral]` are:
+
+$$
+z=[1.2,\;2.0,\;0.3]
+$$
+
+Softmax probabilities (approx):
+
+$$
+P=[0.269,\;0.598,\;0.133]
+$$
+
+If true class is Negative, then:
+
+$$
+\mathcal{L}=-\log(0.598)\approx0.514
+$$
+
+Lower loss indicates better confidence on the correct class.
+
 ## Rule-Based, ML-Based, and Hybrid Systems
 
 ### Rule-Based Systems
@@ -124,11 +234,19 @@ where:
 - High precision on known linguistic phenomena.
 - Weak generalization to domain shift and informal phrasing.
 
+Example:
+- Rule: if token contains `not` before positive word, flip polarity.
+- Text: `not useful` -> negative by rule even without training data.
+
 ### ML-Based Systems
 
 - Learn sentiment decision boundaries from labeled datasets.
 - Better domain adaptability with sufficient data.
 - Can be less interpretable than pure rule systems.
+
+Example:
+- Logistic regression learns weight(`excellent`) = $+1.4$, weight(`worst`) = $-1.8$.
+- Review score is weighted sum of active features.
 
 ### Hybrid Systems
 
@@ -144,6 +262,61 @@ where:
 - $\operatorname{score}_{\text{ML}}$: model-predicted polarity score
 - $\operatorname{score}_{\text{rule}}$: lexicon/rule-based score
 - $\lambda\in[0,1]$: interpolation weight
+
+### Numerical Example: Hybrid Combination
+
+Assume:
+- $\operatorname{score}_{\text{ML}}=-0.70$
+- $\operatorname{score}_{\text{rule}}=-0.20$
+- $\lambda=0.6$
+
+Then:
+
+$$
+\operatorname{score}_{\text{hybrid}}=0.6(-0.70)+0.4(-0.20)=-0.50
+$$
+
+Final prediction remains negative, with stronger influence from ML model.
+
+## Sentiment Evaluation Metrics
+
+For binary sentiment:
+
+$$
+\text{Accuracy}=\frac{TP+TN}{TP+TN+FP+FN}
+$$
+
+$$
+\text{Precision}=\frac{TP}{TP+FP},\quad
+\text{Recall}=\frac{TP}{TP+FN},\quad
+F1=\frac{2PR}{P+R}
+$$
+
+where:
+- $TP$: true positives
+- $TN$: true negatives
+- $FP$: false positives
+- $FN$: false negatives
+- $P$: precision
+- $R$: recall
+
+### Numerical Example: Metrics
+
+Given confusion counts:
+- $TP=42,\;TN=38,\;FP=8,\;FN=12$
+
+$$
+\text{Accuracy}=\frac{42+38}{100}=0.80
+$$
+
+$$
+\text{Precision}=\frac{42}{42+8}=0.84,\quad
+\text{Recall}=\frac{42}{42+12}=0.7778
+$$
+
+$$
+F1=\frac{2\times0.84\times0.7778}{0.84+0.7778}\approx0.8077
+$$
 
 ## NLP Features for Sentiment Analysis
 

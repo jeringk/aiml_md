@@ -22,6 +22,37 @@ All questions are numbered sequentially (Q1, Q2, Q3…).
 
 ---
 
+## End-Sem Paper Structure (Shared on February 18, 2026)
+
+### Q1 — 6 Marks
+
+- Machine Translation
+- Statistical
+
+### Q2 — 8 Marks
+
+- Knowledge Graph Applications
+- Machine Translation
+- Neural
+- Indic Languages
+
+### Q3 — 8 Marks
+
+- Information Extraction
+- Named Entity Recognition
+- Relation Extraction
+- Extracting Events and Time
+
+### Q4 — 8 Marks
+
+- Sentiment Analysis
+- Sentiment Analysis Methods
+- Rule based, ML based and Hybrid Systems
+- Neural Networks for Sentiment Analysis
+- NLP features
+
+---
+
 > **Note:** Use `<div style="page-break-after: always;"></div>` between pages for print-ready output.
 
 ---

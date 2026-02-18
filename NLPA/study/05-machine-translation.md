@@ -13,6 +13,25 @@ $$ \hat{T} = \operatorname*{argmax}_T P(T\|S) = \operatorname*{argmax}_T P(S\|T)
 -   $P(S\|T)$: **Translation Model** - "Faithfulness" (How well does $T$ capture the meaning of $S$?). Learned from parallel corpora.
 -   $P(T)$: **Language Model** - "Fluency" (Is $T$ valid grammatical target language?). Learned from monolingual corpora.
 
+### Numerical Example: Noisy Channel Decision
+
+Suppose two candidate Hindi translations $T_1,T_2$ for source sentence $S$ have:
+
+- $P(S\mid T_1)=0.30,\,P(T_1)=0.20$
+- $P(S\mid T_2)=0.18,\,P(T_2)=0.40$
+
+Scores:
+
+$$
+P(S\mid T_1)P(T_1)=0.30\times0.20=0.06
+$$
+
+$$
+P(S\mid T_2)P(T_2)=0.18\times0.40=0.072
+$$
+
+Since $0.072>0.06$, decoder selects $T_2$.
+
 ### N-gram Language Model in SMT
 
 SMT decoders commonly use an n-gram LM in log-linear scoring.
@@ -26,6 +45,18 @@ where:
 - $m$: target sentence length
 - $n$: n-gram order
 - $P(t_i\mid\cdot)$: LM next-token probability
+
+### Numerical Example: Bigram LM Probability
+
+For target sentence `I am happy` with bigram LM:
+
+- $P(\text{I}\mid\langle s\rangle)=0.20$
+- $P(\text{am}\mid\text{I})=0.50$
+- $P(\text{happy}\mid\text{am})=0.40$
+
+$$
+P(T)=0.20\times0.50\times0.40=0.04
+$$
 
 ### Log-Linear SMT Decoder Objective
 
@@ -41,6 +72,27 @@ where:
 - $K$: number of features
 
 This framework allows balancing adequacy and fluency with tunable weights.
+
+### Numerical Example: Log-Linear Feature Score
+
+Assume two features only:
+
+- $h_1$ = translation score, weight $\lambda_1=0.7$
+- $h_2$ = LM score, weight $\lambda_2=0.3$
+
+Candidate A: $h_1=-2.0,\,h_2=-1.0$
+
+$$
+\text{Score}(A)=0.7(-2.0)+0.3(-1.0)=-1.7
+$$
+
+Candidate B: $h_1=-1.8,\,h_2=-1.5$
+
+$$
+\text{Score}(B)=0.7(-1.8)+0.3(-1.5)=-1.71
+$$
+
+Since $-1.7>-1.71$, candidate A is preferred.
 
 ### Alignment
 
@@ -72,6 +124,20 @@ where:
 - $\mathbf{e}$: source sentence token sequence
 - $i$: source position index
 
+### Numerical Example: IBM Model 1 E-step
+
+For target token $f_j$ and source tokens $e_1,e_2,e_3$:
+
+- $t(f_j\mid e_1)=0.2$
+- $t(f_j\mid e_2)=0.5$
+- $t(f_j\mid e_3)=0.3$
+
+Denominator $=0.2+0.5+0.3=1.0$, so:
+
+- $P(a_j=1\mid f_j,\mathbf{e})=0.2$
+- $P(a_j=2\mid f_j,\mathbf{e})=0.5$
+- $P(a_j=3\mid f_j,\mathbf{e})=0.3$
+
 ### Phrase-Based SMT (PB-SMT)
 
 PB-SMT translates contiguous phrases instead of isolated words.
@@ -91,6 +157,14 @@ $$
 where:
 - $\Delta$: jump between consecutive translated phrase positions
 - $\alpha>0$: distortion strength
+
+### Numerical Example: Distortion Penalty
+
+If $\alpha=0.4$ and jump size $\|\Delta\|=3$:
+
+$$
+d(\Delta)=\exp(-0.4\times3)=\exp(-1.2)\approx0.301
+$$
 
 #### Uniform Initialization Effect
 
@@ -112,6 +186,12 @@ where:
 - $\alpha\in(0,1)$: locality decay factor
 
 Larger jumps receive smaller probability mass.
+
+Numerical example with $\alpha=0.6$ and jump from position 1 to 3:
+
+$$
+\|d\|=2,\quad s(d)=0.6^2=0.36
+$$
 
 ---
 
@@ -136,6 +216,18 @@ where:
 - $t_{<i}$: generated/prefix target tokens before step $i$
 - $S$: source sentence
 - $\theta$: model parameters
+
+### Numerical Example: NMT Token Loss
+
+Suppose target has three tokens with model probabilities:
+
+- $P(t_1\mid\cdot)=0.8$
+- $P(t_2\mid\cdot)=0.6$
+- $P(t_3\mid\cdot)=0.5$
+
+$$
+\mathcal{L}_{\text{NMT}}=-(\log 0.8+\log 0.6+\log 0.5)\approx1.427
+$$
 
 ### Attention Mechanism
 
@@ -172,6 +264,14 @@ $$
 
 where $p_i$ are attention weights over source tokens.
 Lower entropy indicates more concentrated attention.
+
+Numerical example for weights $[0.8,0.15,0.05]$:
+
+$$
+H=-(0.8\log_2 0.8+0.15\log_2 0.15+0.05\log_2 0.05)\approx0.884
+$$
+
+Since entropy is low, attention is concentrated.
 
 ## Evaluation of MT Quality BLEU
 
@@ -210,10 +310,26 @@ Reference: `the cat is on the mat`
 - Candidate is shorter ($c=5$, $r=6$), so $\operatorname{BP}<1$
 - Final BLEU reduces because of brevity penalty and higher-order n-gram mismatches
 
+Numerical continuation (using unigram precision only for illustration):
+
+$$
+\operatorname{BP}=\exp(1-6/5)=\exp(-0.2)\approx0.819
+$$
+
+If $p_1=1.0$, then approximate BLEU-1 $\approx0.819$.
+
 ## Domain Shift in MT
 
 Model quality often drops when test-domain data differs from training data (news vs social media vs technical text).
 This is observed as BLEU degradation on out-of-domain content.
+
+### Numerical Example: Domain Degradation
+
+If in-domain BLEU is 25 and social-media BLEU is 15:
+
+$$
+\text{degradation}=\frac{25-15}{25}\times100=40\%
+$$
 
 ---
 
@@ -239,6 +355,12 @@ $$
 $$
 
 where $r$ is the fractional increase due to code-mixing.
+
+Numerical example with base OOV $=6\%$ and $r=0.5$:
+
+$$
+\text{new OOV}=6\%\times1.5=9\%
+$$
 
 ### Approaches
 

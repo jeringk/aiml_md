@@ -52,6 +52,19 @@ where:
 - $P_{i,y_i}$: emission score for assigning tag $y_i$ at position $i$
 - $n$: sequence length
 
+### Numerical Example: CRF Sequence Score
+
+For a 3-token sequence with tags `[B-ORG, I-ORG, O]`, suppose:
+
+- transition sum = $0.6$
+- emission sum = $1.9$
+
+Then:
+
+$$
+\operatorname{score}(\mathbf{x},\mathbf{y})=0.6+1.9=2.5
+$$
+
 Conditional probability:
 
 $$
@@ -60,6 +73,12 @@ $$
 
 where:
 - $\mathcal{Y}(\mathbf{x})$: all valid tag sequences for $\mathbf{x}$
+
+Numerical illustration: if three candidate sequences have scores $2.5,1.8,1.2$,
+
+$$
+P(\mathbf{y}_1\mid\mathbf{x})=\frac{e^{2.5}}{e^{2.5}+e^{1.8}+e^{1.2}}\approx0.58
+$$
 
 Best decoding uses Viterbi:
 
@@ -96,6 +115,17 @@ Prediction:
 $$
 \hat{r}=\operatorname*{argmax}_{r} P(r\mid \mathbf{h})
 $$
+
+### Numerical Example: Relation Softmax
+
+If classifier logits for `[founded_by, located_in, no_relation]` are `[2.1,0.7,0.2]`,
+the softmax probabilities are approximately:
+
+$$
+[0.73,0.18,0.09]
+$$
+
+Predicted relation is `founded_by`.
 
 ### Relation Extraction Mini Example
 
@@ -145,6 +175,8 @@ where:
 - $t_0$: reference date-time (document time)
 - $\Delta$: relative shift (for example, `+2 days`, `-1 week`)
 
+Numerical example: if DCT is `2026-02-18` and phrase is `next Tuesday` ($\Delta=+6$ days), then normalized date is `2026-02-24`.
+
 ### Evaluation Metrics for NER and Event Extraction
 
 #### Strict Exact Match
@@ -167,7 +199,25 @@ where:
 - $P$: precision
 - $R$: recall
 
+### Numerical Example: IE Metrics
+
+Assume $TP=5,\,FP=1,\,FN=4$:
+
+$$
+\text{Precision}=\frac{5}{6}=0.8333,
+\quad
+\text{Recall}=\frac{5}{9}=0.5556
+$$
+
+$$
+F1=\frac{2\times0.8333\times0.5556}{0.8333+0.5556}=0.6667
+$$
+
 ### Micro vs Macro F1
 
 Micro-F1 aggregates counts across all classes before computing F1, favoring frequent classes.
 Macro-F1 computes per-class F1 and averages them, highlighting minority-class performance.
+
+Numerical illustration:
+- Class A F1 = $0.90$, Class B F1 = $0.50$ -> Macro-F1 = $(0.90+0.50)/2=0.70$
+- If class A dominates volume, Micro-F1 may still be around $0.85$.

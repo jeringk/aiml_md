@@ -37,6 +37,14 @@ where:
 - $n$: detected mentions in input
 - $a$: entity-linking accuracy
 
+Numerical example: for $n=5$ and $a=0.78$,
+
+$$
+\mathbb{E}[\text{correct links}] = 5\times0.78=3.9
+$$
+
+So approximately 4 entities are linked correctly.
+
 ### Knowledge Graphs in Chatbots
 
 Knowledge Graphs support knowledge-grounded responses by enabling:
@@ -70,6 +78,19 @@ where:
 - $\Pi(u,v)$: set of paths from $u$ to $v$
 - $w(e)$: edge confidence/importance for edge $e$
 
+### Numerical Example: Path Reasoning Score
+
+Suppose two paths from $u$ to $v$:
+
+- $\pi_1$ with edge weights $0.9,0.8$
+- $\pi_2$ with edge weights $0.7,0.6$
+
+Then:
+
+$$
+\operatorname{score}(u\leadsto v)=(0.9\times0.8)+(0.7\times0.6)=0.72+0.42=1.14
+$$
+
 ## Retrieval-Augmented Generation (RAG)
 
 Combines the power of Large Language Models (LLMs) with external knowledge sources.
@@ -95,6 +116,22 @@ where:
 - $d$: candidate document/chunk
 - $\phi(\cdot)$: embedding function
 - $\operatorname{sim}(q,d)$: cosine similarity used for top-$k$ retrieval
+
+### Numerical Example: Cosine Similarity
+
+Let $\phi(q)=[1,2]$ and $\phi(d)=[2,1]$.
+
+$$
+\phi(q)\cdot\phi(d)=1\times2+2\times1=4
+$$
+
+$$
+\|\phi(q)\|=\|\phi(d)\|=\sqrt{5}
+$$
+
+$$
+\operatorname{sim}(q,d)=\frac{4}{\sqrt{5}\sqrt{5}}=\frac{4}{5}=0.8
+$$
 
 ### Graph RAG (GraphRAG)
 
@@ -123,6 +160,19 @@ where:
 - $\operatorname{sim}_{\text{text}}$: text embedding similarity
 - $\operatorname{sim}_{\text{graph}}$: graph-structure/entity overlap score
 - $\lambda\in[0,1]$: interpolation weight
+
+### Numerical Example: Hybrid Subgraph Ranking
+
+Assume:
+- $\operatorname{sim}_{\text{text}}(q,g)=0.70$
+- $\operatorname{sim}_{\text{graph}}(q,g)=0.50$
+- $\lambda=0.6$
+
+$$
+\operatorname{rank}(g\mid q)=0.6(0.70)+0.4(0.50)=0.62
+$$
+
+Candidate with higher rank score is selected for context.
 
 ## Agentic RAG
 

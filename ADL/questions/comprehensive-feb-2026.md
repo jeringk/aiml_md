@@ -77,7 +77,7 @@ To answer this question, study the following:
   - Encoder: maps input → latent distribution parameters ($\mu$, $\log \sigma^2$)
   - Decoder: maps latent vector $z$ → reconstructed output
   - Latent space: defined by mean and log-variance vectors
-  - Posterior parameterization: $q_\phi(z|x)=\mathcal{N}\!\left(\mu_\phi(x), \operatorname{diag}(\sigma_\phi^2(x))\right)$
+  - Posterior parameterization: $q_\phi(z\|x)=\mathcal{N}\!\left(\mu_\phi(x), \operatorname{diag}(\sigma_\phi^2(x))\right)$
   - Mean head parameter count (Dense): $(D_{\text{prev}}+1)\times D_z$
   - Log-variance head parameter count (Dense): $(D_{\text{prev}}+1)\times D_z$
   - For this question: $(128+1)\times 10=1{,}290$ for each head
@@ -197,12 +197,12 @@ So $\sigma = [1.0, 0.5, 1.0, 2.0]$
 
 **Step 2:** Apply reparameterization trick $z = \mu + \sigma \odot \varepsilon$:
 
-| Dim | $\mu_i$ | $\sigma_i$ | $\varepsilon_i$ | $z_i = \mu_i + \sigma_i \cdot \varepsilon_i$ |
-|-----|---------|------------|------------------|----------------------------------------------|
-| 1   | $1.5$   | $1.0$      | $0.2$            | $1.5 + 1.0 \times 0.2 = \mathbf{1.7}$       |
-| 2   | $-0.5$  | $0.5$      | $-1.0$           | $-0.5 + 0.5 \times (-1.0) = \mathbf{-1.0}$  |
-| 3   | $0.0$   | $1.0$      | $0.0$            | $0.0 + 1.0 \times 0.0 = \mathbf{0.0}$       |
-| 4   | $2.0$   | $2.0$      | $1.5$            | $2.0 + 2.0 \times 1.5 = \mathbf{5.0}$       |
+\| Dim \| $\mu_i$ \| $\sigma_i$ \| $\varepsilon_i$ \| $z_i = \mu_i + \sigma_i \cdot \varepsilon_i$ \|
+\|-----\|---------\|------------\|------------------\|----------------------------------------------\|
+\| 1   \| $1.5$   \| $1.0$      \| $0.2$            \| $1.5 + 1.0 \times 0.2 = \mathbf{1.7}$       \|
+\| 2   \| $-0.5$  \| $0.5$      \| $-1.0$           \| $-0.5 + 0.5 \times (-1.0) = \mathbf{-1.0}$  \|
+\| 3   \| $0.0$   \| $1.0$      \| $0.0$            \| $0.0 + 1.0 \times 0.0 = \mathbf{0.0}$       \|
+\| 4   \| $2.0$   \| $2.0$      \| $1.5$            \| $2.0 + 2.0 \times 1.5 = \mathbf{5.0}$       \|
 
 $$\boxed{z = [1.7, -1.0, 0.0, 5.0]}$$
 
@@ -564,7 +564,7 @@ Where:
 - $\mathbf{z} = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$, $\quad \mathbf{u} = \begin{bmatrix} 0.5 \\ 0.5 \end{bmatrix}$, $\quad \mathbf{w} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$, $\quad b = 0$
 - Activation: $h(a) = \tanh(a)$
 
-**(i)** Compute the log Jacobian determinant of the transformation: $\log \left| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right|$ **(3 marks)**
+**(i)** Compute the log Jacobian determinant of the transformation: $\log \left\| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right\|$ **(3 marks)**
 
 **(ii)** Compute $\log p_x(\mathbf{x})$ **(2 marks)**
 
@@ -604,7 +604,7 @@ To answer this question, study the following:
   - Transformation: $\mathbf{x} = \mathbf{z} + \mathbf{u} \cdot h(\mathbf{w}^\top \mathbf{z} + b)$
   - Jacobian determinant: $\det\left(\frac{\partial \mathbf{x}}{\partial \mathbf{z}}\right) = 1 + h'(\mathbf{w}^\top \mathbf{z} + b) \cdot \mathbf{u}^\top \mathbf{w}$
   - For tanh: $h'(a) = 1 - \tanh^2(a)$
-  - Change of variables: $\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right|$
+  - Change of variables: $\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left\| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right\|$
 
 - **Log probability of standard Gaussian**
   - $\log p_z(\mathbf{z}) = -\frac{d}{2}\log(2\pi) - \frac{1}{2}\|\mathbf{z}\|^2$
@@ -648,7 +648,7 @@ $$\det = 1 + 0.4200 \times 1.5 = 1 + 0.63 = 1.63$$
 
 **Log Jacobian determinant:**
 
-$$\boxed{\log \left| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right| = \log(1.63) \approx 0.4886}$$
+$$\boxed{\log \left\| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right\| = \log(1.63) \approx 0.4886}$$
 
 ---
 
@@ -656,7 +656,7 @@ $$\boxed{\log \left| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}}
 
 Using the change of variables formula:
 
-$$\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right|$$
+$$\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left\| \det \left( \frac{\partial \mathbf{x}}{\partial \mathbf{z}} \right) \right\|$$
 
 **Compute $\log p_z(\mathbf{z})$** for $\mathbf{z} = [1, -1]^\top$ under $\mathcal{N}(0, I)$:
 

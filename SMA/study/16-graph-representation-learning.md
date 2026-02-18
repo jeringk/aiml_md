@@ -54,7 +54,7 @@ $$\text{similarity}(u, v) \approx z_u^T z_v$$
   - **$q$ (in-out parameter)**: likelihood of exploring away from the previous node
     - Low $q$ → DFS-like, captures community structure
 
-$$P(v_i = x | v_{i-1} = v) = \begin{cases} \frac{1}{p} & \text{if } d(t, x) = 0 \text{ (back to previous)} \\ 1 & \text{if } d(t, x) = 1 \text{ (same distance)} \\ \frac{1}{q} & \text{if } d(t, x) = 2 \text{ (farther away)} \end{cases}$$
+$$P(v_i = x \| v_{i-1} = v) = \begin{cases} \frac{1}{p} & \text{if } d(t, x) = 0 \text{ (back to previous)} \\ 1 & \text{if } d(t, x) = 1 \text{ (same distance)} \\ \frac{1}{q} & \text{if } d(t, x) = 2 \text{ (farther away)} \end{cases}$$
 
 - Can capture both **homophily** (community) and **structural equivalence** (role)
 

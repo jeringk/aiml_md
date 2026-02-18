@@ -14,7 +14,7 @@
 - Foundation for modern NLP (translation, summarization, QA, dialogue)
 - Language models are **autoregressive generative models** over tokens:
 
-$$p(x_1, \ldots, x_T) = \prod_{t=1}^{T} p(x_t | x_{<t})$$
+$$p(x_1, \ldots, x_T) = \prod_{t=1}^{T} p(x_t \| x_{<t})$$
 
 ---
 
@@ -28,7 +28,7 @@ $$p(x_1, \ldots, x_T) = \prod_{t=1}^{T} p(x_t | x_{<t})$$
 - Feed-forward (fixed context), RNN/LSTM (variable context), Transformer (attention)
 
 ### Evaluation
-- **Perplexity**: $PP = \exp\left(-\frac{1}{T}\sum_t \log p(x_t | x_{<t})\right)$ — lower is better
+- **Perplexity**: $PP = \exp\left(-\frac{1}{T}\sum_t \log p(x_t \| x_{<t})\right)$ — lower is better
 
 ---
 

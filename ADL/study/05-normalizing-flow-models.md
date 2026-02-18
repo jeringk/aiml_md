@@ -35,11 +35,11 @@
 
 Given a bijective mapping $x = f(z)$ where $z \sim p_Z(z)$:
 
-$$p_X(x) = p_Z(f^{-1}(x)) \left| \frac{df^{-1}}{dx} \right|$$
+$$p_X(x) = p_Z(f^{-1}(x)) \left\| \frac{df^{-1}}{dx} \right\|$$
 
 Or equivalently:
 
-$$p_X(x) = p_Z(z) \left| \frac{dz}{dx} \right| = p_Z(z) \left| \frac{dx}{dz} \right|^{-1}$$
+$$p_X(x) = p_Z(z) \left\| \frac{dz}{dx} \right\| = p_Z(z) \left\| \frac{dx}{dz} \right\|^{-1}$$
 
 - The absolute value of the derivative accounts for how $f$ **stretches or compresses** probability density
 - $z$ typically drawn from a simple base distribution (e.g., standard Gaussian)
@@ -52,7 +52,7 @@ $$p_X(x) = p_Z(z) \left| \frac{dz}{dx} \right| = p_Z(z) \left| \frac{dx}{dz} \ri
 
 For bijective $f: \mathbb{R}^2 \to \mathbb{R}^2$:
 
-$$p_X(x) = p_Z(f^{-1}(x)) \left| \det \frac{\partial f^{-1}}{\partial x} \right|$$
+$$p_X(x) = p_Z(f^{-1}(x)) \left\| \det \frac{\partial f^{-1}}{\partial x} \right\|$$
 
 - The **Jacobian determinant** replaces the 1D derivative
 - Measures how the transformation changes area (volume in higher dims)
@@ -63,7 +63,7 @@ $$p_X(x) = p_Z(f^{-1}(x)) \left| \det \frac{\partial f^{-1}}{\partial x} \right|
 
 ### General Change of Variables Formula
 
-$$\log p_X(x) = \log p_Z(z) + \log \left| \det \frac{\partial f^{-1}}{\partial x} \right|$$
+$$\log p_X(x) = \log p_Z(z) + \log \left\| \det \frac{\partial f^{-1}}{\partial x} \right\|$$
 
 where $z = f^{-1}(x)$
 
@@ -73,7 +73,7 @@ Chain multiple simple transformations:
 
 $$x = f_K \circ f_{K-1} \circ \cdots \circ f_1(z)$$
 
-$$\log p_X(x) = \log p_Z(z) + \sum_{k=1}^{K} \log \left| \det \frac{\partial f_k^{-1}}{\partial f_k} \right|$$
+$$\log p_X(x) = \log p_Z(z) + \sum_{k=1}^{K} \log \left\| \det \frac{\partial f_k^{-1}}{\partial f_k} \right\|$$
 
 ### Key Challenge
 Computing $\det(J)$ for general Jacobian is $O(D^3)$ — need architectures with **tractable Jacobians**.
@@ -92,7 +92,7 @@ $$\det\left(\frac{\partial \mathbf{x}}{\partial \mathbf{z}}\right) = 1 + h'(\mat
 
 **Log probability** (change of variables):
 
-$$\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left| 1 + h'(\mathbf{w}^\top \mathbf{z} + b) \cdot \mathbf{u}^\top \mathbf{w} \right|$$
+$$\log p_x(\mathbf{x}) = \log p_z(\mathbf{z}) - \log \left\| 1 + h'(\mathbf{w}^\top \mathbf{z} + b) \cdot \mathbf{u}^\top \mathbf{w} \right\|$$
 
 For $\mathbf{z} \sim \mathcal{N}(0, I)$: $\log p_z(\mathbf{z}) = -\frac{D}{2}\log(2\pi) - \frac{1}{2}\|\mathbf{z}\|^2$
 

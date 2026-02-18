@@ -51,7 +51,7 @@
 
 ## 1.3 Generative Modeling
 
-- **Discriminative models**: learn $P(y|x)$ — decision boundary
+- **Discriminative models**: learn $P(y\|x)$ — decision boundary
 - **Generative models**: learn $P(x)$ or $P(x, y)$ — the data distribution
 
 ### Why Generative Models?

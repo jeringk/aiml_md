@@ -21,7 +21,7 @@
 - Goal: model the joint distribution $p(x_1, x_2, \ldots, x_D)$ over all dimensions of $x$
 - Use the **chain rule of probability** to decompose into conditional distributions:
 
-$$p(x) = \prod_{d=1}^{D} p(x_d | x_1, x_2, \ldots, x_{d-1})$$
+$$p(x) = \prod_{d=1}^{D} p(x_d \| x_1, x_2, \ldots, x_{d-1})$$
 
 - Each conditional can be modeled by a neural network
 - **Autoregressive**: each output depends on previous outputs (sequential generation)
@@ -52,7 +52,7 @@ $$\theta^* = \arg\max_\theta \sum_{i=1}^{N} \log p_\theta(x_i)$$
 
 $$\min_\theta KL(p_{\text{data}} \| p_\theta)$$
 
-- AR models parameterize each conditional $p_\theta(x_d | x_{<d})$ with a neural network
+- AR models parameterize each conditional $p_\theta(x_d \| x_{<d})$ with a neural network
 
 ### MLE for Bernoulli Distribution
 
@@ -74,7 +74,7 @@ The MLE estimate is simply the **sample proportion** of successes.
 - Hidden state $h_t$ summarizes all previous observations:
 
 $$h_t = f(h_{t-1}, x_{t-1})$$
-$$p(x_t | x_{<t}) = g(h_t)$$
+$$p(x_t \| x_{<t}) = g(h_t)$$
 
 - Natural fit for sequential data (text, audio, time series)
 - Limitations:

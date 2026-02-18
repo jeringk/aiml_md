@@ -85,7 +85,7 @@ $$z = W_2 \cdot a + b_2$$
 
 ### (c) Vanishing Gradient Problem (3 marks)
 
-The sigmoid function saturates for large $|x|$, producing derivatives close to zero:
+The sigmoid function saturates for large $\|x\|$, producing derivatives close to zero:
 
 $$\sigma'(x) = \sigma(x)(1 - \sigma(x)) \leq 0.25$$
 

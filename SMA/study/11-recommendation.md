@@ -34,7 +34,7 @@
 1. Find users similar to target user (cosine similarity, Pearson correlation on ratings)
 2. Predict rating as weighted average of similar users' ratings:
 
-$$\hat{r}_{ui} = \bar{r}_u + \frac{\sum_{v \in N(u)} \text{sim}(u, v) \cdot (r_{vi} - \bar{r}_v)}{\sum_{v \in N(u)} |\text{sim}(u, v)|}$$
+$$\hat{r}_{ui} = \bar{r}_u + \frac{\sum_{v \in N(u)} \text{sim}(u, v) \cdot (r_{vi} - \bar{r}_v)}{\sum_{v \in N(u)} \|\text{sim}(u, v)\|}$$
 
 #### Item-Based CF
 
@@ -92,9 +92,9 @@ $$\min_{U,V} \sum_{(u,i)} (r_{ui} - u_u^T v_i)^2 + \lambda_1 \|U\|^2 + \lambda_2
 ### Friend Recommendation (Link Prediction)
 
 - Predict who should connect based on:
-  - **Common neighbors**: $\frac{|N(u) \cap N(v)|}{|N(u) \cup N(v)|}$ (Jaccard)
-  - **Adamic-Adar**: $\sum_{w \in N(u) \cap N(v)} \frac{1}{\log |N(w)|}$
-  - **Preferential attachment**: $|N(u)| \cdot |N(v)|$
+  - **Common neighbors**: $\frac{\|N(u) \cap N(v)\|}{\|N(u) \cup N(v)\|}$ (Jaccard)
+  - **Adamic-Adar**: $\sum_{w \in N(u) \cap N(v)} \frac{1}{\log \|N(w)\|}$
+  - **Preferential attachment**: $\|N(u)\| \cdot \|N(v)\|$
   - **Graph embeddings**: node2vec, GCN-based link prediction
 
 ---
@@ -105,7 +105,7 @@ $$\min_{U,V} \sum_{(u,i)} (r_{ui} - u_u^T v_i)^2 + \lambda_1 \|U\|^2 + \lambda_2
 
 | Metric | Formula | Description |
 |--------|---------|-------------|
-| **MAE** | $\frac{1}{n} \sum |r_{ui} - \hat{r}_{ui}|$ | Mean absolute error |
+| **MAE** | $\frac{1}{n} \sum \|r_{ui} - \hat{r}_{ui}\|$ | Mean absolute error |
 | **RMSE** | $\sqrt{\frac{1}{n} \sum (r_{ui} - \hat{r}_{ui})^2}$ | Root mean squared error |
 
 ### Ranking Metrics

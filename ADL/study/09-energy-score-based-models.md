@@ -93,8 +93,8 @@ $$E(v, h) = -b^T v - c^T h - v^T W h$$
 - Marginal distribution: $p(v) = \frac{1}{Z} \sum_h \exp(-E(v, h))$
 - **Key property**: conditional independence makes Gibbs sampling efficient:
 
-$$p(h_j = 1 | v) = \sigma(c_j + W_j^T v)$$
-$$p(v_i = 1 | h) = \sigma(b_i + W_i h)$$
+$$p(h_j = 1 \| v) = \sigma(c_j + W_j^T v)$$
+$$p(v_i = 1 \| h) = \sigma(b_i + W_i h)$$
 
 - Training: **Contrastive Divergence (CD-k)**
 
@@ -180,11 +180,11 @@ $$\mathcal{L} = \mathbb{E}_{p_{\text{data}}} \left[ \text{tr}(\nabla_x s_\theta(
 
 ### Denoising Score Matching (DSM)
 
-$$\mathcal{L}_{\text{DSM}} = \mathbb{E}_{x \sim p_{\text{data}}, \tilde{x} \sim q_\sigma(\tilde{x}|x)} \left[ \|s_\theta(\tilde{x}) - \nabla_{\tilde{x}} \log q_\sigma(\tilde{x}|x)\|^2 \right]$$
+$$\mathcal{L}_{\text{DSM}} = \mathbb{E}_{x \sim p_{\text{data}}, \tilde{x} \sim q_\sigma(\tilde{x}\|x)} \left[ \|s_\theta(\tilde{x}) - \nabla_{\tilde{x}} \log q_\sigma(\tilde{x}\|x)\|^2 \right]$$
 
-For Gaussian noise $q_\sigma(\tilde{x}|x) = \mathcal{N}(\tilde{x}; x, \sigma^2 I)$:
+For Gaussian noise $q_\sigma(\tilde{x}\|x) = \mathcal{N}(\tilde{x}; x, \sigma^2 I)$:
 
-$$\nabla_{\tilde{x}} \log q_\sigma(\tilde{x}|x) = \frac{x - \tilde{x}}{\sigma^2}$$
+$$\nabla_{\tilde{x}} \log q_\sigma(\tilde{x}\|x) = \frac{x - \tilde{x}}{\sigma^2}$$
 
 - Connection to DDPM: the noise prediction network $\epsilon_\theta$ is essentially a **score model**!
 

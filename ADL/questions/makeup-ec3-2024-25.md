@@ -44,7 +44,7 @@ The 4 images are:
 
 | Image 1       | Image 2       | Image 3       | Image 4       |
 |:-------------:|:-------------:|:-------------:|:-------------:|
-| $\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$ | $\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$ | $\begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix}$ | $\begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}$ |
+| $\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$ \| $\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$ \| $\begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix}$ \| $\begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}$ |
 
 <div style="page-break-after: always;"></div>
 
@@ -60,7 +60,7 @@ To answer this question, study the following:
   - Affine coupling layer: $y_1 = x_1$, $y_2 = x_2 \cdot \exp(s(x_1)) + t(x_1)$
   - Jacobian is lower-triangular → determinant = product of diagonal entries
   - $\frac{\partial y_1}{\partial x_1} = 1$, $\frac{\partial y_2}{\partial x_2} = \exp(s(x_1))$
-  - Log determinant: $\log|\det J| = s(x_1)$
+  - Log determinant: $\log\|\det J\| = s(x_1)$
 
 - **Maximum Likelihood Estimation (MLE) for Bernoulli** — 📖 [9.5 Training and Sampling from EBMs](../study/09-energy-score-based-models.md#95-training-and-sampling-from-ebms)
   - Likelihood: $L(p) = p^k (1 - p)^{n - k}$ where $k$ = number of 1s, $n$ = total pixels
@@ -107,7 +107,7 @@ $$\det(J) = 1 \times \exp(s(x_1)) = \exp(0.5)$$
 
 **Log determinant:**
 
-$$\boxed{\log|\det(J)| = s(x_1) = 0.5}$$
+$$\boxed{\log\|\det(J)\| = s(x_1) = 0.5}$$
 
 ---
 
@@ -325,8 +325,8 @@ Note 1-Wasserstein distance is also known as earth mover's distance! **(3 marks)
 To answer this question, study the following:
 
 - **Lipschitz Continuity** — 📖 [7.4.1 Wasserstein GAN](../study/07-generative-adversarial-network.md#741-wasserstein-gan-wgan)
-  - A function $f$ is $K$-Lipschitz if $|f(x) - f(y)| \leq K|x - y|$ for all $x, y$
-  - Lipschitz constant = $\sup |f'(x)|$ (supremum of the absolute derivative)
+  - A function $f$ is $K$-Lipschitz if $\|f(x) - f(y)\| \leq K\|x - y\|$ for all $x, y$
+  - Lipschitz constant = $\sup \|f'(x)\|$ (supremum of the absolute derivative)
   - WGAN requires 1-Lipschitz functions (K ≤ 1)
   - Unbounded derivatives → not Lipschitz
 
@@ -365,7 +365,7 @@ The derivative is **unbounded**, so $f(x) = e^{x^2}$ is **not Lipschitz continuo
 
 $$f'(x) = 2x$$
 
-$$\sup_{x \in [-1,1]} |f'(x)| = \sup_{x \in [-1,1]} |2x| = 2 \quad \text{(at } x = \pm 1\text{)}$$
+$$\sup_{x \in [-1,1]} \|f'(x)\| = \sup_{x \in [-1,1]} \|2x\| = 2 \quad \text{(at } x = \pm 1\text{)}$$
 
 $$\boxed{K = 2}$$
 

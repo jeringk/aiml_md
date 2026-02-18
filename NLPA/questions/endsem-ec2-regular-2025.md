@@ -54,7 +54,7 @@ To answer this question, study the following:
   - Why first E-step can produce equal alignment probabilities
 
 - **Position-aware alignment** — [HMM Alignment and Locality Penalty](../study/05-machine-translation.md#hmm-alignment-and-locality-penalty)
-  - Transition modeling and distance penalty $s(d)=\alpha^{|d|}$
+  - Transition modeling and distance penalty $s(d)=\alpha^{\|d\|}$
 
 - **Word-order impact (English-Hindi)** — [Indic Language Translation](../study/05-machine-translation.md#indic-language-translation) · [Challenges](../study/05-machine-translation.md#challenges)
   - SVO to SOV reordering implications for alignment
@@ -77,7 +77,7 @@ IBM Model 1 posterior for each Hindi word $f_j$ aligning to English position $i$
 
 $$
 P(a_j=i\mid f_j,\mathbf{e})
-=\frac{t(f_j|e_i)}{\sum_{i'=1}^{3}t(f_j|e_{i'})}
+=\frac{t(f_j\|e_i)}{\sum_{i'=1}^{3}t(f_j\|e_{i'})}
 $$
 
 With uniform initialization, each denominator has three equal terms, so:
@@ -111,10 +111,10 @@ Updated probabilities:
 
 ### Part (b): HMM comparison and locality penalty
 
-Given $s(d)=0.6^{|d|}$ and jump from position 1 to 3:
+Given $s(d)=0.6^{\|d\|}$ and jump from position 1 to 3:
 
 $$
-|d|=|3-1|=2,\quad s(2)=0.6^2=0.36
+\|d\|=\|3-1\|=2,\quad s(2)=0.6^2=0.36
 $$
 
 So the locality weight/penalty is **0.36**.
@@ -508,7 +508,7 @@ $$
 
 Negative class:
 
-`Score(-|D) = P(-) * P(NOT_good|-) * P(movie|-)`
+`Score(-\|D) = P(-) * P(NOT_good\|-) * P(movie\|-)`
 
 $$
 =0.6\times 0.07\times 0.04
@@ -518,8 +518,8 @@ $$
 ### Part 3: Final sentiment (2 marks)
 
 Compare scores:
-- $\text{Score}(+|D)=0.0002$
-- $\text{Score}(-|D)=0.00168$
+- $\text{Score}(+\|D)=0.0002$
+- $\text{Score}(-\|D)=0.00168$
 
 Since $0.00168 > 0.0002$, predicted class is **Negative**.
 

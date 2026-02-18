@@ -24,9 +24,9 @@
 
 ### VRNN (Variational RNN)
 - Prior, encoder, decoder all conditioned on RNN hidden state $h_t$:
-  - Prior: $p_\theta(z_t | h_{t-1})$
-  - Encoder: $q_\phi(z_t | x_t, h_{t-1})$
-  - Decoder: $p_\theta(x_t | z_t, h_{t-1})$
+  - Prior: $p_\theta(z_t \| h_{t-1})$
+  - Encoder: $q_\phi(z_t \| x_t, h_{t-1})$
+  - Decoder: $p_\theta(x_t \| z_t, h_{t-1})$
 
 ---
 

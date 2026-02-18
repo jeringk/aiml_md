@@ -27,12 +27,12 @@
 
 | Model | Description |
 |-------|-------------|
-| **$G(n, m)$** | $n$ nodes, $m$ edges chosen uniformly at random |
-| **$G(n, p)$** | $n$ nodes, each pair connected independently with probability $p$ |
+| **$G(n, m)$** \| $n$ nodes, $m$ edges chosen uniformly at random |
+| **$G(n, p)$** \| $n$ nodes, each pair connected independently with probability $p$ |
 
 ### Properties of $G(n, p)$
 
-- **Expected edges**: $\mathbb{E}[|E|] = \binom{n}{2} p$
+- **Expected edges**: $\mathbb{E}[\|E\|] = \binom{n}{2} p$
 - **Expected degree**: $\langle k \rangle = (n - 1)p$
 - **Degree distribution**: Binomial → Poisson for large $n$:
 
@@ -69,7 +69,7 @@ $$P(k) \approx e^{-\langle k \rangle} \frac{\langle k \rangle^k}{k!}$$
 | Property | Regular ($p=0$) | Small-World ($p$ small) | Random ($p=1$) |
 |----------|-----------------|-------------------------|-----------------|
 | Clustering | High | High | Low |
-| Average path length | Long ($O(n)$) | Short ($O(\log n)$) | Short ($O(\log n)$) |
+| Average path length | Long ($O(n)$) \| Short ($O(\log n)$) \| Short ($O(\log n)$) |
 
 ### Key Insight
 

@@ -121,10 +121,10 @@ Where:
 
 | Measure | Formula | Description |
 |---------|---------|-------------|
-| **Average degree** | $\langle k \rangle = \frac{2|E|}{|V|}$ | Mean connections per node |
+| **Average degree** | $\langle k \rangle = \frac{2\|E\|}{\|V\|}$ | Mean connections per node |
 | **Average path length** | $\langle l \rangle = \frac{1}{n(n-1)} \sum_{i \neq j} d(i,j)$ | Mean shortest path |
 | **Diameter** | $\max_{i,j} d(i,j)$ | Longest shortest path |
-| **Density** | $\frac{2|E|}{|V|(|V|-1)}$ | Fraction of possible edges |
+| **Density** | $\frac{2\|E\|}{\|V\|(\|V\|-1)}$ | Fraction of possible edges |
 | **Transitivity** | $\frac{3 \times \text{triangles}}{\text{triples}}$ | Global clustering |
 | **Reciprocity** | Fraction of mutual edges | Mutual relationships (directed) |
 | **Assortativity** | Correlation of degrees at ends of edges | Do similar-degree nodes connect? |

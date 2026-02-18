@@ -31,9 +31,9 @@ $$\min_{\theta, \phi} \mathcal{L}(x, g_\phi(f_\theta(x)))$$
 
 | Layer Type | Parameters | Output Size |
 |------------|-----------|-------------|
-| **Conv2D** | $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ | $\lfloor \frac{H + 2p - K}{s} \rfloor + 1$ per spatial dim |
-| **ConvTranspose2D** | $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ | $(H_{in} - 1) \times s - 2p + K + p_{out}$ |
-| **Dense (Fully Connected)** | $(D_{in} + 1) \times D_{out}$ | $D_{out}$ |
+| **Conv2D** | $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ \| $\lfloor \frac{H + 2p - K}{s} \rfloor + 1$ per spatial dim |
+| **ConvTranspose2D** | $(K_h \times K_w \times C_{in} + 1) \times C_{out}$ \| $(H_{in} - 1) \times s - 2p + K + p_{out}$ |
+| **Dense (Fully Connected)** | $(D_{in} + 1) \times D_{out}$ \| $D_{out}$ |
 | **Flatten** | 0 (no parameters) | $C \times H \times W$ |
 | **Reshape** | 0 (no parameters) | Specified shape |
 
@@ -107,7 +107,7 @@ $$\min_{\theta, \phi} \mathcal{L}(x, g_\phi(f_\theta(x)))$$
 
 - Adds sparsity penalty on activations of the hidden layer:
 
-$$\mathcal{L} = \|x - \hat{x}\|^2 + \lambda \sum_j |h_j|$$
+$$\mathcal{L} = \|x - \hat{x}\|^2 + \lambda \sum_j \|h_j\|$$
 
 or using KL divergence against a target sparsity $\rho$:
 

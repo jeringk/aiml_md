@@ -39,7 +39,7 @@
 ### Adjacency List
 
 - For each node, store a list of its neighbors
-- Space: $O(n + m)$ where $m = |E|$
+- Space: $O(n + m)$ where $m = \|E\|$
 - More efficient for sparse graphs (typical in social networks)
 
 ### Edge List
@@ -89,7 +89,7 @@
 
 ### Density
 
-$$\text{Density} = \frac{2|E|}{|V|(|V|-1)} \quad \text{(undirected)}$$
+$$\text{Density} = \frac{2\|E\|}{\|V\|(\|V\|-1)} \quad \text{(undirected)}$$
 
 - Most social networks are **sparse** (density ≪ 1)
 
@@ -98,7 +98,7 @@ $$\text{Density} = \frac{2|E|}{|V|(|V|-1)} \quad \text{(undirected)}$$
 - Measures how much a node's neighbors are connected to each other
 - **Local clustering coefficient** of node $v$:
 
-$$C(v) = \frac{2 \cdot |\text{edges among neighbors of } v|}{d(v) \cdot (d(v) - 1)}$$
+$$C(v) = \frac{2 \cdot \|\text{edges among neighbors of } v\|}{d(v) \cdot (d(v) - 1)}$$
 
 - **Global clustering coefficient** (aka transitivity):
 
@@ -112,7 +112,7 @@ $$C = \frac{3 \times \text{number of triangles}}{\text{number of connected tripl
 
 ### Complete Graph ($K_n$)
 - Every pair of nodes is connected
-- $|E| = \frac{n(n-1)}{2}$
+- $\|E\| = \frac{n(n-1)}{2}$
 
 ### Clique
 - A **subset** of nodes where every pair is connected (complete subgraph)
@@ -120,7 +120,7 @@ $$C = \frac{3 \times \text{number of triangles}}{\text{number of connected tripl
 
 ### Tree
 - Connected graph with no cycles
-- $|E| = |V| - 1$
+- $\|E\| = \|V\| - 1$
 
 ### Star Graph
 - One central node connected to all others

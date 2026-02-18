@@ -86,7 +86,7 @@ $$\sum_{u \in N_{\text{active}}(v)} w_{uv} \geq \theta_v$$
 
 - **Problem**: find a seed set $S$ of size $k$ that maximizes the expected number of activated nodes
 
-$$S^* = \arg\max_{|S| = k} \sigma(S)$$
+$$S^* = \arg\max_{\|S\| = k} \sigma(S)$$
 
 - $\sigma(S)$: expected spread of seed set $S$
 - NP-hard problem under both IC and LT models

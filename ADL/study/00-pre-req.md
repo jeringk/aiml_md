@@ -77,11 +77,11 @@ Topics assumed to be learnt before starting this course. Each section includes t
 
 ### Vectors & Matrices
 - Vector and matrix multiplication, transpose ($A^T$), inverse ($A^{-1}$), identity matrix
-- **Norms**: L1 norm $\|x\|_1 = \sum|x_i|$, L2 norm $\|x\|_2 = \sqrt{\sum x_i^2}$, Frobenius norm $\|A\|_F = \sqrt{\sum_{ij} a_{ij}^2}$
+- **Norms**: L1 norm $\|x\|_1 = \sum\|x_i\|$, L2 norm $\|x\|_2 = \sqrt{\sum x_i^2}$, Frobenius norm $\|A\|_F = \sqrt{\sum_{ij} a_{ij}^2}$
   - where:
     - $x_i$ = individual elements of vector $x$
     - $a_{ij}$ = element at row $i$, column $j$ of matrix $A$
-- Example: given $x = [3, -4]$, L1 norm = $|3|+|-4|$ = 7, L2 norm = $\sqrt{9+16}$ = 5
+- Example: given $x = [3, -4]$, L1 norm = $\|3\|+\|-4\|$ = 7, L2 norm = $\sqrt{9+16}$ = 5
 - The Frobenius norm is used in the Contractive Autoencoder penalty (Module 3): $\left\|\frac{\partial f_\theta(x)}{\partial x}\right\|_F^2$
   - where:
     - $f_\theta$ = encoder function
@@ -126,10 +126,10 @@ Topics assumed to be learnt before starting this course. Each section includes t
     - $f_i$ = $i$-th component of output
     - $x_j$ = $j$-th component of input
     - $J \in \mathbb{R}^{m \times n}$ = Jacobian matrix
-- **Jacobian determinant** $|\det(J)|$ measures how a nonlinear transformation stretches/compresses probability density locally
+- **Jacobian determinant** $\|\det(J)\|$ measures how a nonlinear transformation stretches/compresses probability density locally
 - Example: if $f(x,y) = (2x, 3y)$, then $J = \begin{bmatrix} 2 & 0 \\ 0 & 3 \end{bmatrix}$ and $\det(J) = 6$ — the transformation scales area by 6×
 - Critical for Normalizing Flows (Module 5):
-  $$\log p_X(x) = \log p_Z(z) + \log|\det J^{-1}|$$
+  $$\log p_X(x) = \log p_Z(z) + \log\|\det J^{-1}\|$$
   - where:
     - $p_X$ = data distribution
     - $p_Z$ = base (latent) distribution
@@ -182,7 +182,7 @@ $$p(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\righ
 - Generalization of Bernoulli to $K$ classes — used in language modeling softmax outputs (Module 10)
 
 **Mixture of Gaussians**:
-$$p(x) = \sum_{k=1}^{K} \pi_k \mathcal{N}(x|\mu_k, \Sigma_k)$$
+$$p(x) = \sum_{k=1}^{K} \pi_k \mathcal{N}(x\|\mu_k, \Sigma_k)$$
 - where:
   - $K$ = number of mixture components
   - $\pi_k$ = mixing weight of component $k$ ($\sum \pi_k = 1$)
@@ -191,14 +191,14 @@ $$p(x) = \sum_{k=1}^{K} \pi_k \mathcal{N}(x|\mu_k, \Sigma_k)$$
 - Tractable latent variable model example in Module 6
 
 ### Bayes' Theorem
-$$P(z|x) = \frac{P(x|z) \, P(z)}{P(x)}$$
+$$P(z\|x) = \frac{P(x\|z) \, P(z)}{P(x)}$$
 - where:
-  - $P(z|x)$ = **posterior** (distribution of latent given data)
-  - $P(x|z)$ = **likelihood** (how likely data is given latent)
+  - $P(z\|x)$ = **posterior** (distribution of latent given data)
+  - $P(x\|z)$ = **likelihood** (how likely data is given latent)
   - $P(z)$ = **prior** (belief about latent before seeing data)
-  - $P(x) = \int P(x|z)P(z)dz$ = **evidence/marginal likelihood** (normalizer, usually intractable)
-- The posterior $P(z|x)$ is what VAEs approximate (Module 6) because $P(x)$ is intractable
-- The approximate posterior $q_\phi(z|x)$ is the encoder network in a VAE
+  - $P(x) = \int P(x\|z)P(z)dz$ = **evidence/marginal likelihood** (normalizer, usually intractable)
+- The posterior $P(z\|x)$ is what VAEs approximate (Module 6) because $P(x)$ is intractable
+- The approximate posterior $q_\phi(z\|x)$ is the encoder network in a VAE
   - where:
     - $\phi$ = encoder parameters
 
@@ -232,7 +232,7 @@ $$KL\big(\mathcal{N}(\mu_1, \sigma_1^2) \| \mathcal{N}(\mu_2, \sigma_2^2)\big) =
   - $(\mu_2, \sigma_2^2)$ = mean and variance of $Q$
 
 **Special case — VAE KL vs standard normal** (where $\mu_2=0, \sigma_2=1$):
-$$KL\big(q_\phi(z|x) \| \mathcal{N}(0,1)\big) = -\frac{1}{2}\sum_{j=1}^{J}\left(1 + \log\sigma_j^2 - \mu_j^2 - \sigma_j^2\right)$$
+$$KL\big(q_\phi(z\|x) \| \mathcal{N}(0,1)\big) = -\frac{1}{2}\sum_{j=1}^{J}\left(1 + \log\sigma_j^2 - \mu_j^2 - \sigma_j^2\right)$$
 - where:
   - $J$ = latent-space dimensionality
   - $\mu_j$ = mean of latent dimension $j$ predicted by the encoder
@@ -249,13 +249,13 @@ $$JSD(P \| Q) = \frac{1}{2}KL(P \| M) + \frac{1}{2}KL(Q \| M)$$
 - The original GAN objective at optimal discriminator minimizes JSD between real and generated distributions (Module 7)
 
 ### Chain Rule of Probability
-$$p(x_1, x_2, ..., x_D) = \prod_{d=1}^{D} p(x_d | x_1, ..., x_{d-1}) = \prod_{d=1}^{D} p(x_d | x_{<d})$$
+$$p(x_1, x_2, ..., x_D) = \prod_{d=1}^{D} p(x_d \| x_1, ..., x_{d-1}) = \prod_{d=1}^{D} p(x_d \| x_{<d})$$
 - where:
   - $D$ = total number of dimensions/variables
   - $x_d$ = $d$-th variable
   - $x_{<d}$ = all variables before position $d$
-- This is the entire foundation of autoregressive models (Module 4): model each conditional $p(x_d | x_{<d})$ with a neural network
-- Example: for a 3-pixel image, $p(x_1, x_2, x_3) = p(x_1) \cdot p(x_2|x_1) \cdot p(x_3|x_1,x_2)$
+- This is the entire foundation of autoregressive models (Module 4): model each conditional $p(x_d \| x_{<d})$ with a neural network
+- Example: for a 3-pixel image, $p(x_1, x_2, x_3) = p(x_1) \cdot p(x_2\|x_1) \cdot p(x_3\|x_1,x_2)$
 
 ### Importance Sampling
 $$\mathbb{E}_p[f(x)] = \mathbb{E}_q\left[\frac{p(x)}{q(x)} f(x)\right] \approx \frac{1}{K}\sum_{k=1}^{K} \frac{p(x_k)}{q(x_k)} f(x_k)$$
@@ -268,8 +268,8 @@ $$\mathbb{E}_p[f(x)] = \mathbb{E}_q\left[\frac{p(x)}{q(x)} f(x)\right] \approx \
 - Key intuition: if $q$ is close to $p$, variance is low → better estimates
 
 ### Conditional Independence & Markov Property
-- $X \perp Y | Z$ means $X$ and $Y$ are independent given $Z$: $p(X, Y | Z) = p(X|Z) \cdot p(Y|Z)$
-- **Markov property**: future depends only on present, not past — $p(x_t | x_{t-1}, x_{t-2}, ...) = p(x_t | x_{t-1})$
+- $X \perp Y \| Z$ means $X$ and $Y$ are independent given $Z$: $p(X, Y \| Z) = p(X\|Z) \cdot p(Y\|Z)$
+- **Markov property**: future depends only on present, not past — $p(x_t \| x_{t-1}, x_{t-2}, ...) = p(x_t \| x_{t-1})$
 - Used in diffusion models (Module 8): forward/reverse processes are Markov chains
 - RBMs (Module 9) exploit conditional independence: all hidden units are independent given visible units, and vice versa → enables efficient parallel Gibbs sampling
 
@@ -360,7 +360,7 @@ $$H(P, Q) = -\sum_x P(x) \log Q(x) = H(P) + KL(P \| Q)$$
 - Example: K-Means on MNIST handwritten digits to discover digit clusters without labels
 
 ### Regularization
-- **L1 (Lasso)**: penalty $= \lambda \sum_i |w_i|$
+- **L1 (Lasso)**: penalty $= \lambda \sum_i \|w_i\|$
   - where:
     - $\lambda$ = regularization strength
     - $w_i$ = individual weight parameters
@@ -373,14 +373,14 @@ $$H(P, Q) = -\sum_x P(x) \log Q(x) = H(P) + KL(P \| Q)$$
 
 ### EM Algorithm
 - **Expectation-Maximization**: iterative algorithm for MLE with latent variables
-- **E-step**: compute $q(z) = p(z | x; \theta^{\text{old}})$ — expected value of latent variables given current parameters
+- **E-step**: compute $q(z) = p(z \| x; \theta^{\text{old}})$ — expected value of latent variables given current parameters
 - **M-step**: $\theta^{\text{new}} = \arg\max_\theta \mathbb{E}_{q(z)}[\log p(x, z; \theta)]$ — maximize expected complete-data log-likelihood
   - where:
     - $z$ = latent variables
     - $x$ = observed data
     - $\theta$ = model parameters
 - Used to train Probabilistic PCA and Factor Analysis (Module 2), and conceptually related to VAE training (Module 6)
-- Example: fitting a Gaussian mixture model — E-step computes cluster responsibilities $\gamma_{ik} = p(z=k|x_i)$, M-step updates means $\mu_k$, covariances $\Sigma_k$, and weights $\pi_k$
+- Example: fitting a Gaussian mixture model — E-step computes cluster responsibilities $\gamma_{ik} = p(z=k\|x_i)$, M-step updates means $\mu_k$, covariances $\Sigma_k$, and weights $\pi_k$
 
 ### Kernel Methods
 $$\kappa(x_i, x_j) = \phi(x_i)^T \phi(x_j)$$
@@ -474,7 +474,7 @@ $$\sigma(x) = \frac{1}{1 + e^{-x}}$$
 - Output range: $(0, 1)$ — interprets output as probability
 - Derivative: $\sigma'(x) = \sigma(x)(1 - \sigma(x))$
 - Used as: output activation for binary data (Module 3), discriminator output in GANs (Module 7), gate activations in LSTM/GRU, RBM conditionals (Module 9)
-- Issue: vanishing gradients when $|x|$ is large (saturation regions where derivative → 0)
+- Issue: vanishing gradients when $\|x\|$ is large (saturation regions where derivative → 0)
 
 **Tanh**:
 $$\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
@@ -552,7 +552,7 @@ $$\mathcal{L}_{\text{NLL}} = -\sum_{i=1}^{N} \log p_\theta(x_i)$$
   - $p_\theta(x_i)$ = probability the model assigns to observed data point $x_i$
   - $\theta$ = model parameters
 - The general training objective for generative models
-- For autoregressive models (Module 4): $\mathcal{L} = -\sum_i \sum_d \log p_\theta(x_{id} | x_{i,<d})$
+- For autoregressive models (Module 4): $\mathcal{L} = -\sum_i \sum_d \log p_\theta(x_{id} \| x_{i,<d})$
   - where:
     - $d$ = dimension index
     - $x_{i,<d}$ = all dimensions of sample $i$ before position $d$
@@ -723,11 +723,11 @@ $$y = F(x) + x$$
 - Key difference: directed models have tractable sampling but may have intractable inference; undirected models have intractable partition function $Z$
 
 ### Markov Chains
-$$p(x_{t+1} | x_t, x_{t-1}, ..., x_1) = p(x_{t+1} | x_t)$$
+$$p(x_{t+1} \| x_t, x_{t-1}, ..., x_1) = p(x_{t+1} \| x_t)$$
 - where:
   - $x_t$ = state at time $t$
   - $x_{t+1}$ = next state
-- **Transition matrix** $T$: $T_{ij} = p(x_{t+1} = j | x_t = i)$
+- **Transition matrix** $T$: $T_{ij} = p(x_{t+1} = j \| x_t = i)$
   - where:
     - $T_{ij}$ = transition probability from state $i$ to state $j$
     - each row of $T$ sums to 1
@@ -738,7 +738,7 @@ $$p(x_{t+1} | x_t, x_{t-1}, ..., x_1) = p(x_{t+1} | x_t)$$
 
 ### MCMC Methods
 - **Gibbs Sampling**: sample each variable conditioned on all others, cycling through variables
-  - For RBM (Module 9): alternate between sampling $h | v$ (all hidden given visible) and $v | h$ (all visible given hidden) — both are easy due to conditional independence within each layer
+  - For RBM (Module 9): alternate between sampling $h \| v$ (all hidden given visible) and $v \| h$ (all visible given hidden) — both are easy due to conditional independence within each layer
 - **Langevin Dynamics**:
   $$x_{k+1} = x_k - \frac{\eta}{2}\nabla_x E(x_k) + \sqrt{\eta}\,\epsilon_k$$
   - where:
@@ -773,13 +773,13 @@ $$p(x_{t+1} | x_t, x_{t-1}, ..., x_1) = p(x_{t+1} | x_t)$$
 - Example: $\cos(\text{king}, \text{queen}) > \cos(\text{king}, \text{apple})$
 
 ### N-gram Language Models
-$$p(w_t | w_1, ..., w_{t-1}) \approx p(w_t | w_{t-n+1}, ..., w_{t-1})$$
+$$p(w_t \| w_1, ..., w_{t-1}) \approx p(w_t \| w_{t-n+1}, ..., w_{t-1})$$
 - where:
   - $w_t$ = word at position $t$
   - $w_1, ..., w_{t-1}$ = full history before position $t$
   - $n$ = N-gram order (context length + 1)
   - $w_{t-n+1}, ..., w_{t-1}$ = truncated context used by the N-gram model
-- **Bigram** ($n=2$): $p(w_t | w_{t-1})$; **Trigram** ($n=3$): $p(w_t | w_{t-2}, w_{t-1})$
+- **Bigram** ($n=2$): $p(w_t \| w_{t-1})$; **Trigram** ($n=3$): $p(w_t \| w_{t-2}, w_{t-1})$
 - Limitations: fixed context window, data sparsity (many N-grams never observed), no semantic generalization — motivates neural language models (Module 10)
 
 ### Attention Mechanism

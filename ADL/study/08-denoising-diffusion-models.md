@@ -18,7 +18,7 @@
 
 ### Forward Process (Noise Addition)
 
-$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} \, x_{t-1}, \beta_t I)$$
+$$q(x_t \| x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} \, x_{t-1}, \beta_t I)$$
 
 - $\beta_t$ is the noise schedule ($\beta_1 < \beta_2 < \cdots < \beta_T$)
 - After $T$ steps: $x_T \approx \mathcal{N}(0, I)$
@@ -27,7 +27,7 @@ $$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} \, x_{t-1}, \beta_t I)$
 
 Using $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{s=1}^{t} \alpha_s$:
 
-$$q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} \, x_0, (1 - \bar{\alpha}_t) I)$$
+$$q(x_t \| x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} \, x_0, (1 - \bar{\alpha}_t) I)$$
 
 $$x_t = \sqrt{\bar{\alpha}_t} \, x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 
@@ -37,7 +37,7 @@ $$x_t = \sqrt{\bar{\alpha}_t} \, x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon, \q
 
 ### Reverse Process (Learned Denoising)
 
-$$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 I)$$
+$$p_\theta(x_{t-1} \| x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \sigma_t^2 I)$$
 
 - Neural network predicts the mean $\mu_\theta(x_t, t)$
 - In practice, network predicts the **noise** $\epsilon_\theta(x_t, t)$:
@@ -70,7 +70,7 @@ where $x_t = \sqrt{\bar{\alpha}_t} \, x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilo
 
 ### Connection to ELBO
 
-$$\log p_\theta(x_0) \geq \mathbb{E}_q \left[ \log \frac{p_\theta(x_{0:T})}{q(x_{1:T} | x_0)} \right]$$
+$$\log p_\theta(x_0) \geq \mathbb{E}_q \left[ \log \frac{p_\theta(x_{0:T})}{q(x_{1:T} \| x_0)} \right]$$
 
 The VLB decomposes into:
 - $L_T$: prior matching term

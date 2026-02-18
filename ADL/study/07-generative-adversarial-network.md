@@ -107,12 +107,12 @@ $$W_2(\mathcal{N}(\mu_1, \sigma_1^2), \mathcal{N}(\mu_2, \sigma_2^2)) = \sqrt{(\
 
 #### Lipschitz Continuity
 
-A function $f$ is **$K$-Lipschitz** if: $|f(x) - f(y)| \leq K|x - y|$ for all $x, y$
+A function $f$ is **$K$-Lipschitz** if: $\|f(x) - f(y)\| \leq K\|x - y\|$ for all $x, y$
 
-- **Lipschitz constant** = $\sup_x |f'(x)|$ (supremum of the absolute derivative)
+- **Lipschitz constant** = $\sup_x \|f'(x)\|$ (supremum of the absolute derivative)
 - WGAN requires critic to be **1-Lipschitz** ($K \leq 1$)
-- If $\sup |f'(x)| = \infty$ → function is **not Lipschitz** (e.g., $f(x) = e^{x^2}$, since $f'(x) = 2xe^{x^2} \to \infty$)
-- On bounded domain: $f(x) = x^2$ on $[-1,1]$ has $K = \sup|2x| = 2$ → 2-Lipschitz
+- If $\sup \|f'(x)\| = \infty$ → function is **not Lipschitz** (e.g., $f(x) = e^{x^2}$, since $f'(x) = 2xe^{x^2} \to \infty$)
+- On bounded domain: $f(x) = x^2$ on $[-1,1]$ has $K = \sup\|2x\| = 2$ → 2-Lipschitz
 
 - Objective (using Kantorovich-Rubinstein duality):
 

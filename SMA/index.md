@@ -120,3 +120,12 @@
 - Graph Representation Learning
 - Review of Sessions 9 thru 15
 - *Reference: CS224W of Stanford*
+
+---
+
+## Navigation
+
+- [Course Home](./)
+- [Study](study/)
+- [Questions](questions/)
+- [Back to Homepage](../)

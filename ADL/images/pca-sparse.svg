@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" role="img" aria-labelledby="t d">
+  <title id="t">Sparse PCA graphical view</title>
+  <desc id="d">Dense versus sparse loading magnitudes shown as bar plots.</desc>
+  <defs><style>
+    .bg{fill:#fff}.title{font:700 18px Arial,sans-serif;fill:#111}.txt{font:12px Arial,sans-serif;fill:#222}
+    .frame{fill:#fafafa;stroke:#111;stroke-width:1.8}.bar1{fill:#666}.bar2{fill:#222}.bar0{fill:#ddd;stroke:#999;stroke-width:1}
+    .axis{stroke:#111;stroke-width:1.8}
+  </style></defs>
+  <rect class="bg" width="860" height="330"/>
+  <text class="title" x="430" y="30" text-anchor="middle">Sparse PCA: Interpretable Sparse Loadings</text>
+  <rect class="frame" x="70" y="60" width="320" height="240" rx="10"/>
+  <text class="txt" x="230" y="84" text-anchor="middle">Classical PCA loading vector</text>
+  <line class="axis" x1="110" y1="270" x2="350" y2="270"/>
+  <rect class="bar1" x="120" y="210" width="14" height="60"/><rect class="bar1" x="145" y="180" width="14" height="90"/><rect class="bar1" x="170" y="195" width="14" height="75"/>
+  <rect class="bar1" x="195" y="165" width="14" height="105"/><rect class="bar1" x="220" y="188" width="14" height="82"/><rect class="bar1" x="245" y="172" width="14" height="98"/>
+  <rect class="bar1" x="270" y="205" width="14" height="65"/><rect class="bar1" x="295" y="186" width="14" height="84"/><rect class="bar1" x="320" y="198" width="14" height="72"/>
+  <text class="txt" x="230" y="292" text-anchor="middle">many non-zero coefficients</text>
+  <rect class="frame" x="470" y="60" width="320" height="240" rx="10"/>
+  <text class="txt" x="630" y="84" text-anchor="middle">Sparse PCA with L₁ penalty</text>
+  <line class="axis" x1="510" y1="270" x2="750" y2="270"/>
+  <rect class="bar2" x="520" y="230" width="14" height="40"/><rect class="bar0" x="545" y="268" width="14" height="2"/><rect class="bar0" x="570" y="268" width="14" height="2"/>
+  <rect class="bar2" x="595" y="170" width="14" height="100"/><rect class="bar0" x="620" y="268" width="14" height="2"/><rect class="bar0" x="645" y="268" width="14" height="2"/>
+  <rect class="bar2" x="670" y="205" width="14" height="65"/><rect class="bar0" x="695" y="268" width="14" height="2"/><rect class="bar0" x="720" y="268" width="14" height="2"/>
+  <text class="txt" x="630" y="292" text-anchor="middle">few active features, easier interpretation</text>
+</svg>

@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 16px; font-weight: 700; fill: #1e293b; }
+      .label { font-size: 13px; font-weight: 600; fill: #475569; }
+      .sub-label { font-size: 11px; fill: #64748b; }
+      .cell-text { font-size: 10px; fill: #334155; font-weight: 500; }
+      .formula { font-size: 13px; fill: #6366f1; font-weight: 700; }
+      .formula-sm { font-size: 11px; fill: #6366f1; font-weight: 600; }
+      .result { font-size: 12px; fill: #059669; font-weight: 600; }
+      .dim { font-size: 11px; fill: #94a3b8; font-weight: 500; }
+      .zero-text { font-size: 9px; fill: #d1d5db; font-weight: 400; }
+    </style>
+    <linearGradient id="inpG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="valG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c7d2fe"/>
+      <stop offset="100%" stop-color="#a5b4fc"/>
+    </linearGradient>
+    <linearGradient id="zeroG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f9fafb"/>
+      <stop offset="100%" stop-color="#f3f4f6"/>
+    </linearGradient>
+    <linearGradient id="krnG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="oG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d1fae5"/>
+      <stop offset="100%" stop-color="#a7f3d0"/>
+    </linearGradient>
+    <marker id="arw" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b"/>
+    </marker>
+    <marker id="arwPurple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6366f1"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="410" y="28" text-anchor="middle" class="title">ConvTranspose2D — Transposed (Upsampling) Convolution</text>
+
+  <!-- Subtitle -->
+  <text x="410" y="50" text-anchor="middle" class="dim">Used in autoencoder decoders (Module 3) and GAN generators (Module 7)</text>
+
+  <!-- ====== STEP 1: Input 2×2 ====== -->
+  <text x="100" y="82" text-anchor="middle" class="label">Step 1: Input</text>
+  <text x="100" y="97" text-anchor="middle" class="dim">2×2</text>
+
+  <g transform="translate(55, 108)">
+    <rect x="0" y="0" width="40" height="40" rx="4" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="20" y="25" text-anchor="middle" class="cell-text" font-weight="700">a</text>
+    <rect x="40" y="0" width="40" height="40" rx="4" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="60" y="25" text-anchor="middle" class="cell-text" font-weight="700">b</text>
+    <rect x="0" y="40" width="40" height="40" rx="4" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="20" y="65" text-anchor="middle" class="cell-text" font-weight="700">c</text>
+    <rect x="40" y="40" width="40" height="40" rx="4" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="60" y="65" text-anchor="middle" class="cell-text" font-weight="700">d</text>
+  </g>
+
+  <!-- ====== Arrow 1→2 ====== -->
+  <line x1="158" y1="148" x2="200" y2="148" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arwPurple)"/>
+  <text x="179" y="140" text-anchor="middle" class="dim" font-size="9">insert zeros</text>
+  <text x="179" y="162" text-anchor="middle" class="dim" font-size="9">(stride=2)</text>
+
+  <!-- ====== STEP 2: Zero-inserted 3×3 (stride=2 → insert s-1=1 zeros) ====== -->
+  <text x="310" y="82" text-anchor="middle" class="label">Step 2: Zero-Insert</text>
+  <text x="310" y="97" text-anchor="middle" class="dim">Insert s−1 zeros between elements</text>
+
+  <g transform="translate(235, 108)">
+    <!-- 3×3 grid with zeros inserted -->
+    <rect x="0" y="0" width="30" height="30" rx="3" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="15" y="20" text-anchor="middle" class="cell-text" font-weight="700">a</text>
+    <rect x="30" y="0" width="30" height="30" rx="3" fill="url(#zeroG)" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="45" y="20" text-anchor="middle" class="zero-text">0</text>
+    <rect x="60" y="0" width="30" height="30" rx="3" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="75" y="20" text-anchor="middle" class="cell-text" font-weight="700">b</text>
+
+    <rect x="0" y="30" width="30" height="30" rx="3" fill="url(#zeroG)" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="15" y="50" text-anchor="middle" class="zero-text">0</text>
+    <rect x="30" y="30" width="30" height="30" rx="3" fill="url(#zeroG)" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="45" y="50" text-anchor="middle" class="zero-text">0</text>
+    <rect x="60" y="30" width="30" height="30" rx="3" fill="url(#zeroG)" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="75" y="50" text-anchor="middle" class="zero-text">0</text>
+
+    <rect x="0" y="60" width="30" height="30" rx="3" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="15" y="80" text-anchor="middle" class="cell-text" font-weight="700">c</text>
+    <rect x="60" y="60" width="30" height="30" rx="3" fill="url(#valG)" stroke="#6366f1" stroke-width="1.5"/>
+    <text x="75" y="80" text-anchor="middle" class="cell-text" font-weight="700">d</text>
+    <rect x="30" y="60" width="30" height="30" rx="3" fill="url(#zeroG)" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="45" y="80" text-anchor="middle" class="zero-text">0</text>
+  </g>
+
+  <!-- ====== Arrow 2→3 ====== -->
+  <line x1="340" y1="148" x2="385" y2="148" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arwPurple)"/>
+  <text x="362" y="140" text-anchor="middle" class="dim" font-size="9">pad +</text>
+  <text x="362" y="162" text-anchor="middle" class="dim" font-size="9">convolve</text>
+
+  <!-- ====== STEP 3: Padded + Kernel ====== -->
+  <text x="508" y="82" text-anchor="middle" class="label">Step 3: Pad &amp; Convolve</text>
+  <text x="508" y="97" text-anchor="middle" class="dim">Pad with K−1 zeros, apply 3×3 kernel</text>
+
+  <!-- Padded 7×7 grid (simplified representation) -->
+  <g transform="translate(400, 108)">
+    <!-- Show a stylized padded grid -->
+    <rect x="0" y="0" width="140" height="80" rx="6" fill="#f8fafc" stroke="#c7d2fe" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="70" y="28" text-anchor="middle" class="dim" font-size="10">Zero-padded</text>
+    <text x="70" y="45" text-anchor="middle" class="dim" font-size="10">expanded input</text>
+    <text x="70" y="62" text-anchor="middle" class="dim" font-size="10">(K−1 on each side)</text>
+
+    <!-- Kernel overlay -->
+    <rect x="150" y="5" width="60" height="60" rx="4" fill="url(#krnG)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="180" y="30" text-anchor="middle" class="cell-text" fill="#92400e" font-weight="600">3×3</text>
+    <text x="180" y="48" text-anchor="middle" class="cell-text" fill="#92400e">kernel</text>
+  </g>
+
+  <!-- ====== Arrow 3→output ====== -->
+  <line x1="620" y1="148" x2="660" y2="148" stroke="#64748b" stroke-width="1.5" marker-end="url(#arw)"/>
+
+  <!-- ====== OUTPUT ====== -->
+  <text x="730" y="82" text-anchor="middle" class="label">Output</text>
+  <text x="730" y="97" text-anchor="middle" class="dim">4×4 (upsampled!)</text>
+
+  <g transform="translate(670, 108)">
+    <!-- 4×4 output -->
+    <rect x="0" y="0" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="30" y="0" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="60" y="0" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="90" y="0" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="0" y="30" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="30" y="30" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="60" y="30" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="90" y="30" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="0" y="60" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="30" y="60" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="60" y="60" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="90" y="60" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="0" y="90" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="30" y="90" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="60" y="90" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+    <rect x="90" y="90" width="30" height="30" rx="3" fill="url(#oG)" stroke="#059669" stroke-width="1"/>
+  </g>
+
+  <!-- ====== FORMULA BOX ====== -->
+  <rect x="40" y="255" width="740" height="80" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="410" y="282" text-anchor="middle" class="label" font-size="14">Output Size Formula — ConvTranspose2D</text>
+  <text x="410" y="310" text-anchor="middle" class="formula">
+    H_out = (H_in − 1) × s − 2p + K + p_out
+  </text>
+  <text x="410" y="328" text-anchor="middle" class="dim">
+    H_in = input height, s = stride, p = padding, K = kernel size, p_out = output padding
+  </text>
+
+  <!-- ====== EXAMPLE BOX ====== -->
+  <rect x="40" y="350" width="740" height="110" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+
+  <text x="410" y="378" text-anchor="middle" class="result" font-size="14">Example: 2×2 → 4×4 upsampling</text>
+
+  <text x="410" y="406" text-anchor="middle" class="formula-sm">
+    H_out = (2 − 1) × 2 − 2(0) + 3 + 0 = 1 × 2 + 3 = 5
+  </text>
+  <text x="410" y="428" text-anchor="middle" class="dim">
+    With H_in=2, s=2, p=0, K=3, p_out=0   →  5×5 output
+  </text>
+  <text x="410" y="450" text-anchor="middle" class="dim">
+    Same parameter formula as Conv2D: (K_h × K_w × C_in + 1) × C_out
+  </text>
+</svg>

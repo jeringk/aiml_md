@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" role="img" aria-labelledby="t d">
+  <title id="t">LLE graphical view</title>
+  <desc id="d">Swiss-roll-like manifold unrolled to 2D while preserving local neighbors.</desc>
+  <defs><style>
+    .bg{fill:#fff}.title{font:700 18px Arial,sans-serif;fill:#111}.txt{font:12px Arial,sans-serif;fill:#222}
+    .frame{fill:#fafafa;stroke:#111;stroke-width:1.8}.pt{fill:#555}.ln{stroke:#888;stroke-width:1.2}
+  </style></defs>
+  <rect class="bg" width="860" height="340"/>
+  <text class="title" x="430" y="30" text-anchor="middle">LLE: Preserve Local Neighborhoods While Unfolding Manifold</text>
+  <rect class="frame" x="60" y="60" width="330" height="250" rx="10"/>
+  <text class="txt" x="225" y="84" text-anchor="middle">Curved manifold (Swiss-roll-like)</text>
+  <path d="M130 250 C120 170, 250 170, 250 230 C250 280, 170 280, 170 235 C170 205, 220 205, 220 230" fill="none" stroke="#111" stroke-width="2"/>
+  <circle class="pt" cx="130" cy="250" r="4"/><circle class="pt" cx="145" cy="220" r="4"/><circle class="pt" cx="168" cy="197" r="4"/><circle class="pt" cx="195" cy="188" r="4"/><circle class="pt" cx="225" cy="197" r="4"/><circle class="pt" cx="245" cy="220" r="4"/>
+  <line class="ln" x1="168" y1="197" x2="195" y2="188"/><line class="ln" x1="195" y1="188" x2="225" y2="197"/><line class="ln" x1="225" y1="197" x2="245" y2="220"/>
+  <rect class="frame" x="470" y="60" width="330" height="250" rx="10"/>
+  <text class="txt" x="635" y="84" text-anchor="middle">Unrolled low-dimensional embedding</text>
+  <circle class="pt" cx="520" cy="220" r="4"/><circle class="pt" cx="550" cy="205" r="4"/><circle class="pt" cx="580" cy="193" r="4"/><circle class="pt" cx="610" cy="182" r="4"/><circle class="pt" cx="640" cy="171" r="4"/><circle class="pt" cx="670" cy="160" r="4"/><circle class="pt" cx="700" cy="148" r="4"/><circle class="pt" cx="730" cy="136" r="4"/>
+  <line class="ln" x1="520" y1="220" x2="550" y2="205"/><line class="ln" x1="550" y1="205" x2="580" y2="193"/><line class="ln" x1="580" y1="193" x2="610" y2="182"/>
+  <line class="ln" x1="610" y1="182" x2="640" y2="171"/><line class="ln" x1="640" y1="171" x2="670" y2="160"/><line class="ln" x1="670" y1="160" x2="700" y2="148"/>
+</svg>

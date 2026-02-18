@@ -9,12 +9,12 @@
 
 ## Courses
 
-| Code | Course Name                | Folder  |
-|------|----------------------------|---------|
-| ADL  | Advanced Deep Learning     | `ADL/`  |
-| NLPA | NLP Applications           | `NLPA/` |
-| CAI  | Conversational AI          | `CAI/`  |
-| SMA  | Social Media Analytics     | `SMA/`  |
+| Code | Course Name                | Home | Study | Questions |
+|------|----------------------------|------|-------|-----------|
+| ADL  | Advanced Deep Learning     | [ADL](ADL/) | [Study](ADL/study/) | [Questions](ADL/questions/) |
+| NLPA | NLP Applications           | [NLPA](NLPA/) | [Study](NLPA/study/) | [Questions](NLPA/questions/) |
+| CAI  | Conversational AI          | [CAI](CAI/) | [Study](CAI/study/) | [Questions](CAI/questions/) |
+| SMA  | Social Media Analytics     | [SMA](SMA/) | [Study](SMA/study/) | [Questions](SMA/questions/) |
 
 ---
 
@@ -67,3 +67,16 @@ See [`QUESTION_TEMPLATE.md`](QUESTION_TEMPLATE.md) for the exact formatting temp
 2. Use `study/` for topic-wise revision
 3. Use `questions/` for practice — print-friendly with page breaks
 4. Open in any markdown viewer/editor that supports LaTeX math (VS Code, Typora, Obsidian, etc.)
+
+---
+
+## Quick Navigation
+
+- [Advanced Deep Learning - Study](ADL/study/)
+- [Advanced Deep Learning - Questions](ADL/questions/)
+- [NLP Applications - Study](NLPA/study/)
+- [NLP Applications - Questions](NLPA/questions/)
+- [Conversational AI - Study](CAI/study/)
+- [Conversational AI - Questions](CAI/questions/)
+- [Social Media Analytics - Study](SMA/study/)
+- [Social Media Analytics - Questions](SMA/questions/)

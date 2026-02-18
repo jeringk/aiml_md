@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="320" viewBox="0 0 860 320" role="img" aria-labelledby="t d">
+  <title id="t">Randomized PCA graphical view</title>
+  <desc id="d">Point cloud with true and approximate principal subspaces.</desc>
+  <defs><style>
+    .bg{fill:#fff}.title{font:700 18px Arial,sans-serif;fill:#111}.txt{font:12px Arial,sans-serif;fill:#222}
+    .pt{fill:#666}.axis{stroke:#111;stroke-width:2}.approx{stroke:#777;stroke-width:3;stroke-dasharray:6 4}
+    .frame{fill:#fafafa;stroke:#111;stroke-width:1.8}
+  </style></defs>
+  <rect class="bg" width="860" height="320"/>
+  <text class="title" x="430" y="30" text-anchor="middle">Randomized PCA: Approximate Principal Directions</text>
+  <rect class="frame" x="50" y="60" width="350" height="220" rx="10"/>
+  <text class="txt" x="225" y="82" text-anchor="middle">Original high-dimensional cloud (projected view)</text>
+  <g transform="translate(0,0)">
+    <circle class="pt" cx="150" cy="210" r="4"/><circle class="pt" cx="170" cy="190" r="4"/><circle class="pt" cx="190" cy="176" r="4"/><circle class="pt" cx="210" cy="165" r="4"/>
+    <circle class="pt" cx="230" cy="152" r="4"/><circle class="pt" cx="250" cy="145" r="4"/><circle class="pt" cx="270" cy="133" r="4"/><circle class="pt" cx="290" cy="125" r="4"/>
+    <circle class="pt" cx="130" cy="222" r="4"/><circle class="pt" cx="175" cy="206" r="4"/><circle class="pt" cx="220" cy="174" r="4"/><circle class="pt" cx="255" cy="161" r="4"/>
+    <line class="axis" x1="115" y1="238" x2="315" y2="112"/>
+    <line class="approx" x1="120" y1="246" x2="322" y2="126"/>
+  </g>
+  <rect class="frame" x="460" y="60" width="350" height="220" rx="10"/>
+  <text class="txt" x="635" y="82" text-anchor="middle">Randomized approximation nearly overlaps top PC</text>
+  <g>
+    <circle class="pt" cx="560" cy="208" r="4"/><circle class="pt" cx="580" cy="192" r="4"/><circle class="pt" cx="600" cy="180" r="4"/><circle class="pt" cx="620" cy="168" r="4"/>
+    <circle class="pt" cx="640" cy="156" r="4"/><circle class="pt" cx="660" cy="144" r="4"/><circle class="pt" cx="680" cy="136" r="4"/><circle class="pt" cx="700" cy="124" r="4"/>
+    <line class="axis" x1="530" y1="236" x2="730" y2="114"/>
+    <line class="approx" x1="534" y1="240" x2="732" y2="120"/>
+  </g>
+  <text class="txt" x="430" y="306" text-anchor="middle">Dashed line: randomized estimate, Solid line: exact top component</text>
+</svg>

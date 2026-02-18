@@ -40,3 +40,25 @@ Example: *founded_by(Apple Inc., Steve Jobs)*.
 **Temporal Expression Extraction**:
 -   Extracting time expressions (absolute like "Jan 1, 2024" or relative like "next Tuesday").
 -   Normalizing them to a standard format (ISO 8601).
+
+### Evaluation Metrics for NER and Event Extraction
+
+#### Strict Exact Match
+
+For strict IE evaluation, a prediction is correct only if span and label/type match exactly.
+For events/relations, event type and required arguments must all match exactly.
+
+#### Precision, Recall, and F1 for IE
+
+$$
+\text{Precision}=\frac{TP}{TP+FP},\quad
+\text{Recall}=\frac{TP}{TP+FN},\quad
+F1=\frac{2PR}{P+R}
+$$
+
+where:
+- $TP$: true positives
+- $FP$: false positives
+- $FN$: false negatives
+- $P$: precision
+- $R$: recall

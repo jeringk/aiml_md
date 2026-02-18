@@ -16,6 +16,22 @@ A **Knowledge Graph** represents a collection of interlinked descriptions of ent
 3.  **Disambiguation**: Helps in resolving entity ambiguity by using context from the graph.
 4.  **Explainability**: Paths in the graph provide a trace for reasoning.
 
+### Entity Linking Accuracy
+
+Entity linking maps mentions in text to canonical KG entities.
+If linking accuracy is $a$ and a query contains $n$ detected mentions, expected correctly linked mentions are:
+
+$$
+\mathbb{E}[\text{correct links}] = n\times a
+$$
+
+### Knowledge Graphs in Chatbots
+
+Knowledge Graphs support knowledge-grounded responses by enabling:
+- entity disambiguation in user queries
+- multi-hop retrieval over connected facts
+- factual answer generation with traceable relations
+
 ## Retrieval-Augmented Generation (RAG)
 
 Combines the power of Large Language Models (LLMs) with external knowledge sources.

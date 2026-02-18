@@ -23,3 +23,10 @@ Study notes and summaries for **Advanced Deep Learning**.
 ---
 
 > **Tip:** Use clear headings, bullet points, and LaTeX math (`$...$` for inline, `$$...$$` for display) for all formulas.
+
+---
+
+## Navigation
+
+- [Course Home](../)
+- [Back to Homepage](../../)

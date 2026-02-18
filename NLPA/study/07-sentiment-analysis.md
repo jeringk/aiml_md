@@ -24,6 +24,28 @@ The computational study of people's opinions, sentiments, emotions, and attitude
 -   **Features**: N-grams (unigrams, bigrams), TF-IDF vectors, Part-of-Speech tags.
 -   **Classifiers**: Naive Bayes, Support Vector Machines (SVM), Logistic Regression.
 
+### Naive Bayes for Sentiment Classification
+
+For a document $D$ and class $c$, Naive Bayes uses:
+
+$$
+\text{Score}(c\mid D)\propto P(c)\prod_{k} P(w_k\mid c)
+$$
+
+where:
+- $P(c)$: class prior
+- $P(w_k\mid c)$: likelihood of token $w_k$ under class $c$
+
+### Negation Handling with NOT Tokens
+
+A common heuristic is to convert tokens following negation into negated features (for example, `not good` -> `NOT_good`) until punctuation.
+This helps model polarity reversal.
+
+### Decision Rule Using Posterior Scores
+
+Compute class scores and predict the class with the larger score.
+Normalization is optional for argmax-based classification.
+
 ## Neural Networks for Sentiment Analysis
 
 1.  **RNNs / LSTMs**:

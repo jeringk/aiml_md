@@ -1,6 +1,6 @@
-# CAI — Questions
+# NLPA — Questions
 
-Past question papers and generated practice questions for **Conversational AI**.
+Past question papers and generated practice questions for **NLP Applications**.
 
 ---
 
@@ -18,12 +18,17 @@ All questions are numbered sequentially (Q1, Q2, Q3…).
 
 ## Files
 
-_Add question files here. Example structure:_
-
-- `midsem-june-2025.md` — Mid-Semester June 2025 paper
-- `comprehensive-june-2025.md` — Comprehensive June 2025 paper
-- `generated-practice-set-1.md` — Generated practice questions
+- [End-Semester EC-2 Regular 2024-2025](endsem-ec2-regular-2025.md)
 
 ---
 
 > **Note:** Use `<div style="page-break-after: always;"></div>` between pages for print-ready output.
+
+---
+
+## Navigation
+
+- [Course Home](../)
+- [Study](../study/)
+- [Questions Index](./)
+- [Back to Homepage](../../)

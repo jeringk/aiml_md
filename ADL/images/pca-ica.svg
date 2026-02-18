@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="340" viewBox="0 0 860 340" role="img" aria-labelledby="t d">
+  <title id="t">ICA graphical view</title>
+  <desc id="d">Mixed signals are unmixed into independent source waveforms.</desc>
+  <defs><style>
+    .bg{fill:#fff}.title{font:700 18px Arial,sans-serif;fill:#111}.txt{font:12px Arial,sans-serif;fill:#222}
+    .frame{fill:#fafafa;stroke:#111;stroke-width:1.8}.w1{stroke:#555;stroke-width:2;fill:none}.w2{stroke:#111;stroke-width:2;fill:none}
+  </style></defs>
+  <rect class="bg" width="860" height="340"/>
+  <text class="title" x="430" y="30" text-anchor="middle">ICA: Separate Mixed Signals into Independent Components</text>
+  <rect class="frame" x="60" y="60" width="330" height="250" rx="10"/>
+  <text class="txt" x="225" y="84" text-anchor="middle">Observed mixtures (x)</text>
+  <path class="w1" d="M80 180 C110 130,140 230,170 180 C200 130,230 230,260 180 C290 130,320 230,350 180"/>
+  <path class="w2" d="M80 220 L110 220 L110 140 L140 140 L140 220 L170 220 L170 140 L200 140 L200 220 L230 220 L230 140 L260 140 L260 220 L290 220 L290 140 L320 140 L320 220 L350 220"/>
+  <rect class="frame" x="470" y="60" width="330" height="250" rx="10"/>
+  <text class="txt" x="635" y="84" text-anchor="middle">Recovered independent sources (s)</text>
+  <path class="w1" d="M490 180 C520 130,550 230,580 180 C610 130,640 230,670 180 C700 130,730 230,760 180"/>
+  <path class="w2" d="M490 230 L520 230 L520 130 L550 130 L550 230 L580 230 L580 130 L610 130 L610 230 L640 230 L640 130 L670 130 L670 230 L700 230 L700 130 L730 130 L730 230 L760 230"/>
+  <text class="txt" x="430" y="328" text-anchor="middle">Waveforms become interpretable after unmixing matrix W is learned</text>
+</svg>

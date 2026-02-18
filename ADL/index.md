@@ -8,7 +8,7 @@
 
 ## Contents
 
-- [`pre-req.md`](pre-req.md) — Pre-requisite topics assumed before this course
+- [`pre-req.md`](study/00-pre-req.md) — Pre-requisite topics assumed before this course
 - [`study/`](study/) — Topic-wise study notes and summaries
 - [`questions/`](questions/) — Past papers and practice questions
 
@@ -129,3 +129,12 @@
 ### [11. Time Series Modeling and Generation](study/11-time-series-modeling.md)
 - Advanced VAE and GAN techniques for modelling of time-series data
 - Generation of time-series data (ARIMA, S-ARIMA etc.)
+
+---
+
+## Navigation
+
+- [Course Home](./)
+- [Study](study/)
+- [Questions](questions/)
+- [Back to Homepage](../)

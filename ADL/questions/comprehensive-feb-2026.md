@@ -77,6 +77,10 @@ To answer this question, study the following:
   - Encoder: maps input → latent distribution parameters ($\mu$, $\log \sigma^2$)
   - Decoder: maps latent vector $z$ → reconstructed output
   - Latent space: defined by mean and log-variance vectors
+  - Posterior parameterization: $q_\phi(z|x)=\mathcal{N}\!\left(\mu_\phi(x), \operatorname{diag}(\sigma_\phi^2(x))\right)$
+  - Mean head parameter count (Dense): $(D_{\text{prev}}+1)\times D_z$
+  - Log-variance head parameter count (Dense): $(D_{\text{prev}}+1)\times D_z$
+  - For this question: $(128+1)\times 10=1{,}290$ for each head
 
 - **Reparameterization Trick** — 📖 [6.4 Optimizing VLB / ELBO](../study/06-variational-inferencing.md#64-optimizing-vlb--elbo)
   - Formula: $z = \mu + \sigma \odot \varepsilon$, where $\varepsilon \sim \mathcal{N}(0, I)$
@@ -129,6 +133,8 @@ To answer this question, study the following:
 
 $$320 + 18{,}496 + 1{,}605{,}760 + 1{,}290 + 1{,}290 = \boxed{1{,}627{,}156}$$
 
+![CNN-based VAE Encoder (MNIST)](../images/vae-mnist-encoder.svg)
+
 ---
 
 ### Part A(ii): Decoder Trainable Parameters (4 marks)
@@ -164,6 +170,8 @@ $$320 + 18{,}496 + 1{,}605{,}760 + 1{,}290 + 1{,}290 = \boxed{1{,}627{,}156}$$
 **Total Decoder Parameters:**
 
 $$34{,}496 + 36{,}928 + 18{,}464 + 289 = \boxed{90{,}177}$$
+
+![CNN-based VAE Decoder (MNIST)](../images/vae-mnist-decoder.svg)
 
 ---
 
@@ -679,3 +687,12 @@ $$h_b = \tanh(W_b \mathbf{x} + b_b) = \tanh\left(\begin{bmatrix} 0 & 1 \\ 1 & 0 
 $$\text{CoVe}(\mathbf{x}) = h_f + h_b = \begin{bmatrix} 0.7998 \\ 0.9559 \end{bmatrix} + \begin{bmatrix} 0.9468 \\ 0.8337 \end{bmatrix} = \boxed{\begin{bmatrix} 1.7466 \\ 1.7896 \end{bmatrix}}$$
 
 <div style="page-break-after: always;"></div>
+
+---
+
+## Navigation
+
+- [Questions Index](./)
+- [Study](../study/)
+- [Course Home](../)
+- [Back to Homepage](../../)

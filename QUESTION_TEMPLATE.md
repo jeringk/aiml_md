@@ -101,6 +101,15 @@ This prevents gradient decay through active neurons.
 
 <div style="page-break-after: always;"></div>
 
+---
+
+## Navigation
+
+- [Questions Index](./)
+- [Study](../study/)
+- [Course Home](../)
+- [Back to Homepage](../../)
+
 <!-- ═══════════════════════════════════════════════════════ -->
 <!-- ADD MORE QUESTIONS BELOW FOLLOWING THE SAME PATTERN    -->
 <!-- Q2, Q3, Q4... each with 3 pages                        -->

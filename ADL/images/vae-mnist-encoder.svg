@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">CNN VAE Encoder for MNIST</title>
+  <desc id="desc">Grayscale architecture diagram of VAE encoder: input 1x28x28, conv blocks, flatten, dense 128, and parallel mu and logvar heads of size 10.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fff}
+      .title{font:700 24px Arial,Helvetica,sans-serif;fill:#111}
+      .sub{font:600 14px Arial,Helvetica,sans-serif;fill:#222}
+      .txt{font:13px Arial,Helvetica,sans-serif;fill:#222}
+      .mono{font:13px 'Courier New',Courier,monospace;fill:#111}
+      .box{fill:#f2f2f2;stroke:#4f4f4f;stroke-width:1.6}
+      .box2{fill:#dcdcdc;stroke:#3f3f3f;stroke-width:1.6}
+      .head{fill:#c8c8c8;stroke:#2f2f2f;stroke-width:1.7}
+      .arr{stroke:#4a4a4a;stroke-width:2;fill:none;marker-end:url(#a)}
+      .rule{stroke:#737373;stroke-width:1.2}
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#4a4a4a"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="520"/>
+  <text class="title" x="28" y="42">VAE Encoder (MNIST, CNN-based)</text>
+  <text class="sub" x="28" y="66">Grayscale high-contrast diagram for black-and-white print</text>
+
+  <rect class="box" x="28" y="102" width="138" height="96" rx="10"/>
+  <text class="txt" x="44" y="132">Input Image</text>
+  <text class="mono" x="44" y="156">(1, 28, 28)</text>
+  <text class="txt" x="44" y="178">MNIST grayscale</text>
+
+  <rect class="box2" x="208" y="102" width="166" height="110" rx="10"/>
+  <text class="txt" x="222" y="130">Conv2D #1</text>
+  <text class="mono" x="222" y="152">32 filters, 3x3</text>
+  <text class="mono" x="222" y="172">stride=1, same</text>
+  <text class="mono" x="222" y="192">out: (32, 28, 28)</text>
+
+  <rect class="box2" x="412" y="102" width="166" height="110" rx="10"/>
+  <text class="txt" x="426" y="130">Conv2D #2</text>
+  <text class="mono" x="426" y="152">64 filters, 3x3</text>
+  <text class="mono" x="426" y="172">stride=2, same</text>
+  <text class="mono" x="426" y="192">out: (64, 14, 14)</text>
+
+  <rect class="box" x="614" y="102" width="126" height="96" rx="10"/>
+  <text class="txt" x="632" y="132">Flatten</text>
+  <text class="mono" x="628" y="156">64x14x14</text>
+  <text class="mono" x="628" y="176">= 12,544</text>
+
+  <rect class="box2" x="764" y="102" width="128" height="96" rx="10"/>
+  <text class="txt" x="780" y="132">Dense + ReLU</text>
+  <text class="mono" x="784" y="156">128 units</text>
+
+  <rect class="head" x="656" y="292" width="120" height="90" rx="10"/>
+  <text class="txt" x="688" y="320">Mean Head</text>
+  <text class="mono" x="676" y="344">Dense: 128->10</text>
+  <text class="mono" x="690" y="366">mu (10)</text>
+
+  <rect class="head" x="798" y="292" width="120" height="90" rx="10"/>
+  <text class="txt" x="814" y="320">LogVar Head</text>
+  <text class="mono" x="818" y="344">128->10</text>
+  <text class="mono" x="804" y="366">log(sigma^2) (10)</text>
+
+  <path class="arr" d="M166 150H208"/>
+  <path class="arr" d="M374 156H412"/>
+  <path class="arr" d="M578 150H614"/>
+  <path class="arr" d="M740 150H764"/>
+
+  <path class="arr" d="M824 198V246"/>
+  <path class="arr" d="M824 246C824 268 760 276 716 292"/>
+  <path class="arr" d="M824 246C824 268 842 276 858 292"/>
+
+  <line class="rule" x1="28" y1="428" x2="892" y2="428"/>
+  <text class="mono" x="28" y="454">Encoder mapping: x -> h -> {mu, log(sigma^2)} with latent dimension z_dim=10</text>
+  <text class="txt" x="28" y="478">Trainable layers shown: Conv2D, Dense, and two latent heads</text>
+</svg>

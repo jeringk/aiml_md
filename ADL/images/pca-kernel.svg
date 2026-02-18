@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" role="img" aria-labelledby="t d">
+  <title id="t">Kernel PCA graphical view</title>
+  <desc id="d">Concentric nonlinear pattern becomes linearly separable in kernel feature space.</desc>
+  <defs><style>
+    .bg{fill:#fff}.title{font:700 18px Arial,sans-serif;fill:#111}.txt{font:12px Arial,sans-serif;fill:#222}
+    .c1{fill:#888}.c2{fill:#333}.frame{fill:#fafafa;stroke:#111;stroke-width:1.8}.sep{stroke:#111;stroke-width:2.4}
+  </style></defs>
+  <rect class="bg" width="860" height="330"/>
+  <text class="title" x="430" y="30" text-anchor="middle">Kernel PCA: Nonlinear to Linear in Feature Space</text>
+  <rect class="frame" x="60" y="60" width="320" height="230" rx="10"/>
+  <text class="txt" x="220" y="84" text-anchor="middle">Input space (nonlinear structure)</text>
+  <circle cx="220" cy="175" r="78" fill="none" stroke="#777" stroke-width="2"/>
+  <circle cx="220" cy="175" r="36" fill="none" stroke="#222" stroke-width="2"/>
+  <circle class="c1" cx="260" cy="110" r="4"/><circle class="c1" cx="155" cy="135" r="4"/><circle class="c1" cx="285" cy="196" r="4"/><circle class="c1" cx="165" cy="245" r="4"/>
+  <circle class="c2" cx="236" cy="150" r="4"/><circle class="c2" cx="200" cy="180" r="4"/><circle class="c2" cx="240" cy="200" r="4"/><circle class="c2" cx="188" cy="155" r="4"/>
+  <text class="txt" x="220" y="270" text-anchor="middle">Circles are not linearly separable</text>
+  <rect class="frame" x="480" y="60" width="320" height="230" rx="10"/>
+  <text class="txt" x="640" y="84" text-anchor="middle">Kernel feature space projection</text>
+  <circle class="c1" cx="570" cy="145" r="4"/><circle class="c1" cx="595" cy="160" r="4"/><circle class="c1" cx="620" cy="170" r="4"/><circle class="c1" cx="645" cy="185" r="4"/><circle class="c1" cx="670" cy="196" r="4"/>
+  <circle class="c2" cx="570" cy="230" r="4"/><circle class="c2" cx="595" cy="220" r="4"/><circle class="c2" cx="620" cy="208" r="4"/><circle class="c2" cx="645" cy="198" r="4"/><circle class="c2" cx="670" cy="188" r="4"/>
+  <line class="sep" x1="545" y1="188" x2="700" y2="188"/>
+  <text class="txt" x="640" y="270" text-anchor="middle">Linear separation after kernel mapping</text>
+</svg>

@@ -589,3 +589,12 @@ $$L = L_{\text{recon}} + L_{\text{KL}} = 0.02 + 0.5533$$
 $$\boxed{L = 0.5733}$$
 
 <div style="page-break-after: always;"></div>
+
+---
+
+## Navigation
+
+- [Questions Index](./)
+- [Study](../study/)
+- [Course Home](../)
+- [Back to Homepage](../../)

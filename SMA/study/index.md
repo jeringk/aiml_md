@@ -22,3 +22,10 @@ Topic-wise study notes for Social Media Analytics.
 | 14 | Strategies & Multi-modal Analytics | [14-strategies-multimodal.md](14-strategies-multimodal.md) |
 | 15 | Ethics in Social Media | [15-ethics.md](15-ethics.md) |
 | 16 | Graph Representation Learning | [16-graph-representation-learning.md](16-graph-representation-learning.md) |
+
+---
+
+## Navigation
+
+- [Course Home](../)
+- [Back to Homepage](../../)

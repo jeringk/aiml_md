@@ -18,6 +18,47 @@ $$ \hat{T} = \operatorname*{argmax}_T P(T|S) = \operatorname*{argmax}_T P(S|T) P
 The process of identifying which words in the source sentence correspond to which words in the target sentence.
 -   **IBM Models**: A series of probabilistic models for word alignment.
 
+#### IBM Model 1 and EM Training
+
+IBM Model 1 estimates lexical translation probabilities with EM.
+
+$$
+t(f|e)=\frac{c(f,e)}{c(e)}
+$$
+
+where:
+- $f$: target-language word
+- $e$: source-language word
+- $c(f,e)$: expected count of pair $(f,e)$ from E-step
+- $c(e)$: expected count of source word $e$
+
+E-step posterior alignment for target word position $j$:
+
+$$
+P(a_j=i\mid f_j,\mathbf{e})=\frac{t(f_j|e_i)}{\sum_{i'} t(f_j|e_{i'})}
+$$
+
+#### Uniform Initialization Effect
+
+When all initial $t(f|e)$ values are equal, first-iteration posteriors become uniform over candidate source positions.
+This is why the first E-step often gives equal alignment probability to each source token.
+
+#### HMM Alignment and Locality Penalty
+
+HMM alignment adds transition probability across alignment positions, unlike IBM Model 1.
+
+A common locality penalty form is:
+
+$$
+s(d)=\alpha^{|d|}
+$$
+
+where:
+- $d$: jump distance between positions
+- $\alpha\in(0,1)$: locality decay factor
+
+Larger jumps receive smaller probability mass.
+
 ---
 
 ## Neural Machine Translation (NMT)
@@ -39,6 +80,28 @@ Solves the bottleneck problem of fixed-length context vectors.
 $$ c_i = \sum_{j=1}^{T_x} \alpha_{ij} h_j $$
 Where $\alpha_{ij}$ are attention weights.
 
+#### Attention Entropy and Alignment Confidence
+
+Attention concentration can be summarized with entropy:
+
+$$
+H=-\sum_i p_i\log_2 p_i
+$$
+
+where $p_i$ are attention weights over source tokens.
+Lower entropy indicates more concentrated attention.
+
+## Evaluation of MT Quality BLEU
+
+BLEU compares machine translation output against one or more reference translations using modified n-gram precision and brevity penalty.
+
+Higher BLEU generally indicates better translation quality at corpus level.
+
+## Domain Shift in MT
+
+Model quality often drops when test-domain data differs from training data (news vs social media vs technical text).
+This is observed as BLEU degradation on out-of-domain content.
+
 ---
 
 ## Indic Language Translation
@@ -51,6 +114,18 @@ Translation involving Indian languages (e.g., Hindi, Tamil, Bengali).
 2.  **Morphological Richness**: Indian languages are highly agglutinative and morphologically rich.
 3.  **Script Diversity**: Many different scripts (Devanagari, Dravidian, etc.).
 4.  **Code-Mixing**: Frequent mixing of English and local languages in daily usage (Hinglish).
+
+### OOV and Code-Mixing in Indic MT
+
+Out-of-vocabulary (OOV) rates typically increase with code-mixed inputs because mixed-script and mixed-language forms are less frequent in parallel corpora.
+
+A relative increase calculation is:
+
+$$
+\text{new OOV}=\text{base OOV}\times(1+r)
+$$
+
+where $r$ is the fractional increase due to code-mixing.
 
 ### Approaches
 

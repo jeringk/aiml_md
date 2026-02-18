@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Flatten and Reshape Operations</title>
+  <desc id="desc">Grayscale diagram showing flatten from CxHxW tensor to 1D vector and reshape back to tensor with zero trainable parameters.</desc>
+
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .panel { fill: #f3f3f3; stroke: #555555; stroke-width: 1.5; }
+      .title { font: 700 24px Arial, Helvetica, sans-serif; fill: #111111; }
+      .subtitle { font: 600 14px Arial, Helvetica, sans-serif; fill: #222222; }
+      .label { font: 13px Arial, Helvetica, sans-serif; fill: #222222; }
+      .small { font: 12px Arial, Helvetica, sans-serif; fill: #333333; }
+      .mono { font: 16px 'Courier New', Courier, monospace; fill: #111111; }
+      .tensor-a { fill: #d9d9d9; stroke: #404040; stroke-width: 1.2; }
+      .tensor-b { fill: #bfbfbf; stroke: #2f2f2f; stroke-width: 1.2; }
+      .vector { fill: #e3e3e3; stroke: #4a4a4a; stroke-width: 1.2; }
+      .arrow { stroke: #4a4a4a; stroke-width: 2; fill: none; marker-end: url(#head); }
+      .line { stroke: #787878; stroke-width: 1.1; }
+    </style>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a4a4a" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="900" height="520" />
+
+  <text class="title" x="30" y="40">Flatten / Reshape (0 Trainable Parameters)</text>
+  <text class="subtitle" x="30" y="66">Data layout changes only; no weights, no biases</text>
+
+  <rect class="panel" x="30" y="90" width="260" height="300" rx="10" />
+  <text class="subtitle" x="46" y="118">Input Tensor</text>
+  <text class="mono" x="46" y="144">X in R^(C x H x W)</text>
+
+  <rect class="tensor-a" x="70" y="180" width="95" height="120" rx="5" />
+  <rect class="tensor-b" x="95" y="165" width="95" height="120" rx="5" />
+  <rect class="tensor-a" x="120" y="150" width="95" height="120" rx="5" />
+
+  <text class="label" x="140" y="215">H x W</text>
+  <text class="label" x="136" y="236">slice 1</text>
+  <text class="label" x="150" y="305">...</text>
+  <text class="small" x="46" y="350">C slices stacked in channel dimension</text>
+
+  <rect class="panel" x="320" y="90" width="260" height="300" rx="10" />
+  <text class="subtitle" x="336" y="118">Flatten Output</text>
+  <text class="mono" x="336" y="144">x_flat in R^(C*H*W)</text>
+
+  <rect class="vector" x="360" y="190" width="180" height="62" rx="6" />
+  <line class="line" x1="390" y1="190" x2="390" y2="252" />
+  <line class="line" x1="420" y1="190" x2="420" y2="252" />
+  <line class="line" x1="450" y1="190" x2="450" y2="252" />
+  <line class="line" x1="480" y1="190" x2="480" y2="252" />
+  <line class="line" x1="510" y1="190" x2="510" y2="252" />
+  <text class="label" x="372" y="231">x1   x2   x3   ...   xN</text>
+  <text class="small" x="336" y="350">N = C*H*W</text>
+
+  <rect class="panel" x="610" y="90" width="260" height="300" rx="10" />
+  <text class="subtitle" x="626" y="118">Reshape Output</text>
+  <text class="mono" x="626" y="144">X_hat in R^(C x H x W)</text>
+
+  <rect class="tensor-a" x="650" y="180" width="95" height="120" rx="5" />
+  <rect class="tensor-b" x="675" y="165" width="95" height="120" rx="5" />
+  <rect class="tensor-a" x="700" y="150" width="95" height="120" rx="5" />
+
+  <text class="label" x="720" y="215">H x W</text>
+  <text class="label" x="716" y="236">slice C</text>
+  <text class="small" x="626" y="350">Spatial structure restored by shape metadata</text>
+
+  <path class="arrow" d="M 292 230 L 316 230" />
+  <path class="arrow" d="M 582 230 L 606 230" />
+  <text class="small" x="286" y="214">Flatten</text>
+  <text class="small" x="576" y="214">Reshape</text>
+
+  <line class="line" x1="30" y1="430" x2="870" y2="430" />
+  <text class="mono" x="30" y="458">Flatten: (B, C, H, W) -> (B, C*H*W)   |   Reshape: (B, N) -> (B, C, H, W)</text>
+  <text class="small" x="30" y="484">Grayscale high-contrast layout for black-and-white print output</text>
+</svg>

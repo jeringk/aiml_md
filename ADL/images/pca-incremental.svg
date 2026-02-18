@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="320" viewBox="0 0 860 320" role="img" aria-labelledby="t d">
+  <title id="t">Incremental PCA graphical view</title>
+  <desc id="d">Batches of points progressively refining a shared principal axis.</desc>
+  <defs><style>
+    .bg{fill:#fff}.title{font:700 18px Arial,sans-serif;fill:#111}.txt{font:12px Arial,sans-serif;fill:#222}
+    .pt1{fill:#999}.pt2{fill:#666}.pt3{fill:#333}.axis{stroke:#111;stroke-width:2.2}.frame{fill:#fafafa;stroke:#111;stroke-width:1.6}
+  </style></defs>
+  <rect class="bg" width="860" height="320"/>
+  <text class="title" x="430" y="30" text-anchor="middle">Incremental PCA: Batch-wise Refinement</text>
+  <rect class="frame" x="60" y="58" width="230" height="220" rx="10"/>
+  <rect class="frame" x="315" y="58" width="230" height="220" rx="10"/>
+  <rect class="frame" x="570" y="58" width="230" height="220" rx="10"/>
+  <text class="txt" x="175" y="80" text-anchor="middle">After batch 1</text><text class="txt" x="430" y="80" text-anchor="middle">After batch 2</text><text class="txt" x="685" y="80" text-anchor="middle">After batch 3</text>
+  <g>
+    <circle class="pt1" cx="125" cy="205" r="4"/><circle class="pt1" cx="145" cy="190" r="4"/><circle class="pt1" cx="165" cy="176" r="4"/><circle class="pt1" cx="185" cy="162" r="4"/><circle class="pt1" cx="205" cy="150" r="4"/>
+    <line class="axis" x1="110" y1="226" x2="220" y2="140"/>
+  </g>
+  <g>
+    <circle class="pt1" cx="380" cy="207" r="4"/><circle class="pt1" cx="400" cy="192" r="4"/><circle class="pt1" cx="420" cy="176" r="4"/>
+    <circle class="pt2" cx="440" cy="170" r="4"/><circle class="pt2" cx="460" cy="152" r="4"/><circle class="pt2" cx="480" cy="140" r="4"/>
+    <line class="axis" x1="362" y1="230" x2="495" y2="132"/>
+  </g>
+  <g>
+    <circle class="pt1" cx="630" cy="210" r="4"/><circle class="pt2" cx="650" cy="194" r="4"/><circle class="pt3" cx="670" cy="180" r="4"/><circle class="pt3" cx="690" cy="166" r="4"/>
+    <circle class="pt2" cx="710" cy="153" r="4"/><circle class="pt3" cx="730" cy="140" r="4"/><circle class="pt3" cx="750" cy="128" r="4"/>
+    <line class="axis" x1="610" y1="232" x2="760" y2="122"/>
+  </g>
+  <text class="txt" x="430" y="304" text-anchor="middle">Principal direction stabilizes as new mini-batches arrive</text>
+</svg>

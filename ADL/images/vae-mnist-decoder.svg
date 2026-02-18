@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="540" viewBox="0 0 920 540" role="img" aria-labelledby="title desc">
+  <title id="title">CNN VAE Decoder for MNIST</title>
+  <desc id="desc">Grayscale architecture diagram of VAE decoder: latent z of size 10 through dense, reshape, and three transposed convolutions to reconstructed output.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fff}
+      .title{font:700 24px Arial,Helvetica,sans-serif;fill:#111}
+      .sub{font:600 14px Arial,Helvetica,sans-serif;fill:#222}
+      .txt{font:13px Arial,Helvetica,sans-serif;fill:#222}
+      .mono{font:13px 'Courier New',Courier,monospace;fill:#111}
+      .box{fill:#f2f2f2;stroke:#4f4f4f;stroke-width:1.6}
+      .box2{fill:#dcdcdc;stroke:#3f3f3f;stroke-width:1.6}
+      .out{fill:#c8c8c8;stroke:#2f2f2f;stroke-width:1.7}
+      .arr{stroke:#4a4a4a;stroke-width:2;fill:none;marker-end:url(#a)}
+      .note{fill:#efefef;stroke:#6a6a6a;stroke-width:1.2}
+      .rule{stroke:#737373;stroke-width:1.2}
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#4a4a4a"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="540"/>
+  <text class="title" x="28" y="42">VAE Decoder (MNIST, CNN-based)</text>
+  <text class="sub" x="28" y="66">Grayscale high-contrast diagram for black-and-white print</text>
+
+  <rect class="box" x="28" y="106" width="126" height="92" rx="10"/>
+  <text class="txt" x="42" y="134">Latent Input</text>
+  <text class="mono" x="50" y="160">z: (10,)</text>
+
+  <rect class="box2" x="186" y="96" width="188" height="112" rx="10"/>
+  <text class="txt" x="202" y="124">Dense + ReLU</text>
+  <text class="mono" x="202" y="148">10 -> 7x7x64</text>
+  <text class="mono" x="202" y="170">= 3,136 units</text>
+  <text class="mono" x="202" y="192">vector output</text>
+
+  <rect class="box" x="406" y="106" width="156" height="92" rx="10"/>
+  <text class="txt" x="422" y="134">Reshape</text>
+  <text class="mono" x="422" y="160">(64, 7, 7)</text>
+
+  <rect class="box2" x="592" y="86" width="300" height="126" rx="10"/>
+  <text class="txt" x="608" y="114">ConvTranspose2D #1 + ReLU</text>
+  <text class="mono" x="608" y="138">64 filters, 3x3, stride=2, same, out_pad=1</text>
+  <text class="mono" x="608" y="162">params: (3x3x64 + 1) x 64 = 36,928</text>
+  <text class="mono" x="608" y="186">out: (64, 14, 14)</text>
+
+  <rect class="box2" x="258" y="270" width="312" height="118" rx="10"/>
+  <text class="txt" x="274" y="298">ConvTranspose2D #2 + ReLU</text>
+  <text class="mono" x="274" y="322">32 filters, 3x3, stride=1, same</text>
+  <text class="mono" x="274" y="346">params: (3x3x64 + 1) x 32 = 18,464</text>
+  <text class="mono" x="274" y="370">out: (32, 14, 14)</text>
+
+  <rect class="out" x="602" y="268" width="290" height="126" rx="10"/>
+  <text class="txt" x="618" y="296">ConvTranspose2D #3 + Sigmoid</text>
+  <text class="mono" x="618" y="320">1 filter, 3x3, stride=1, same</text>
+  <text class="mono" x="618" y="344">params: (3x3x32 + 1) x 1 = 289</text>
+  <text class="mono" x="618" y="368">recon out: (1, 14, 14)</text>
+
+  <path class="arr" d="M154 152H186"/>
+  <path class="arr" d="M374 152H406"/>
+  <path class="arr" d="M562 152H592"/>
+  <path class="arr" d="M742 212V246"/>
+  <path class="arr" d="M742 246H570"/>
+  <path class="arr" d="M570 246V302"/>
+  <path class="arr" d="M570 330H602"/>
+
+  <rect class="note" x="28" y="426" width="864" height="80" rx="8"/>
+  <text class="mono" x="44" y="456">As stated in question, decoder upsamples only once (7->14), so final output is 14x14.</text>
+  <text class="mono" x="44" y="480">To reconstruct 28x28 exactly, another stride-2 upsampling stage would be required.</text>
+
+  <line class="rule" x1="28" y1="518" x2="892" y2="518"/>
+</svg>

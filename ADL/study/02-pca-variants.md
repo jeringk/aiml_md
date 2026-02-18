@@ -27,9 +27,13 @@ The top $k$ eigenvectors form the projection matrix $W \in \mathbb{R}^{d \times 
 
 $$Z = X W$$
 
+![PCA variants overview map](../images/pca-variants-map.svg)
+
 ---
 
 ## 2.2 Randomized PCA
+
+![Randomized PCA workflow](../images/pca-randomized.svg)
 
 - Uses **randomized algorithms** to approximate the top-$k$ singular vectors
 - Much faster than full SVD for large datasets: $O(ndk)$ vs $O(nd \min(n,d))$
@@ -45,6 +49,8 @@ $$Z = X W$$
 
 ## 2.3 Incremental PCA
 
+![Incremental PCA workflow](../images/pca-incremental.svg)
+
 - Processes data in **mini-batches** — does not require full dataset in memory
 - Useful for **large datasets** or **streaming data**
 - Updates the principal components incrementally as new batches arrive
@@ -54,11 +60,15 @@ $$Z = X W$$
 
 ## 2.4 Kernel PCA
 
+![Kernel PCA concept](../images/pca-kernel.svg)
+
 - Applies PCA in a **high-dimensional feature space** using the kernel trick
 - Computes eigendecomposition of the **kernel matrix** $K$ instead of covariance matrix
 - Common kernels: RBF (Gaussian), polynomial, sigmoid
 
 $$K_{ij} = \kappa(x_i, x_j) = \phi(x_i)^T \phi(x_j)$$
+
+- [The Kernel Trick](https://www.youtube.com/watch?v=N_RQj4OL1mg)
 
 - Can capture **nonlinear** structure in data
 - Limitation: requires $O(n^2)$ kernel matrix computation and storage
@@ -66,6 +76,8 @@ $$K_{ij} = \kappa(x_i, x_j) = \phi(x_i)^T \phi(x_j)$$
 ---
 
 ## 2.5 Probabilistic PCA
+
+![Probabilistic PCA latent-variable view](../images/pca-probabilistic.svg)
 
 - Formulates PCA as a **latent variable model**:
 
@@ -84,6 +96,8 @@ where $z \sim \mathcal{N}(0, I)$ and $\epsilon \sim \mathcal{N}(0, \sigma^2 I)$
 
 ## 2.6 Sparse PCA
 
+![Sparse PCA with L1 regularization](../images/pca-sparse.svg)
+
 - Adds **sparsity constraint** (L1 penalty) to the loading vectors
 - Results in principal components that are linear combinations of only a **few original features**
 - Improves **interpretability** at the cost of explained variance
@@ -94,6 +108,8 @@ $$\min_{W, Z} \|X - ZW^T\|_F^2 + \lambda \|W\|_1$$
 ---
 
 ## 2.7 Canonical Correlation Analysis (CCA)
+
+![CCA projection and correlation objective](../images/pca-cca.svg)
 
 - Finds **linear combinations** of two sets of variables that are **maximally correlated**
 - Given two views $X_1$ and $X_2$, find $w_1, w_2$ such that:
@@ -106,6 +122,8 @@ $$\max_{w_1, w_2} \text{corr}(X_1 w_1, X_2 w_2)$$
 ---
 
 ## 2.8 Locally Linear Embedding (LLE)
+
+![LLE neighborhood-preserving embedding](../images/pca-lle.svg)
 
 - **Nonlinear dimensionality reduction** that preserves local neighborhood structure
 - Algorithm:
@@ -122,6 +140,8 @@ $$\min_Y \sum_i \left\| y_i - \sum_j w_{ij} y_j \right\|^2$$
 
 ## 2.9 Independent Component Analysis (ICA)
 
+![ICA source separation](../images/pca-ica.svg)
+
 - Finds **statistically independent** components (not just uncorrelated like PCA)
 - Assumes data is a **linear mixture** of independent sources:
 
@@ -137,6 +157,8 @@ where $s$ are independent non-Gaussian sources
 
 ## 2.10 Factor Analysis
 
+![Factor Analysis latent factors and diagonal noise](../images/pca-factor-analysis.svg)
+
 - Similar to Probabilistic PCA but with **diagonal** (not isotropic) noise:
 
 $$x = Wz + \mu + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \Psi)$$
@@ -150,6 +172,8 @@ where $\Psi = \text{diag}(\psi_1, \ldots, \psi_d)$
 ---
 
 ## 2.11 Manifold Learning
+
+![Manifold learning methods overview](../images/pca-manifold-learning.svg)
 
 - Assumes high-dimensional data lies on a **low-dimensional manifold**
 - Goal: discover this manifold and provide a low-dimensional representation

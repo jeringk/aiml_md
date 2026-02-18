@@ -15,3 +15,10 @@ _Add study material files here. Example structure:_
 ---
 
 > **Tip:** Use clear headings, bullet points, and LaTeX math (`$...$` for inline, `$$...$$` for display) for all formulas.
+
+---
+
+## Navigation
+
+- [Course Home](../)
+- [Back to Homepage](../../)

@@ -21,3 +21,12 @@ _Add syllabus topics here as you progress through the course._
 1. _Topic 1_
 2. _Topic 2_
 3. _Topic 3_
+
+---
+
+## Navigation
+
+- [Course Home](./)
+- [Study](study/)
+- [Questions](questions/)
+- [Back to Homepage](../)

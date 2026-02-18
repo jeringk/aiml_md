@@ -27,3 +27,12 @@ _Add question files here. Example structure:_
 ---
 
 > **Note:** Use `<div style="page-break-after: always;"></div>` between pages for print-ready output.
+
+---
+
+## Navigation
+
+- [Course Home](../)
+- [Study](../study/)
+- [Questions Index](./)
+- [Back to Homepage](../../)

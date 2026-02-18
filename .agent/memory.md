@@ -74,13 +74,31 @@ MarkDown/
   1. **Question** — The question text with marks and source
   2. **Topics to Know** — Key topics to study to answer the question
   3. **Solution** — Step-by-step solution
+- When source questions are provided from papers/images, the **Question page must be transcribed verbatim**.
+- Do **not** summarize, trim, paraphrase, simplify, or rewrite any portion of the original question text.
+- Preserve wording, sequence, punctuation, mark distribution, and listed data exactly.
 
 ### Formatting Rules
 - **Inline math:** `$...$`
 - **Display math:** `$$...$$`
+- **Formula parameter definitions:** Use a multi-line `where:` block with one symbol-definition per bullet (avoid long single-line parameter lists)
+- **Variable expansion in formulas:** For every key formula, explicitly define each variable/symbol used (including indices, distributions, and parameters) immediately below the formula
 - **Page breaks:** `<div style="page-break-after: always;"></div>`
 - **Horizontal rules:** `---` to visually separate sections
 - All content must be **print-ready**
+
+### SVG Diagrams
+- Every topic **should include SVG diagrams** for better visual understanding
+- SVG files are stored in `<COURSE>/images/` directory (e.g., `ADL/images/`)
+- Embed in markdown using: `![caption](images/filename.svg)`
+- **Design guidelines**:
+  - ~800px wide for comfortable viewing and printing
+  - Grayscale-only output for black-and-white print readability
+  - Use only black, white, and gray tones with high contrast
+  - Sans-serif fonts for clarity
+  - Clear labels and formula annotations where relevant
+  - No unnecessary decoration — educational clarity is the priority
+- Name files descriptively: `topic-subtopic.svg` (e.g., `conv2d-operation.svg`)
 
 ## Key Decisions
 - Markdown-only repo (no code, no notebooks)
@@ -95,6 +113,11 @@ MarkDown/
 - **Use conventional commit messages:** `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`, etc.
 - **Commit message format:** Brief summary (≤50 chars), then detailed description if needed
 - **Never leave uncommitted changes** — The working tree should always be clean after each task
+
+## Agent-Memory Sync Policy
+- Treat `/Users/jingo/Library/CloudStorage/GoogleDrive-jeringeok@gmail.com/My Drive/Personal/Learning/AIML/AIMLBits/Sem3/MarkDown/.agent/memory.md` and `/Users/jingo/Library/CloudStorage/GoogleDrive-jeringeok@gmail.com/My Drive/Personal/Learning/AIML/AIMLBits/Sem3/MarkDown/agent.md` as synchronized policy files.
+- Any rule added, removed, or changed in one file must be reflected in the other in the same update session.
+- Before finalizing a task, verify both files are aligned on shared instructions and do not conflict.
 
 ## Obsidian Compatibility
 

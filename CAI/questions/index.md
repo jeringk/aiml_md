@@ -1,6 +1,6 @@
-# NLPA — Questions
+# CAI — Questions
 
-Past question papers and generated practice questions for **NLP Applications**.
+Past question papers and generated practice questions for **Conversational AI**.
 
 ---
 
@@ -27,3 +27,12 @@ _Add question files here. Example structure:_
 ---
 
 > **Note:** Use `<div style="page-break-after: always;"></div>` between pages for print-ready output.
+
+---
+
+## Navigation
+
+- [Course Home](../)
+- [Study](../study/)
+- [Questions Index](./)
+- [Back to Homepage](../../)

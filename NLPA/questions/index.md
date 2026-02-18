@@ -26,30 +26,30 @@ All questions are numbered sequentially (Q1, Q2, Q3…).
 
 ### Q1 — 6 Marks
 
-- Machine Translation
-- Statistical
+- [[../study/05-machine-translation#05. Machine Translation|Machine Translation]]
+- [[../study/05-machine-translation#Statistical Machine Translation (SMT)|Statistical]]
 
 ### Q2 — 8 Marks
 
-- Knowledge Graph Applications
-- Machine Translation
-- Neural
-- Indic Languages
+- [[../study/03-knowledge-graph-applications#03. Knowledge Graph Applications|Knowledge Graph Applications]]
+- [[../study/05-machine-translation#05. Machine Translation|Machine Translation]]
+- [[../study/05-machine-translation#Neural Machine Translation (NMT)|Neural]]
+- [[../study/05-machine-translation#Indic Language Translation|Indic Languages]]
 
 ### Q3 — 8 Marks
 
-- Information Extraction
-- Named Entity Recognition
-- Relation Extraction
-- Extracting Events and Time
+- [[../study/06-information-extraction#06. Information Extraction|Information Extraction]]
+- [[../study/06-information-extraction#Named Entity Recognition (NER)|Named Entity Recognition]]
+- [[../study/06-information-extraction#Relation Extraction|Relation Extraction]]
+- [[../study/06-information-extraction#Extracting Events and Time|Extracting Events and Time]]
 
 ### Q4 — 8 Marks
 
-- Sentiment Analysis
-- Sentiment Analysis Methods
-- Rule based, ML based and Hybrid Systems
-- Neural Networks for Sentiment Analysis
-- NLP features
+- [[../study/07-sentiment-analysis#07. Sentiment Analysis|Sentiment Analysis]]
+- [[../study/07-sentiment-analysis#Sentiment Analysis Methods|Sentiment Analysis Methods]]
+- [[../study/07-sentiment-analysis#Rule-Based, ML-Based, and Hybrid Systems|Rule based, ML based and Hybrid Systems]]
+- [[../study/07-sentiment-analysis#Neural Networks for Sentiment Analysis|Neural Networks for Sentiment Analysis]]
+- [[../study/07-sentiment-analysis#NLP Features for Sentiment Analysis|NLP features]]
 
 ---
 

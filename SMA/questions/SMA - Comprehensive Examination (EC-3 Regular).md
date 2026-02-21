@@ -145,14 +145,108 @@ A Hamiltonian cycle must visit every vertex exactly once and return to the start
 
 <div style="page-break-after: always;"></div>
 
-## Q3. Analytics and Insights
+## Q3. Community Analysis
+**Marks:** 5 | **Source:** Past Exam
+
+<div align="center">
+
+```mermaid
+graph TD
+    %% Left Community [5,6,7,8]
+    7((7)) --- 5((5))
+    7 --- 6((6))
+    7 --- 8((8))
+    8 --- 5
+    8 --- 6
+    5 --- 6
+
+    %% Right Community [1,2,3,4]
+    1((1)) --- 2((2))
+    1 --- 3((3))
+    1 --- 4((4))
+    2 --- 3
+    2 --- 4
+    3 --- 4
+
+    %% Cross Edges
+    3 --- 5
+    4 --- 5
+    4 --- 6
+    2 --- 6
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+```
+
+</div>
+
+**a)** Assume Cut A splits the above network into two communities: [1,2,3,4] and [5,6,7,8]. Alternately, Cut B splits the above into the communities [1,2,3] and [4,5,6,7,8]. Apply Ratio Cut and Normalized Cut and justify which of these two cuts is preferable? **(2 Marks)**
+**b)** Evaluate the total modularity for the given graph by dividing into two 4-clique communities as [1,2,3,4] and [5,6,7,8]. **(3 Marks)**
+
+<div style="page-break-after: always;"></div>
+
+## Q3. Topics to Know
+To answer this question, study the following:
+- **Community Detection** — 📖 [Community Detection](study/Module%207%20-%20Community%20and%20Interactions%20-%20Community%20Detection.md)
+  - 📌 Graph Cuts, Ratio Cut, and Normalized Cut calculations
+  - 📌 Modularity definition and calculation for evaluating community goodness
+
+<div style="page-break-after: always;"></div>
+
+## Q3. Solution
+
+### (a) Ratio Cut and Normalized Cut (2 Marks)
+First, identify the graph's properties:
+- Total nodes $|V| = 8$, Total edges $m = 16$.
+- $Sum\ of\ all\ degrees = 2 \times 16 = 32$.
+- $deg(1)=3, deg(2)=4, deg(3)=4, deg(4)=5, deg(5)=5, deg(6)=5, deg(7)=3, deg(8)=3$.
+
+**Cut A: C1 = [1,2,3,4], C2 = [5,6,7,8]**
+- **Cut edges:** (3,5), (4,5), (4,6), (2,6) $\rightarrow cut(C1, C2) = 4$.
+- **Sizes:** $|C1| = 4, |C2| = 4$.
+- **Volumes:** $Vol(C1) = 3+4+4+5 = 16$, $Vol(C2) = 5+5+3+3 = 16$.
+- **Ratio Cut A:** $cut(C1, C2) \times (\frac{1}{|C1|} + \frac{1}{|C2|}) = 4 \times (\frac{1}{4} + \frac{1}{4}) = 4 \times 0.5 = \mathbf{2}$
+- **Normalized Cut A:** $cut(C1, C2) \times (\frac{1}{Vol(C1)} + \frac{1}{Vol(C2)}) = 4 \times (\frac{1}{16} + \frac{1}{16}) = 4 \times 0.125 = \mathbf{0.5}$
+
+**Cut B: C1 = [1,2,3], C2 = [4,5,6,7,8]**
+- **Cut edges:** (1,4), (2,4), (3,4), (2,6), (3,5) $\rightarrow cut(C1, C2) = 5$.
+- **Sizes:** $|C1| = 3, |C2| = 5$.
+- **Volumes:** $Vol(C1) = 3+4+4 = 11$, $Vol(C2) = 5+5+5+3+3 = 21$.
+- **Ratio Cut B:** $cut(C1, C2) \times (\frac{1}{|C1|} + \frac{1}{|C2|}) = 5 \times (\frac{1}{3} + \frac{1}{5}) = 5 \times \frac{8}{15} \approx \mathbf{2.67}$
+- **Normalized Cut B:** $cut(C1, C2) \times (\frac{1}{Vol(C1)} + \frac{1}{Vol(C2)}) = 5 \times (\frac{1}{11} + \frac{1}{21}) = 5 \times \frac{32}{231} \approx \mathbf{0.69}$
+
+**Conclusion:** **Cut A** is preferable because its Ratio Cut (2 < 2.67) and Normalized Cut (0.5 < 0.69) are lower, mathematically minimizing both connections severed and size variance between partitions.
+
+### (b) Total Modularity (3 Marks)
+Modularity $Q$ evaluates how well the graph is divided into communities.
+$Q = \sum_{c} \left[ \frac{L_c}{m} - \left( \frac{K_c}{2m} \right)^2 \right]$
+Where:
+- $L_c$ is the number of internal edges in community $c$.
+- $K_c$ is the sum of degrees of vertices in community $c$ ($Vol(C)$).
+- $m = 16$ (total edges), so $2m = 32$.
+
+**For Community 1 [1,2,3,4]:**
+- Internal edges $L_1 = 6$ (a complete 4-clique).
+- Volume $K_1 = 16$.
+- Modularity term $Q_1 = \frac{6}{16} - \left( \frac{16}{32} \right)^2 = \frac{3}{8} - \left(\frac{1}{2}\right)^2 = 0.375 - 0.25 = 0.125$
+
+**For Community 2 [5,6,7,8]:**
+- Internal edges $L_2 = 6$ (a complete 4-clique).
+- Volume $K_2 = 16$.
+- Modularity term $Q_2 = \frac{6}{16} - \left( \frac{16}{32} \right)^2 = 0.375 - 0.25 = 0.125$
+
+**Total Modularity:**
+$Q = Q_1 + Q_2 = 0.125 + 0.125 = \mathbf{0.25}$
+
+<div style="page-break-after: always;"></div>
+
+## Q4. Analytics and Insights
 **Marks:** 5 | **Source:** Past Exam
 
 Consider a brand that is recovering from a recent crisis, such as a product recall. How would you suggest they monitor conversations on social media? The metrics that you can monitor include Sentiment Analysis, Engagement Metrics, Share of Voice, Influence Engagement, Customer Feedback, Trending Topics and Competitor Analysis. For each of these metrics, explain in 1-2 sentences, what you would observe and how it will influence the actions that you take to mitigate the crisis.
 
 <div style="page-break-after: always;"></div>
 
-## Q3. Topics to Know
+## Q4. Topics to Know
 To answer this question, study the following:
 - **Social Media Monitoring for Crisis Management** — 📖 [Social Media Monitoring](study/13-monitoring-strategy.md#13-1-social-media-monitoring)
   - 📌 Tracking brand health and detecting negative spikes early
@@ -164,7 +258,7 @@ To answer this question, study the following:
 
 <div style="page-break-after: always;"></div>
 
-## Q3. Solution
+## Q4. Solution
 
 For a brand recovering from a product recall, social media monitoring provides critical real-time feedback. Here is what to observe and the corresponding actions for each metric:
 

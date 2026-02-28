@@ -195,6 +195,49 @@ $(A,B), (A,C), (B,C), (C,D)$ (Nodes A,B,C form a triangle. D is only attached to
 - Complexity: $O((\|V\| + \|E\|) \log \|V\|)$ using a minimum priority queue.
 - Application: Calculating minimum transport costs, finding the fastest routes between locations on graph networks.
 
+#### Numerical Example: Dijkstra's Algorithm
+Consider a graph with vertices $A, B, C, D$ with the following directed, weighted edges:
+
+```mermaid
+graph LR
+    A((A)) --4--> B((B))
+    A((A)) --1--> C((C))
+    C((C)) --2--> B((B))
+    B((B)) --1--> D((D))
+    C((C)) --5--> D((D))
+```
+
+**Goal:** Find the shortest path from Source $A$ to all other nodes.
+
+**Initialization:**
+- Distances: $A=0, B=\infty, C=\infty, D=\infty$
+- Unvisited nodes: $\{A, B, C, D\}$
+
+**Step 1:** Visit $A$ (node with minimum distance $= 0$).
+- Update unvisited neighbors of $A$:
+  - $B$: $\min(\infty, 0+4) = 4$
+  - $C$: $\min(\infty, 0+1) = 1$
+- Mark $A$ as visited. Distances: $A=0, B=4, C=1, D=\infty$.
+
+**Step 2:** Visit $C$ (next node with minimum distance $= 1$).
+- Update unvisited neighbors of $C$:
+  - $B$: $\min(4, 1+2) = 3$ *(Distance to $B$ is updated because $1+2 < 4$)*
+  - $D$: $\min(\infty, 1+5) = 6$
+- Mark $C$ as visited. Distances: $A=0, B=3, C=1, D=6$.
+
+**Step 3:** Visit $B$ (next node with minimum distance $= 3$).
+- Update unvisited neighbors of $B$:
+  - $D$: $\min(6, 3+1) = 4$ *(Distance to $D$ is updated because $3+1 < 6$)*
+- Mark $B$ as visited. Distances: $A=0, B=3, C=1, D=4$.
+
+**Step 4:** Visit $D$ (next node with minimum distance $= 4$).
+- No unvisited neighbors to update.
+- Mark $D$ as visited.
+
+**Final Result**:
+- Minimum distances from $A$: $A=0, B=3, C=1, D=4$.
+- The shortest path to $D$ is $A \to C \to B \to D$ with a total cost of $4$.
+
 ---
 
 ## 4.7 Hubs and Authorities (HITS Algorithm)

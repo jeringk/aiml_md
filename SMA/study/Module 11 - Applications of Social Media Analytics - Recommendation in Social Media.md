@@ -102,11 +102,17 @@ $$\min_{U,V} \sum_{(u,i)} (r_{ui} - u_u^T v_i)^2 + \lambda_1 \|U\|^2 + \lambda_2
 
 ### Friend Recommendation (Link Prediction)
 
-- Predict who should connect based on:
+- Local Heuristics (Predict who should connect based on overlapping neighbors):
   - **Common neighbors**: $\frac{\|N(u) \cap N(v)\|}{\|N(u) \cup N(v)\|}$ (Jaccard)
   - **Adamic-Adar**: $\sum_{w \in N(u) \cap N(v)} \frac{1}{\log \|N(w)\|}$
   - **Preferential attachment**: $\|N(u)\| \cdot \|N(v)\|$
   - **Graph embeddings**: node2vec, GCN-based link prediction
+
+- Global Heuristics (Predict based on the entire network architecture and paths):
+  - **Katz Score**: Calculates link prediction score by summing over all possible paths of any length $p$ between two nodes. Longer paths are penalized by a damping factor $\alpha$. 
+    - Formula: $S_{KZ}(x,y) = \sum_{p=1}^{\infty} \alpha^p \cdot A_{x,y}^p$
+  - **Hitting Time ($HT_{xy}$)**: Based on a random surfing model. It's the expected number of steps a random walk takes to reach node $y$ starting from node $x$. A smaller hitting time means a higher probability of interaction, thus it's often negated to use as a prediction score: $S_{HT}(x,y) = -HT_{xy}$.
+  - **Commute Time**: The expected steps taken to travel from $x$ to $y$ and back to $x$.
 
 ---
 

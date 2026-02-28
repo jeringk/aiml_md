@@ -99,30 +99,76 @@ Since $-1.7>-1.71$, candidate A is preferred.
 The process of identifying which words in the source sentence correspond to which words in the target sentence.
 -   **IBM Models**: A series of probabilistic models for word alignment.
 
-#### IBM Model 1 and EM Training
+#### IBM Model 1: Full Mathematical Breakdown
 
-IBM Model 1 estimates lexical translation probabilities with EM.
+IBM Model 1 is the simplest of the IBM alignment models. It estimates **lexical translation probabilities** $t(e \mid f)$ using the Expectation-Maximization (EM) algorithm.
 
-$$
-t(f\|e)=\frac{c(f,e)}{c(e)}
-$$
+##### 1. The Mathematical Model
 
-where:
-- $f$: target-language word
-- $e$: source-language word
-- $c(f,e)$: expected count of pair $(f,e)$ from E-step
-- $c(e)$: expected count of source word $e$
+Suppose you have a source sentence $f$ (e.g., French) and a target sentence $e$ (e.g., English).
 
-E-step posterior alignment for target word position $j$:
+- Let the source sentence be $f = (f_1, f_2, \dots, f_l)$ of length $l$. We also add a special **NULL** word at position 0, $f_0$, to account for target words that don't align to any source word.
+- Let the target sentence be $e = (e_1, e_2, \dots, e_m)$ of length $m$.
+- An alignment $a = (a_1, a_2, \dots, a_m)$ specifies that the target word $e_j$ is aligned to the source word $f_{a_j}$.
+
+The probability of a specific alignment and target sentence given the source sentence in IBM Model 1 is:
 
 $$
-P(a_j=i\mid f_j,\mathbf{e})=\frac{t(f_j\|e_i)}{\sum_{i'} t(f_j\|e_{i'})}
+P(e, a \mid f) = \frac{\epsilon}{(l+1)^m} \prod_{j=1}^{m} t(e_j \mid f_{a_j})
 $$
 
 where:
-- $a_j$: aligned source position for target token $f_j$
-- $\mathbf{e}$: source sentence token sequence
-- $i$: source position index
+- $\epsilon$: normalization constant for sentence length
+- $(l+1)^m$: total number of possible alignments (each of the $m$ target words can connect to any of the $l$ source words plus the NULL word)
+- $t(e_j \mid f_{a_j})$: translation probability — the probability that source word $f_{a_j}$ translates to target word $e_j$
+
+##### 2. Calculating the Best Alignment (Inference)
+
+If the translation probabilities $t(e \mid f)$ are already known, finding the best alignment is straightforward. Because IBM Model 1 assumes each word alignment is **independent**, you iterate through each target word and select the source word with the highest translation probability.
+
+For each position $j$ in the target sentence, the aligned source position $a_j$ is:
+
+$$
+a_j = \arg\max_{i \in \{0, \dots, l\}} t(e_j \mid f_i)
+$$
+
+##### 3. Learning the Probabilities: The EM Algorithm
+
+In practice, you start with only a parallel corpus (matching sentence pairs) and must figure out the alignments and probabilities simultaneously. Since the actual alignments are **hidden (latent) variables**, we use the EM algorithm.
+
+**Step 1 — Initialization:**
+
+Set all translation probabilities $t(e \mid f)$ uniformly. For every source word $f$ and target word $e$ that appear together in any sentence pair:
+
+$$
+t(e \mid f) = \frac{1}{V_e}
+$$
+
+where $V_e$ is the vocabulary size of the target language.
+
+**Step 2 — Expectation (E-Step):**
+
+Calculate the "expected counts" of how often a source word $f$ aligns with a target word $e$ across the entire corpus, using the current probabilities.
+
+For a specific sentence pair, the expected count (posterior alignment probability) that $f$ translates to $e$ is:
+
+$$
+P(a_j = i \mid e, f) = \frac{t(e_j \mid f_i)}{\sum_{k=0}^{l} t(e_j \mid f_k)}
+$$
+
+Sum these fractional counts across all sentence pairs in your corpus to get the total expected count $c(e, f)$ for every word pair, as well as the total count $c(f)$ for the source word.
+
+**Step 3 — Maximization (M-Step):**
+
+Update the translation probabilities using the expected counts from the E-step. Normalize the counts to form valid probability distributions:
+
+$$
+t(e \mid f) = \frac{c(e, f)}{c(f)}
+$$
+
+**Step 4 — Iterate:**
+
+Repeat the E-step and M-step. With each iteration, the probabilities converge. The model learns that certain words co-occur frequently across many different sentence pairs and assigns higher probabilities to those pairs, while random co-occurrences see their probabilities drop toward zero.
 
 ### Numerical Example: IBM Model 1 E-step
 
